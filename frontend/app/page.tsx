@@ -1,9 +1,6 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Roadmap from "./components/Roadmap";
-import Builder from "./components/Builder";
-import FundingCTA from "./components/FundingCTA";
+import Projects from "./components/Projects";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -11,10 +8,7 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white">
       <Navbar />
       <Hero />
-      <About />
-      <Roadmap />
-      <Builder />
-      <FundingCTA />
+      <Projects />
       <Footer />
     </main>
   );
