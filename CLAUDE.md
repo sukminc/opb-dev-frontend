@@ -4,7 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**onepercentbetter.poker** is a GTO exploit quantification platform for poker. Users upload GGPoker hand history `.txt` files; the backend parses them, stores results, and surfaces positional exploit signals (bb/100 edge, VPIP, ROI, etc.).
+**onepercentbetter.poker** — "GTO Defends. We Exploit."
+
+A GTO exploit quantification platform that identifies opponent deviations from GTO equilibrium and translates them into actionable, data-driven poker strategy. Currently a marketing/landing site promoting the product; the backend analytical engine is already functional and will be surfaced in the UI.
+
+## Core Product Concepts
+
+Three primary feature areas (the "cards") being built toward:
+- **Deviation Card** — Quantifies the Δ between parsed GGPoker hand histories and GTO equilibrium
+- **Moneyball Efficiency Card** — Identifies high fold-equity / low-risk spots automatically
+- **Action Keeper Logic** — Proposes optimal bet sizing and bankroll risk management based on current equity
+
+## Design System
+
+- **Layout:** Bento grid — metrics surfaced as independent interactive cards
+- **Colors:** Deep Black `#000000`, Electric Blue `#007AFF`, Profit Green accents
+- **Logo:** Minimalist casino chip engraved with "1%"
+- **Animation:** Framer Motion for card interactions (installed but not yet wired up)
+- **Funding CTAs:** All link to `https://buymeacoffee.com/chris.yoon`
 
 ## Commands
 
@@ -31,14 +48,14 @@ npm run lint   # ESLint
 
 ## Architecture
 
-Two independent services — frontend is currently a static marketing/landing page with no backend calls.
+Two independent services. Frontend is a static marketing page; backend is a fully functional analytical API.
 
 **Backend (`backend/app/`)**
 - `main.py` — FastAPI app, all routes, CORS for `localhost:3000` and `onepercentbetter.poker`
 - `models.py` — SQLAlchemy ORM: `Tournament` (1-to-many) → `Hand`
 - `db.py` — SQLite engine, session factory, FastAPI dependency injection
-- `parser.py` — Regex-based GGPoker hand history parser (filename metadata, hand splitting, position/action/result extraction)
-- `analytics.py` — Pandas-based aggregation: positional stats, P&L curves, exploit signals
+- `parser.py` — Regex-based GGPoker hand history parser (filename metadata, hand splitting, position/action/result extraction). Actions stored as `"folds"`, `"calls"`, `"raises"`, `"checks"`, `"bets"` (with the 's').
+- `analytics.py` — Pandas aggregation: positional stats, P&L curves, exploit signals
 
 **Backend API endpoints:**
 | Method | Path | Purpose |
@@ -52,10 +69,16 @@ Two independent services — frontend is currently a static marketing/landing pa
 | GET | `/analytics/pnl` | Cumulative P&L over time |
 
 **Frontend (`frontend/app/`)**
-- `page.tsx` — Home page (assembles all components)
-- `components/` — Marketing sections: Navbar, Hero, About, Roadmap, FundingCTA, Footer
-- All funding CTAs link to `https://buymeacoffee.com/chris.yoon`
-- Styling: Tailwind CSS v4, dark theme (black bg, `#007AFF` blue accents)
+- `page.tsx` — Home page (assembles all section components)
+- `components/` — Navbar, Hero, About, Roadmap, FundingCTA, Footer
+- Styling: Tailwind CSS v4, dark theme
 - Path alias: `@/*` → project root
 
 **Deployment:** Frontend on Vercel (`vercel.json`), backend on any ASGI host.
+
+## Testing
+
+50 tests across 3 files (`PYTHONPATH=. pytest -v` from `backend/`):
+- `test_parser.py` — parser unit tests (positions, actions, filename parsing, multi-hand splits)
+- `test_api.py` — API integration tests (resets `test.db` on each run for clean empty-state assertions)
+- `test_analytics.py` — analytics unit tests with in-memory SQLite fixtures
