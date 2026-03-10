@@ -1,92 +1,124 @@
-import { Database, GitBranch, BarChart3, Crosshair } from "lucide-react";
+"use client";
+
+import { Workflow, Cpu, ShieldCheck, ArrowRight } from "lucide-react";
 
 const pillars = [
   {
-    icon: Crosshair,
-    title: "Exploit Quantification Engine",
-    description:
-      "Measures your opponent's deviation from GTO at each decision node and outputs the exact exploitative counter-strategy with expected bb/100 gain.",
+    icon: Workflow,
+    label: "Pipeline Engineering",
+    body: "Built and maintained 15+ Airflow DAGs handling millions of nightly betting transactions at TheScore (ESPN Bet). BigQuery, AWS Redshift, SOX-compliant transformation logic, automated observability frameworks — production-grade, not demo-grade.",
   },
   {
-    icon: Database,
-    title: "GGPoker Hand Ingestion",
-    description:
-      "Parses raw GGPoker hand histories automatically. Every hand is tagged, stored, and indexed for pattern analysis across sessions.",
+    icon: Cpu,
+    label: "AI-Powered Builder",
+    body: "Full-stack from FastAPI to Next.js. Using LLMs and modern AI tooling to ship real products — poker analytics, sports data platforms, API validation frameworks. Every project on this page is live code, not a tutorial clone.",
   },
   {
-    icon: BarChart3,
-    title: "Session Analytics Dashboard",
-    description:
-      "Bankroll trajectory, exploit success rate, and positional edge — all distilled into actionable 1% improvement targets per session.",
+    icon: ShieldCheck,
+    label: "Reliability by Design",
+    body: "A decade of finding data failures before they hit production means I engineer reliability into pipelines from the start. Fail-fast DQ gates, schema drift detection, regression suites that test the tests. Pipelines that don't page you at 2am.",
   },
-  {
-    icon: GitBranch,
-    title: "Node-Lock Analysis",
-    description:
-      "Uses node-locking methodology to model opponent tendencies and compute maximally exploitative frequencies for every street.",
-  },
+];
+
+const experience = [
+  { company: "TheScore × ESPN Bet", role: "Senior Data Engineer", period: "2023 – 2025" },
+  { company: "Avesis (via QAC)",    role: "Technical Data Lead",   period: "2021 – 2023" },
+  { company: "Jewelers Mutual",     role: "Data Engineer",         period: "2020 – 2021" },
+  { company: "VRBO · Expedia",      role: "Data Migration Analyst", period: "2016 – 2018" },
 ];
 
 export default function About() {
   return (
-    <section id="features" className="py-32 border-t border-[#1a1a1a]">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Section header */}
-        <div className="mb-16">
-          <span className="text-xs font-mono text-[#007AFF] tracking-widest uppercase">
-            What We&apos;re Building
+    <section id="about" className="py-24 px-6 border-t border-[#111]">
+      <div className="max-w-4xl mx-auto">
+
+        {/* Open-to-work pill */}
+        <div className="inline-flex items-center gap-2 border border-emerald-500/30 bg-emerald-500/5 rounded-full px-3 py-1 mb-10">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-xs text-emerald-400 font-mono tracking-widest uppercase">
+            Open to Work — Data Engineering / AI Engineering Roles
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4 tracking-tight">
-            The infrastructure for{" "}
-            <span className="text-[#007AFF]">systematic exploitation</span>.
+        </div>
+
+        {/* Headline */}
+        <div className="mb-10">
+          <span className="text-xs font-mono text-[#007AFF] tracking-widest uppercase">
+            About
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-3 tracking-tight text-white leading-snug">
+            I built pipelines for ESPN Bet.{" "}
+            <span className="text-[#333]">Now I build products with AI.</span>
           </h2>
-          <p className="text-[#666] max-w-xl text-base leading-relaxed">
-            Most poker tools tell you what GTO does. We tell you what your
-            specific opponent does — and exactly how to punish it.
+          <p className="text-[#555] mt-4 max-w-2xl leading-relaxed">
+            Data engineer with a decade of experience building production ETL
+            infrastructure — sports betting, insurance, fintech. My last role
+            was architecting Airflow pipelines and data observability systems
+            for TheScore, partnered with ESPN Bet.
+          </p>
+          <p className="text-[#555] mt-3 max-w-2xl leading-relaxed">
+            Now I&apos;m doing both: looking for my next DE role while shipping
+            AI-powered products in public. Every project here is a real stack,
+            a real problem, a real commit. That&apos;s what 1% better looks like.
           </p>
         </div>
 
-        {/* Feature grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1a1a1a]">
+        {/* Experience strip */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-10">
+          {experience.map((e) => (
+            <div
+              key={e.company}
+              className="flex items-center justify-between border border-[#1a1a1a] rounded-lg px-4 py-3 bg-black"
+            >
+              <div>
+                <p className="text-xs font-semibold text-white font-mono">{e.company}</p>
+                <p className="text-[10px] text-[#555] mt-0.5">{e.role}</p>
+              </div>
+              <span className="text-[10px] font-mono text-[#333]">{e.period}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Pillar cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
           {pillars.map((p) => {
             const Icon = p.icon;
             return (
               <div
-                key={p.title}
-                className="bg-black p-8 group hover:bg-[#0a0a0a] transition-colors"
+                key={p.label}
+                className="border border-[#1a1a1a] rounded-xl p-5 bg-black hover:border-[#2a2a2a] hover:bg-[#050505] transition-all"
               >
-                <div className="w-10 h-10 rounded-md bg-[#007AFF]/10 border border-[#007AFF]/20 flex items-center justify-center mb-5 group-hover:bg-[#007AFF]/20 transition-colors">
-                  <Icon size={18} className="text-[#007AFF]" />
+                <div className="w-9 h-9 rounded-md bg-[#007AFF]/10 border border-[#007AFF]/20 flex items-center justify-center mb-4">
+                  <Icon size={16} className="text-[#007AFF]" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-white">
-                  {p.title}
-                </h3>
-                <p className="text-sm text-[#666] leading-relaxed">
-                  {p.description}
+                <p className="text-sm font-semibold text-white mb-2 font-mono">
+                  {p.label}
                 </p>
+                <p className="text-xs text-[#555] leading-relaxed">{p.body}</p>
               </div>
             );
           })}
         </div>
 
-        {/* Moneyball callout */}
-        <div className="mt-12 border border-[#2a2a2a] rounded-lg p-8 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-1 h-full bg-[#007AFF]" />
-          <div className="pl-4">
-            <span className="text-xs font-mono text-[#007AFF] tracking-widest uppercase">
-              Philosophy
-            </span>
-            <blockquote className="mt-3 text-xl text-white font-medium leading-relaxed max-w-3xl">
-              &ldquo;Moneyball didn&apos;t beat the market by playing better baseball.
-              It beat the market by measuring baseball differently. We do the
-              same for poker.&rdquo;
-            </blockquote>
-            <p className="mt-3 text-sm text-[#666]">
-              Inspired by sabermetrics data preprocessing philosophy — applied
-              to GTO deviation modeling.
-            </p>
-          </div>
+        {/* CTA row */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <a
+            href="https://linkedin.com/in/sukminyoon"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#007AFF] text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-[#0066DD] transition-colors"
+          >
+            View LinkedIn <ArrowRight size={14} />
+          </a>
+          <a
+            href="https://github.com/sukminc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 border border-[#2a2a2a] text-[#666] text-sm px-5 py-2.5 rounded-md hover:border-[#007AFF] hover:text-white transition-all"
+          >
+            View GitHub <ArrowRight size={14} />
+          </a>
         </div>
+
       </div>
     </section>
   );

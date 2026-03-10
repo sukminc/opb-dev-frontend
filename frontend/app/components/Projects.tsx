@@ -10,9 +10,18 @@ const statusConfig: Record<ProjectStatus, { label: string; color: string; dot: s
   idea:     { label: "Idea",     color: "text-[#555]",       dot: "bg-[#333]" },
 };
 
+type FilterKey = "All" | "Poker" | "Data" | "Automation";
+
+const FILTERS: { key: FilterKey; match: string[] }[] = [
+  { key: "All",        match: [] },
+  { key: "Poker",      match: ["Poker", "Fintech", "AR", "Computer Vision"] },
+  { key: "Data",       match: ["Data Engineering", "ETL", "Airflow", "Analytics", "PostgreSQL"] },
+  { key: "Automation", match: ["Python", "pytest", "AI APIs", "SDK Engineering", "Automation"] },
+];
+
 function ProjectCard({ project }: { project: Project }) {
-  const [count, setCount]       = useState(project.seed);
-  const [voted, setVoted]       = useState(false);
+  const [count, setCount]         = useState(project.seed);
+  const [voted, setVoted]         = useState(false);
   const [animating, setAnimating] = useState(false);
 
   const storageKey = `interest_${project.slug}`;
@@ -114,10 +123,20 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export default function Projects() {
+  const [activeFilter, setActiveFilter] = useState<FilterKey>("All");
+
+  const filtered = projects.filter((p) => {
+    if (activeFilter === "All") return true;
+    const matchTags = FILTERS.find((f) => f.key === activeFilter)?.match ?? [];
+    return p.tags.some((t) => matchTags.includes(t));
+  });
+
   return (
     <section id="projects" className="py-24 px-6 border-t border-[#111]">
       <div className="max-w-4xl mx-auto">
-        <div className="mb-12">
+
+        {/* Header */}
+        <div className="mb-8">
           <span className="text-xs font-mono text-[#007AFF] tracking-widest uppercase">
             Projects
           </span>
@@ -131,11 +150,30 @@ export default function Projects() {
           </p>
         </div>
 
+        {/* Filter pills */}
+        <div className="flex items-center gap-2 mb-8 flex-wrap">
+          {FILTERS.map(({ key }) => (
+            <button
+              key={key}
+              onClick={() => setActiveFilter(key)}
+              className={`text-xs font-mono px-3 py-1.5 rounded-full border transition-all ${
+                activeFilter === key
+                  ? "border-[#007AFF] bg-[#007AFF]/10 text-[#007AFF]"
+                  : "border-[#2a2a2a] text-[#555] hover:border-[#444] hover:text-[#888]"
+              }`}
+            >
+              {key}
+            </button>
+          ))}
+        </div>
+
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {projects.map((p) => (
+          {filtered.map((p) => (
             <ProjectCard key={p.slug} project={p} />
           ))}
         </div>
+
       </div>
     </section>
   );

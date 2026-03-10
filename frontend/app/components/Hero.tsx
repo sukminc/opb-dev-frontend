@@ -22,18 +22,15 @@ export default function Hero() {
 
         {/* Headline */}
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] mb-6">
-          I build with{" "}
-          <span className="text-[#007AFF]">AI.</span>
-          <br />
-          I ship for{" "}
-          <span className="text-[#007AFF]">profit.</span>
+          1% better,{" "}
+          <span className="text-[#007AFF]">every build.</span>
         </h1>
 
         {/* Sub */}
         <p className="text-lg text-[#555] max-w-xl leading-relaxed mb-10">
-          Using AI as a force multiplier to build real software — tools I
-          actually want to use, turned into products worth paying for. Vote on
-          what I build next.
+          Data engineer &amp; AI builder. I&apos;ve shipped ETL pipelines at
+          scale for sports betting. Now I build AI-powered products in public —
+          and get 1% better at both with every commit.
         </p>
 
         {/* Social links */}
