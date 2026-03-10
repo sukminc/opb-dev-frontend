@@ -45,19 +45,19 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       className={`relative ${project.featured ? "md:col-span-2" : ""}`}
-      style={{ perspective: "1200px", minHeight: "320px" }}
+      style={{ perspective: "1200px" }}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
     >
       <motion.div
-        className="relative w-full h-full"
+        className="w-full grid"
         style={{ transformStyle: "preserve-3d" }}
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
       >
         {/* ── FRONT ── */}
         <div
-          className={`absolute inset-0 flex flex-col border rounded-xl p-6 bg-black ${
+          className={`[grid-area:1/1] flex flex-col border rounded-xl p-6 bg-black ${
             project.featured ? "border-[#007AFF]/30" : "border-[#1a1a1a]"
           }`}
           style={{ backfaceVisibility: "hidden" }}
@@ -110,7 +110,7 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* ── BACK ── */}
         <div
-          className={`absolute inset-0 flex flex-col justify-center border rounded-xl p-6 bg-[#030303] ${
+          className={`[grid-area:1/1] flex flex-col justify-center border rounded-xl p-6 bg-[#030303] ${
             project.featured ? "border-[#007AFF]/30" : "border-[#1a1a1a]"
           }`}
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
