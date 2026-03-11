@@ -30,6 +30,9 @@ export default function Navbar() {
           <a href="#projects" className="text-sm text-[#8A8B97] hover:text-[#F7F8F8] transition-colors">
             Projects
           </a>
+          <Link href="/dashboard" className="text-sm text-[#8A8B97] hover:text-[#F7F8F8] transition-colors">
+            Dashboard
+          </Link>
           <Link href="/about" className="text-sm text-[#8A8B97] hover:text-[#F7F8F8] transition-colors">
             About
           </Link>
