@@ -2,17 +2,17 @@ import { Github, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#111] py-8 px-6">
-      <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-xs text-[#333] font-mono">
-          © {new Date().getFullYear()} Sukmin Yoon — built with AI.
+    <footer className="border-t border-[#232329] py-8 px-6">
+      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="text-xs text-[#4B4C58]">
+          © {new Date().getFullYear()} Chris S. Yoon
         </p>
         <div className="flex items-center gap-5">
           <a
             href="https://linkedin.com/in/sukminyoon"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs text-[#333] hover:text-[#007AFF] transition-colors font-mono"
+            className="flex items-center gap-1.5 text-xs text-[#4B4C58] hover:text-[#8A8B97] transition-colors"
           >
             <Linkedin size={12} />
             sukminyoon
@@ -21,7 +21,7 @@ export default function Footer() {
             href="https://github.com/sukminc"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs text-[#333] hover:text-[#007AFF] transition-colors font-mono"
+            className="flex items-center gap-1.5 text-xs text-[#4B4C58] hover:text-[#8A8B97] transition-colors"
           >
             <Github size={12} />
             sukminc

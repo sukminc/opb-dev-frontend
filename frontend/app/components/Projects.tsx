@@ -9,8 +9,8 @@ const BMAC = "https://buymeacoffee.com/chris.yoon";
 
 const statusConfig: Record<ProjectStatus, { label: string; color: string; dot: string }> = {
   live:     { label: "Live",     color: "text-emerald-400", dot: "bg-emerald-400" },
-  building: { label: "Building", color: "text-[#007AFF]",   dot: "bg-[#007AFF] animate-pulse" },
-  idea:     { label: "Idea",     color: "text-[#555]",       dot: "bg-[#333]" },
+  building: { label: "Building", color: "text-[#5E5CE6]",   dot: "bg-[#5E5CE6] animate-pulse" },
+  idea:     { label: "Idea",     color: "text-[#4B4C58]",   dot: "bg-[#4B4C58]" },
 };
 
 type FilterKey = "All" | "Poker" | "Data" | "Automation";
@@ -18,16 +18,16 @@ type FilterKey = "All" | "Poker" | "Data" | "Automation";
 const FILTERS: { key: FilterKey; match: string[] }[] = [
   { key: "All",        match: [] },
   { key: "Poker",      match: ["Poker", "Fintech", "AR", "Computer Vision"] },
-  { key: "Data",       match: ["Data Engineering", "ETL", "Airflow", "Analytics", "PostgreSQL"] },
-  { key: "Automation", match: ["Python", "pytest", "AI APIs", "SDK Engineering", "Automation"] },
+  { key: "Data",       match: ["Data Engineering", "ETL", "Airflow", "Analytics", "PostgreSQL", "Apache Airflow"] },
+  { key: "Automation", match: ["Python", "pytest", "AI APIs", "SDK Engineering", "Automation", "Pytest"] },
 ];
 
 const FUNDING_TIERS = [
-  { label: "FOLD",     sub: "Not interested",      amount: null,  style: "text-[#444] border-[#1a1a1a] hover:border-[#333] hover:text-[#666]" },
-  { label: "Check",   sub: "$10 — I'd use this",   amount: 10,   style: "text-[#888] border-[#2a2a2a] hover:border-[#555] hover:text-white" },
-  { label: "Call",    sub: "$20 — Build this",      amount: 20,   style: "text-white border-[#007AFF]/40 hover:border-[#007AFF] hover:bg-[#007AFF]/10" },
-  { label: "10x Raise", sub: "$100+ — Need this ASAP", amount: 100, style: "text-[#007AFF] border-[#007AFF]/60 hover:border-[#007AFF] hover:bg-[#007AFF]/20 font-semibold" },
-  { label: "All-In",  sub: "$1,000 — Sponsor",     amount: 1000, style: "text-amber-400 border-amber-500/40 hover:border-amber-400 hover:bg-amber-500/10 font-semibold" },
+  { label: "Fold",      sub: "Not interested",         amount: null,  style: "text-[#4B4C58] border-[#232329] hover:border-[#36363F] hover:text-[#8A8B97]" },
+  { label: "Check",     sub: "$10 — I'd use this",     amount: 10,    style: "text-[#8A8B97] border-[#232329] hover:border-[#36363F] hover:text-[#F7F8F8]" },
+  { label: "Call",      sub: "$20 — Build this",       amount: 20,    style: "text-[#F7F8F8] border-[#5E5CE6]/30 hover:border-[#5E5CE6] hover:bg-[#5E5CE6]/10" },
+  { label: "10x Raise", sub: "$100+ — Need this ASAP", amount: 100,   style: "text-[#5E5CE6] border-[#5E5CE6]/50 hover:border-[#5E5CE6] hover:bg-[#5E5CE6]/15 font-medium" },
+  { label: "All-In",    sub: "$1,000 — Sponsor",       amount: 1000,  style: "text-amber-400 border-amber-500/30 hover:border-amber-400 hover:bg-amber-500/10 font-medium" },
 ];
 
 function ProjectCard({ project }: { project: Project }) {
@@ -35,10 +35,7 @@ function ProjectCard({ project }: { project: Project }) {
   const cfg = statusConfig[project.status];
 
   function handleFund(amount: number | null) {
-    if (amount === null) {
-      setFlipped(false);
-      return;
-    }
+    if (amount === null) { setFlipped(false); return; }
     window.open(`${BMAC}?amount=${amount}`, "_blank", "noopener,noreferrer");
   }
 
@@ -57,16 +54,16 @@ function ProjectCard({ project }: { project: Project }) {
       >
         {/* ── FRONT ── */}
         <div
-          className={`[grid-area:1/1] flex flex-col border rounded-xl p-6 bg-black ${
-            project.featured ? "border-[#007AFF]/30" : "border-[#1a1a1a]"
+          className={`[grid-area:1/1] flex flex-col rounded-2xl p-6 bg-[#161618] border transition-colors ${
+            project.featured ? "border-[#5E5CE6]/25 hover:border-[#5E5CE6]/40" : "border-[#232329] hover:border-[#36363F]"
           }`}
           style={{ backfaceVisibility: "hidden" }}
         >
           {/* Status row */}
-          <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-1.5">
               <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
-              <span className={`text-xs font-mono ${cfg.color}`}>{cfg.label}</span>
+              <span className={`text-xs ${cfg.color}`}>{cfg.label}</span>
             </div>
             {project.url && (
               <a
@@ -74,7 +71,7 @@ function ProjectCard({ project }: { project: Project }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="w-7 h-7 rounded-md border border-[#2a2a2a] flex items-center justify-center text-[#555] hover:border-[#007AFF] hover:text-[#007AFF] transition-all"
+                className="w-7 h-7 rounded-lg border border-[#232329] flex items-center justify-center text-[#4B4C58] hover:border-[#5E5CE6]/40 hover:text-[#5E5CE6] transition-all"
               >
                 <ArrowUpRight size={13} />
               </a>
@@ -82,12 +79,10 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
 
           {/* Content */}
-          <div className="flex-1 mb-6">
-            <h3 className="text-lg font-semibold text-white mb-1 font-mono">
-              {project.title}
-            </h3>
-            <p className="text-sm text-[#007AFF] mb-3">{project.tagline}</p>
-            <p className="text-sm text-[#555] leading-relaxed">{project.description}</p>
+          <div className="flex-1 mb-5">
+            <h3 className="text-base font-semibold text-[#F7F8F8] mb-1">{project.title}</h3>
+            <p className="text-sm text-[#5E5CE6] mb-3">{project.tagline}</p>
+            <p className="text-sm text-[#8A8B97] leading-relaxed">{project.description}</p>
           </div>
 
           {/* Tags */}
@@ -95,42 +90,37 @@ function ProjectCard({ project }: { project: Project }) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] font-mono text-[#444] border border-[#1a1a1a] rounded px-2 py-0.5 uppercase tracking-wider"
+                className="text-[10px] text-[#4B4C58] bg-[#1C1C1F] border border-[#232329] rounded-md px-2 py-0.5"
               >
                 {tag}
               </span>
             ))}
           </div>
 
-          {/* Hover hint */}
-          <p className="text-[10px] font-mono text-[#333] text-center tracking-widest uppercase">
+          <p className="text-[10px] text-[#4B4C58] text-center tracking-wide">
             hover to fund →
           </p>
         </div>
 
         {/* ── BACK ── */}
         <div
-          className={`[grid-area:1/1] flex flex-col justify-center border rounded-xl p-6 bg-[#030303] ${
-            project.featured ? "border-[#007AFF]/30" : "border-[#1a1a1a]"
+          className={`[grid-area:1/1] flex flex-col justify-center rounded-2xl p-6 bg-[#161618] border ${
+            project.featured ? "border-[#5E5CE6]/25" : "border-[#232329]"
           }`}
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
-          <p className="text-xs font-mono text-[#555] text-center mb-1 tracking-widest uppercase">
-            {project.title}
-          </p>
-          <p className="text-[10px] font-mono text-[#333] text-center mb-5 tracking-widest uppercase">
-            What&apos;s your action?
-          </p>
+          <p className="text-sm text-[#8A8B97] text-center mb-1">{project.title}</p>
+          <p className="text-xs text-[#4B4C58] text-center mb-6">What&apos;s your action?</p>
 
           <div className="flex flex-col gap-2">
             {FUNDING_TIERS.map((tier) => (
               <button
                 key={tier.label}
                 onClick={() => handleFund(tier.amount)}
-                className={`flex items-center justify-between w-full rounded-lg px-4 py-2.5 text-sm border transition-all duration-150 cursor-pointer ${tier.style}`}
+                className={`flex items-center justify-between w-full rounded-xl px-4 py-2.5 text-sm border transition-all duration-150 cursor-pointer ${tier.style}`}
               >
-                <span className="font-mono">{tier.label}</span>
-                <span className="text-[11px] opacity-70">{tier.sub}</span>
+                <span>{tier.label}</span>
+                <span className="text-[11px] opacity-60">{tier.sub}</span>
               </button>
             ))}
           </div>
@@ -150,21 +140,15 @@ export default function Projects() {
   });
 
   return (
-    <section id="projects" className="py-24 px-6 border-t border-[#111]">
-      <div className="max-w-4xl mx-auto">
+    <section id="projects" className="py-24 px-6 border-t border-[#232329]">
+      <div className="max-w-5xl mx-auto">
 
-        {/* Header */}
-        <div className="mb-8">
-          <span className="text-xs font-mono text-[#007AFF] tracking-widest uppercase">
-            Projects
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-3 tracking-tight text-white">
+        <div className="mb-10">
+          <p className="text-xs text-[#8A8B97] mb-3">Projects</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#F7F8F8] tracking-tight">
             Hover a card —{" "}
-            <span className="text-[#333]">put money on what matters.</span>
+            <span className="text-[#4B4C58]">put money on what matters.</span>
           </h2>
-          <p className="text-[#444] mt-3 text-sm">
-            I only build what the market bets on. FOLD, Check, Call, or go All-In.
-          </p>
         </div>
 
         {/* Filter pills */}
@@ -173,10 +157,10 @@ export default function Projects() {
             <button
               key={key}
               onClick={() => setActiveFilter(key)}
-              className={`text-xs font-mono px-3 py-1.5 rounded-full border transition-all ${
+              className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
                 activeFilter === key
-                  ? "border-[#007AFF] bg-[#007AFF]/10 text-[#007AFF]"
-                  : "border-[#2a2a2a] text-[#555] hover:border-[#444] hover:text-[#888]"
+                  ? "border-[#5E5CE6]/50 bg-[#5E5CE6]/10 text-[#5E5CE6]"
+                  : "border-[#232329] text-[#4B4C58] hover:border-[#36363F] hover:text-[#8A8B97]"
               }`}
             >
               {key}

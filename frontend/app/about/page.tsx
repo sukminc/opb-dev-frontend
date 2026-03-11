@@ -9,12 +9,12 @@ const experience = [
     location: "Toronto, ON",
     bullets: [
       "Building AI-augmented data platforms with integrated LLM agent layers — implementing agentic orchestration using Claude API (Anthropic) and OpenAI API to automate data-driven decision loops.",
-      "Hands-on application of dbt, Kafka streaming pipelines, and LLM integration patterns across active project architectures.",
+      "Hands-on application of dbt (data transformation), Kafka (streaming pipelines), and LLM integration patterns across active project architectures.",
       "Currently studying for Google Cloud Professional Data Engineer (GCP PDE).",
     ],
   },
   {
-    company: "TheScore × ESPN Bet",
+    company: "TheScore (Partnered with ESPN Bet)",
     role: "Senior Data Engineer",
     period: "Jul 2023 – Jul 2025",
     location: "Toronto, ON",
@@ -41,8 +41,7 @@ const experience = [
     period: "Feb 2020 – Mar 2021",
     location: "Neenah, WI (Remote)",
     bullets: [
-      "Authored and optimized SQL and Python ETL scripts for Data Warehouse loading.",
-      "Implemented automated data profiling to surface quality issues at ingestion, before downstream impact.",
+      "Authored and optimized SQL and Python ETL scripts for Data Warehouse loading; implemented automated data profiling to surface quality issues at ingestion, before downstream impact.",
     ],
   },
   {
@@ -60,7 +59,7 @@ const experience = [
     period: "Jul 2018 – Jul 2019",
     location: "Toronto, ON",
     bullets: [
-      "Designed and executed automated data integrity test suites across distributed VR and mobile platforms, validating backend API consistency.",
+      "Designed and executed automated data integrity test suites across distributed VR and mobile platforms, validating backend API consistency and catching critical regressions before production.",
       "Built SQL-based data consistency validation scripts and end-to-end integration tests for API-to-database layers across eOne content delivery pipelines.",
     ],
   },
@@ -79,7 +78,7 @@ const experience = [
 const skills = [
   {
     label: "Data Engineering",
-    items: ["ETL/ELT Pipeline Design", "Apache Airflow", "Data Lakehouse", "Star Schema", "Data Observability", "Fail-Fast DQ Gates", "Schema Drift Handling"],
+    items: ["Apache Airflow", "ETL/ELT Pipeline Design", "Data Lakehouse", "Star Schema", "Data Observability", "Fail-Fast DQ Gates", "Schema Drift Handling"],
   },
   {
     label: "Languages & Libraries",
@@ -91,104 +90,100 @@ const skills = [
   },
   {
     label: "AI / Agentic Systems",
-    items: ["Claude API (Anthropic)", "OpenAI Agent SDK", "LangChain", "Agentic Orchestration", "LLM Pipeline Integration", "REST API Orchestration"],
-  },
-  {
-    label: "Frontend",
-    items: ["React / Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design", "Design Systems"],
+    items: ["Claude API (Anthropic)", "OpenAI Agent SDK", "LangChain", "Agentic Orchestration", "LLM Pipeline Integration"],
   },
   {
     label: "Observability & Tools",
     items: ["DataDog", "Schema Drift Detection", "Alembic", "Pydantic Contracts", "Git", "Stripe API"],
   },
+  {
+    label: "Frontend",
+    items: ["React / Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design"],
+  },
 ];
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#0F0F11] text-[#F7F8F8]">
       <div className="max-w-3xl mx-auto px-6 py-16">
 
         {/* Back */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs font-mono text-[#444] hover:text-white transition-colors mb-12 tracking-widest uppercase"
+          className="inline-flex items-center gap-2 text-sm text-[#4B4C58] hover:text-[#8A8B97] transition-colors mb-12"
         >
-          <ArrowLeft size={12} /> Back
+          <ArrowLeft size={13} /> Back
         </Link>
 
         {/* Profile header */}
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 border border-emerald-500/30 bg-emerald-500/5 rounded-full px-3 py-1 mb-6">
+        <div className="mb-14">
+          <div className="inline-flex items-center gap-2 border border-emerald-500/20 bg-emerald-500/5 rounded-full px-3 py-1 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-xs text-emerald-400 font-mono tracking-widest uppercase">
+            <span className="text-xs text-emerald-400">
               Open to Work — Data Engineering / AI Engineering
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-2">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#F7F8F8] mb-2">
             Chris S. Yoon
           </h1>
-          <p className="text-[#007AFF] font-mono text-sm mb-5">
+          <p className="text-[#5E5CE6] text-sm mb-5">
             Senior Data Engineer · AI Builder · Founder
           </p>
 
           <div className="flex flex-wrap gap-x-5 gap-y-2 mb-6">
-            <span className="flex items-center gap-1.5 text-xs text-[#555]">
+            <span className="flex items-center gap-1.5 text-xs text-[#4B4C58]">
               <MapPin size={11} /> North York, ON
             </span>
-            <a href="mailto:chris.yoon@outlook.com" className="flex items-center gap-1.5 text-xs text-[#555] hover:text-white transition-colors">
+            <a href="mailto:chris.yoon@outlook.com" className="flex items-center gap-1.5 text-xs text-[#4B4C58] hover:text-[#8A8B97] transition-colors">
               <Mail size={11} /> chris.yoon@outlook.com
             </a>
-            <a href="https://linkedin.com/in/sukminyoon" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs text-[#555] hover:text-white transition-colors">
+            <a href="https://linkedin.com/in/sukminyoon" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs text-[#4B4C58] hover:text-[#8A8B97] transition-colors">
               <Linkedin size={11} /> sukminyoon
             </a>
-            <a href="https://github.com/sukminc" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs text-[#555] hover:text-white transition-colors">
+            <a href="https://github.com/sukminc" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs text-[#4B4C58] hover:text-[#8A8B97] transition-colors">
               <Github size={11} /> sukminc
             </a>
           </div>
 
           {/* Summary */}
-          <div className="border-l-2 border-[#007AFF]/40 pl-5">
-            <p className="text-sm text-[#666] leading-relaxed">
+          <div className="border-l-2 border-[#5E5CE6]/30 pl-5">
+            <p className="text-sm text-[#8A8B97] leading-relaxed">
               Senior Data Engineer with 10+ years making data systems production-worthy — by learning every way they fail, then engineering so they don&apos;t. At TheScore / ESPN Bet, designed Airflow-orchestrated ETL pipelines processing millions of daily transactions across BigQuery and Redshift; built a Python observability framework that cut debugging overhead by 60% and shipped SOX-compliant reconciliation systems under regulatory scrutiny.
             </p>
-            <p className="text-sm text-[#666] leading-relaxed mt-3">
-              Quality-first background means fail-fast DQ gates, schema drift detection, and self-validating pipelines baked in from day one — not bolted on after. When AI went from hype to production-ready, founded onepercentbetter: a live data platform with an LLM agent layer in active development. Full-stack across Python, SQL, Airflow, GCP, AWS, and Docker.
+            <p className="text-sm text-[#8A8B97] leading-relaxed mt-3">
+              Quality-first background means fail-fast DQ gates, schema drift detection, and self-validating pipelines baked in from day one. When AI went from hype to production-ready, founded onepercentbetter: a live data platform with an LLM agent layer in active development.
             </p>
           </div>
         </div>
 
         {/* Experience */}
         <div className="mb-14">
-          <span className="text-xs font-mono text-[#007AFF] tracking-widest uppercase">
-            Experience
-          </span>
+          <p className="text-xs text-[#8A8B97] mb-6">Experience</p>
 
-          <div className="mt-6 relative">
-            {/* Timeline line */}
-            <div className="absolute left-0 top-2 bottom-2 w-px bg-[#1a1a1a]" />
+          <div className="relative">
+            <div className="absolute left-0 top-2 bottom-2 w-px bg-[#232329]" />
 
-            <div className="flex flex-col gap-10 pl-6">
+            <div className="flex flex-col gap-9 pl-6">
               {experience.map((e) => (
                 <div key={e.company} className="relative">
-                  {/* Dot */}
-                  <div className="absolute -left-[25px] top-1.5 w-2 h-2 rounded-full border border-[#007AFF]/50 bg-black" />
+                  <div className="absolute -left-[25px] top-1.5 w-2 h-2 rounded-full border border-[#5E5CE6]/40 bg-[#0F0F11]" />
 
-                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
                     <div>
-                      <span className="text-sm font-semibold text-white font-mono">{e.company}</span>
-                      <span className="text-xs text-[#007AFF] ml-2">{e.role}</span>
+                      <span className="text-sm font-semibold text-[#F7F8F8]">{e.company}</span>
+                      <span className="text-xs text-[#5E5CE6] ml-2">{e.role}</span>
                     </div>
                     <div className="text-right shrink-0">
-                      <span className="text-[10px] font-mono text-[#333] block">{e.period}</span>
-                      <span className="text-[10px] text-[#2a2a2a]">{e.location}</span>
+                      <span className="text-[10px] text-[#4B4C58] block">{e.period}</span>
+                      <span className="text-[10px] text-[#36363F]">{e.location}</span>
                     </div>
                   </div>
 
-                  <ul className="mt-2 flex flex-col gap-1.5">
+                  <ul className="flex flex-col gap-1.5">
                     {e.bullets.map((b, i) => (
-                      <li key={i} className="flex gap-2 text-xs text-[#555] leading-relaxed">
-                        <span className="text-[#2a2a2a] shrink-0 mt-0.5">—</span>
+                      <li key={i} className="flex gap-2 text-xs text-[#8A8B97] leading-relaxed">
+                        <span className="text-[#36363F] shrink-0 mt-0.5">—</span>
                         <span>{b}</span>
                       </li>
                     ))}
@@ -201,21 +196,17 @@ export default function AboutPage() {
 
         {/* Skills */}
         <div className="mb-14">
-          <span className="text-xs font-mono text-[#007AFF] tracking-widest uppercase">
-            Technical Skills
-          </span>
+          <p className="text-xs text-[#8A8B97] mb-6">Technical Skills</p>
 
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {skills.map((group) => (
-              <div key={group.label} className="border border-[#1a1a1a] rounded-xl p-4 bg-black">
-                <p className="text-[10px] font-mono text-[#444] tracking-widest uppercase mb-3">
-                  {group.label}
-                </p>
+              <div key={group.label} className="border border-[#232329] rounded-xl p-4 bg-[#161618]">
+                <p className="text-xs text-[#4B4C58] mb-3">{group.label}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {group.items.map((item) => (
                     <span
                       key={item}
-                      className="text-[10px] font-mono text-[#555] border border-[#1a1a1a] rounded px-2 py-0.5 hover:border-[#007AFF]/40 hover:text-[#888] transition-all"
+                      className="text-[10px] text-[#8A8B97] bg-[#1C1C1F] border border-[#232329] rounded-md px-2 py-0.5 hover:border-[#5E5CE6]/30 hover:text-[#F7F8F8] transition-all"
                     >
                       {item}
                     </span>
@@ -226,57 +217,48 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Education & Certs */}
+        {/* Education */}
         <div className="mb-14">
-          <span className="text-xs font-mono text-[#007AFF] tracking-widest uppercase">
-            Education & Certifications
-          </span>
+          <p className="text-xs text-[#8A8B97] mb-6">Education & Certifications</p>
 
-          <div className="mt-6 flex flex-col gap-3">
-            <div className="flex items-start justify-between border border-[#1a1a1a] rounded-xl px-4 py-3 bg-black">
+          <div className="flex flex-col gap-3">
+            <div className="flex items-start justify-between border border-[#232329] rounded-xl px-4 py-3 bg-[#161618]">
               <div>
-                <p className="text-xs font-semibold text-white font-mono">University of Waterloo</p>
-                <p className="text-[10px] text-[#555] mt-0.5">Studies in Chemical Engineering</p>
+                <p className="text-xs font-semibold text-[#F7F8F8]">University of Waterloo</p>
+                <p className="text-[10px] text-[#4B4C58] mt-0.5">Studies in Chemical Engineering</p>
               </div>
-              <span className="text-[10px] font-mono text-[#333]">2001 – 2005</span>
+              <span className="text-[10px] text-[#4B4C58]">2001 – 2005</span>
             </div>
-            <div className="flex items-start justify-between border border-[#1a1a1a] rounded-xl px-4 py-3 bg-black">
+            <div className="flex items-start justify-between border border-[#232329] rounded-xl px-4 py-3 bg-[#161618]">
               <div>
-                <p className="text-xs font-semibold text-white font-mono">ISTQB Certified Tester</p>
-                <p className="text-[10px] text-[#555] mt-0.5">Foundation Level (CTFL)</p>
+                <p className="text-xs font-semibold text-[#F7F8F8]">ISTQB Certified Tester</p>
+                <p className="text-[10px] text-[#4B4C58] mt-0.5">Foundation Level (CTFL)</p>
               </div>
-              <span className="text-[10px] font-mono text-emerald-500">Certified</span>
+              <span className="text-[10px] text-emerald-500">Certified</span>
             </div>
-            <div className="flex items-start justify-between border border-[#007AFF]/20 bg-[#007AFF]/5 rounded-xl px-4 py-3">
+            <div className="flex items-start justify-between border border-[#5E5CE6]/20 bg-[#5E5CE6]/5 rounded-xl px-4 py-3">
               <div>
-                <p className="text-xs font-semibold text-white font-mono">Google Cloud Professional Data Engineer</p>
-                <p className="text-[10px] text-[#555] mt-0.5">GCP PDE — Actively studying</p>
+                <p className="text-xs font-semibold text-[#F7F8F8]">Google Cloud Professional Data Engineer</p>
+                <p className="text-[10px] text-[#4B4C58] mt-0.5">GCP PDE — Actively studying</p>
               </div>
-              <span className="text-[10px] font-mono text-[#007AFF]">In Progress</span>
+              <span className="text-[10px] text-[#5E5CE6]">In Progress</span>
             </div>
           </div>
         </div>
 
-        {/* CTA row */}
-        <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-[#111]">
+        {/* CTA */}
+        <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-[#232329]">
           <a
             href="https://linkedin.com/in/sukminyoon"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-[#007AFF] text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:bg-[#0066DD] transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-[#5E5CE6] text-white text-sm font-medium px-5 py-2.5 rounded-xl hover:bg-[#7B79F7] transition-colors"
           >
             Connect on LinkedIn <ArrowUpRight size={14} />
           </a>
-          <a
-            href="/resume/Chris_Yoon_SDE.pdf"
-            download
-            className="inline-flex items-center justify-center gap-2 border border-[#2a2a2a] text-[#666] text-sm px-5 py-2.5 rounded-md hover:border-[#007AFF] hover:text-white transition-all"
-          >
-            Download Resume
-          </a>
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 border border-[#1a1a1a] text-[#444] text-sm px-5 py-2.5 rounded-md hover:text-[#666] transition-all"
+            className="inline-flex items-center justify-center gap-2 border border-[#232329] text-[#8A8B97] text-sm px-5 py-2.5 rounded-xl hover:border-[#36363F] hover:text-[#F7F8F8] transition-all"
           >
             View Projects
           </Link>

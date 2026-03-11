@@ -15,30 +15,22 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-black/90 backdrop-blur-sm border-b border-[#111]"
-          : "bg-transparent"
+        scrolled ? "bg-[#0F0F11]/80 backdrop-blur-md border-b border-[#232329]" : "bg-transparent"
       }`}
     >
-      <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full border border-[#007AFF] flex items-center justify-center">
-            <span className="text-[#007AFF] font-bold text-[10px] font-mono">1%</span>
+      <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+        <div className="flex items-center gap-2.5">
+          <div className="w-6 h-6 rounded-md bg-[#5E5CE6]/20 border border-[#5E5CE6]/30 flex items-center justify-center">
+            <span className="text-[#5E5CE6] font-bold text-[9px]">1%</span>
           </div>
-          <span className="text-sm text-[#555] font-mono">onepercentbetter.poker</span>
+          <span className="text-sm text-[#8A8B97]">onepercentbetter</span>
         </div>
 
         <div className="flex items-center gap-6">
-          <a
-            href="#projects"
-            className="text-xs font-mono text-[#555] hover:text-white transition-colors tracking-widest uppercase"
-          >
+          <a href="#projects" className="text-sm text-[#8A8B97] hover:text-[#F7F8F8] transition-colors">
             Projects
           </a>
-          <Link
-            href="/about"
-            className="text-xs font-mono text-[#555] hover:text-white transition-colors tracking-widest uppercase"
-          >
+          <Link href="/about" className="text-sm text-[#8A8B97] hover:text-[#F7F8F8] transition-colors">
             About
           </Link>
         </div>
