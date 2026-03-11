@@ -168,8 +168,8 @@ export default function Projects() {
         <div className="mb-10">
           <p className="text-xs text-[#8A8B97] mb-3">Projects</p>
           <h2 className="text-3xl md:text-4xl font-bold text-[#F7F8F8] tracking-tight">
-            Hover a card —{" "}
-            <span className="text-[#4B4C58]">put money on what matters.</span>
+            Fund what gets built.{" "}
+            <span className="text-[#4B4C58]">Flip a card to back a project.</span>
           </h2>
         </div>
 
