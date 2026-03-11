@@ -38,21 +38,27 @@ function ProjectCard({ project }: { project: Project }) {
   }
 
   return (
-    <div
-      className="relative"
+    <motion.div
+      className="relative h-full"
       style={{ perspective: "1200px" }}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
     >
       <motion.div
-        className="w-full grid"
+        className="w-full h-full grid"
         style={{ transformStyle: "preserve-3d" }}
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
       >
         {/* ── FRONT ── */}
         <div
-          className="[grid-area:1/1] flex flex-col rounded-2xl p-6 bg-[#161618] border border-[#232329] hover:border-[#36363F] transition-colors"
+          className={`[grid-area:1/1] flex flex-col rounded-2xl p-6 bg-[#161618] border transition-all duration-300 h-full min-h-[400px] ${
+            flipped
+              ? "border-[#5E5CE6]/50 shadow-[0_0_30px_rgba(94,92,230,0.12)]"
+              : "border-[#232329] hover:border-[#5E5CE6]/30 hover:shadow-[0_0_20px_rgba(94,92,230,0.08)]"
+          }`}
           style={{ backfaceVisibility: "hidden" }}
         >
           {/* Status row */}
@@ -86,7 +92,7 @@ function ProjectCard({ project }: { project: Project }) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] text-[#4B4C58] bg-[#1C1C1F] border border-[#232329] rounded-md px-2 py-0.5"
+                className="text-[10px] text-[#A0A1B0] bg-[#1E1E22] border border-[#36363F] rounded-md px-2 py-0.5"
               >
                 {tag}
               </span>
@@ -122,7 +128,7 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* ── BACK ── */}
         <div
-          className="[grid-area:1/1] flex flex-col justify-center rounded-2xl p-6 bg-[#161618] border border-[#232329]"
+          className="[grid-area:1/1] flex flex-col justify-center rounded-2xl p-6 bg-[#161618] border border-[#5E5CE6]/50 shadow-[0_0_30px_rgba(94,92,230,0.12)] h-full min-h-[400px]"
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
           <p className="text-sm text-[#8A8B97] text-center mb-1">{project.title}</p>
@@ -142,7 +148,7 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -185,7 +191,7 @@ export default function Projects() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 auto-rows-fr">
           {filtered.map((p) => (
             <ProjectCard key={p.slug} project={p} />
           ))}
