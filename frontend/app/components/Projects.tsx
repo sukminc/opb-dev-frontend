@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, GitCommitHorizontal, Clock } from "lucide-react";
 import { projects, type Project, type ProjectStatus } from "../data/projects";
@@ -207,6 +207,7 @@ function GitStats({ slug }: { slug: string }) {
 
 function ProjectCard({ project }: { project: Project }) {
   const [flipped, setFlipped] = useState(false);
+  const isMouse  = useRef(false);
   const cfg      = statusConfig[project.status];
   const featured = project.featured === true;
 
@@ -214,8 +215,9 @@ function ProjectCard({ project }: { project: Project }) {
     <motion.div
       className={`relative${featured ? " md:col-span-2" : ""}`}
       style={{ perspective: "1200px" }}
-      onMouseEnter={() => setFlipped(true)}
-      onMouseLeave={() => setFlipped(false)}
+      onMouseEnter={() => { isMouse.current = true; setFlipped(true); }}
+      onMouseLeave={() => { isMouse.current = false; setFlipped(false); }}
+      onClick={() => { if (!isMouse.current) setFlipped((f) => !f); }}
       whileHover={{ y: -6 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
     >
@@ -300,7 +302,8 @@ function ProjectCard({ project }: { project: Project }) {
                 <div className="mt-auto">
                   <GitStats slug={project.slug} />
                   <p className="text-[10px] text-[#4B4C58] text-center tracking-wide mt-3">
-                    hover to fund →
+                    <span className="hidden md:inline">hover to fund →</span>
+                    <span className="md:hidden">tap to fund →</span>
                   </p>
                 </div>
               </>
@@ -333,7 +336,8 @@ function ProjectCard({ project }: { project: Project }) {
               <div className="mt-auto">
                 <GitStats slug={project.slug} />
                 <p className="text-[10px] text-[#4B4C58] text-center tracking-wide mt-4">
-                  hover to fund →
+                  <span className="hidden md:inline">hover to fund →</span>
+                  <span className="md:hidden">tap to fund →</span>
                 </p>
               </div>
             </div>
@@ -345,7 +349,16 @@ function ProjectCard({ project }: { project: Project }) {
           className="[grid-area:1/1] flex flex-col justify-center rounded-2xl p-6 bg-[#161618] border border-[#5E5CE6]/50 shadow-[0_0_30px_rgba(94,92,230,0.12)]"
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
-          <p className="text-sm text-[#8A8B97] text-center mb-1">{project.title}</p>
+          <div className="flex items-center justify-between mb-1">
+            <p className="text-sm text-[#8A8B97] flex-1 text-center">{project.title}</p>
+            <button
+              onClick={(e) => { e.stopPropagation(); setFlipped(false); }}
+              className="md:hidden text-[#4B4C58] hover:text-[#8A8B97] transition-colors text-lg leading-none -mr-1"
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
           <p className="text-xs text-[#4B4C58] text-center mb-6">What&apos;s your action?</p>
 
           <div className={`flex flex-col gap-2 ${featured ? "md:max-w-sm md:mx-auto md:w-full" : ""}`}>
