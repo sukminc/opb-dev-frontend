@@ -48,6 +48,17 @@ export const projects: Project[] = [
     seed: 31,
   },
   {
+    slug: "onepercent-focus",
+    title: "1% Better Focus",
+    tagline: "Minimalist Deep-Work Timer for iOS, Android & Web",
+    description:
+      "Flutter app built on the Pomodoro method — distraction-free 25/5 focus sessions with a dimming UI, confetti celebration on completion, and emoji self-reflection. Riverpod state engine fully decoupled from UI; local-first streak tracking with Supabase sync roadmapped. Freemium-ready with feature-flagged custom time sets for future IAP.",
+    status: "building",
+    tags: ["Flutter", "Dart", "Riverpod", "Supabase", "iOS", "Android"],
+    url: "https://github.com/sukminc/OneBetterFocus",
+    seed: 63,
+  },
+  {
     slug: "twelvelabs-validator",
     title: "TwelveLabs API Validator",
     tagline: "Multimodal Search Validation Framework",
