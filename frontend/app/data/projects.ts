@@ -50,7 +50,7 @@ export const projects: Project[] = [
     description:
       "FastAPI + PostgreSQL with Clean Architecture (Service/Repository layers); tamper-evident SHA-256 receipt hashing and dual-confirmation negotiation engine with full persistent audit trail. Turn-based Accept/Counter/Decline workflow with visual term diffs, side-by-side counter-offer comparison, and real-time payout previews.",
     status: "building",
-    tags: ["Python (FastAPI)", "TypeScript (Next.js)", "PostgreSQL", "Docker", "Stripe", "Alembic"],
+    tags: ["Python (FastAPI)", "TypeScript (Next.js)", "PostgreSQL", "Docker", "Stripe"],
     url: "https://github.com/sukminc/action-keeper",
     seed: 31,
     mvpProgress: 40,
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     description:
       "Flutter app built on the Pomodoro method — distraction-free 25/5 focus sessions with a dimming UI, confetti celebration on completion, and emoji self-reflection. Riverpod state engine fully decoupled from UI; local-first streak tracking with Supabase sync roadmapped. Freemium-ready with feature-flagged custom time sets for future IAP.",
     status: "building",
-    tags: ["Flutter", "Dart", "Riverpod", "Supabase", "iOS", "Android"],
+    tags: ["Flutter", "Dart", "Supabase", "iOS", "Android"],
     url: "https://github.com/sukminc/OneBetterFocus",
     seed: 63,
     mvpProgress: 70,
@@ -76,7 +76,7 @@ export const projects: Project[] = [
     description:
       "JSON-driven validation suite for TwelveLabs multimodal video search API — decouples test logic from test data; covers linguistic edge cases (plurals, i18n: Korean/Japanese/Arabic), fuzzy matching, and injection attempts. Built to the same standard as a production observability tool.",
     status: "live",
-    tags: ["Python", "TwelveLabs SDK", "Pytest", "Tkinter"],
+    tags: ["Python", "TwelveLabs", "Pytest"],
     url: "https://github.com/sukminc/TwelveLabs",
     seed: 12,
     mvpProgress: 100,

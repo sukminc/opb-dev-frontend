@@ -78,10 +78,12 @@ function TechBadge({ tag }: { tag: string }) {
       </div>
     );
   }
+  // Named tech without an icon — dot + label, same height as icon badges
   return (
-    <span className="text-[10px] text-[#4B4C58] bg-[#1C1C1F] border border-[#232329] rounded-md px-2 py-0.5">
-      {tag}
-    </span>
+    <div title={tag} className="h-6 flex items-center gap-1.5 bg-[#1C1C1F] border border-[#232329] rounded-md px-2">
+      <span className="w-1 h-1 rounded-full bg-[#4B4C58] flex-shrink-0" />
+      <span className="text-[10px] text-[#4B4C58] leading-none">{tag}</span>
+    </div>
   );
 }
 
