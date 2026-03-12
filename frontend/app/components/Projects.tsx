@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { projects, type Project, type ProjectStatus } from "../data/projects";
 
@@ -13,132 +11,98 @@ const statusConfig: Record<ProjectStatus, { label: string; color: string; dot: s
   idea:     { label: "Idea",     color: "text-[#4B4C58]",   dot: "bg-[#4B4C58]" },
 };
 
-type FilterKey = "All" | "Poker" | "Data" | "Automation";
 
-const FILTERS: { key: FilterKey; match: string[] }[] = [
-  { key: "All",        match: [] },
-  { key: "Poker",      match: ["Poker", "Fintech", "AR", "Computer Vision"] },
-  { key: "Data",       match: ["Data Engineering", "ETL", "Airflow", "Analytics", "PostgreSQL", "Apache Airflow"] },
-  { key: "Automation", match: ["Python", "pytest", "AI APIs", "SDK Engineering", "Automation", "Pytest"] },
-];
-
-const FUNDING_TIERS = [
-  { label: "Fold",      sub: "Not interested",         amount: null,  style: "text-[#4B4C58] border-[#232329] hover:border-[#36363F] hover:text-[#8A8B97]" },
-  { label: "Check",     sub: "$10 — I'd use this",     amount: 10,    style: "text-[#8A8B97] border-[#232329] hover:border-[#36363F] hover:text-[#F7F8F8]" },
-  { label: "Call",      sub: "$20 — Build this",       amount: 20,    style: "text-[#F7F8F8] border-[#5E5CE6]/30 hover:border-[#5E5CE6] hover:bg-[#5E5CE6]/10" },
-  { label: "10x Raise", sub: "$100+ — Need this ASAP", amount: 100,   style: "text-[#5E5CE6] border-[#5E5CE6]/50 hover:border-[#5E5CE6] hover:bg-[#5E5CE6]/15 font-medium" },
-  { label: "All-In",    sub: "$1,000 — Sponsor",       amount: 1000,  style: "text-amber-400 border-amber-500/30 hover:border-amber-400 hover:bg-amber-500/10 font-medium" },
+const SMALL_TIERS = [
+  { label: "Open",  amount: 30,  style: "text-[#8A8B97] border-[#232329] hover:border-[#36363F] hover:text-[#F7F8F8]" },
+  { label: "3-Bet", amount: 150, style: "text-[#F7F8F8] border-[#5E5CE6]/30 hover:border-[#5E5CE6] hover:bg-[#5E5CE6]/10" },
 ];
 
 function ProjectCard({ project }: { project: Project }) {
-  const [flipped, setFlipped] = useState(false);
   const cfg = statusConfig[project.status];
 
-  function handleFund(amount: number | null) {
-    if (amount === null) { setFlipped(false); return; }
+  function handleFund(amount: number) {
     window.open(`${BMAC}?amount=${amount}`, "_blank", "noopener,noreferrer");
   }
 
   return (
-    <div
-      className={`relative ${project.featured ? "md:col-span-2" : ""}`}
-      style={{ perspective: "1200px" }}
-      onMouseEnter={() => setFlipped(true)}
-      onMouseLeave={() => setFlipped(false)}
-    >
-      <motion.div
-        className="w-full grid"
-        style={{ transformStyle: "preserve-3d" }}
-        animate={{ rotateY: flipped ? 180 : 0 }}
-        transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+    <div className={project.featured ? "md:col-span-2" : ""}>
+      <div
+        className={`flex flex-col rounded-2xl p-6 bg-[#161618] border transition-colors h-full ${
+          project.featured ? "border-[#5E5CE6]/25 hover:border-[#5E5CE6]/40" : "border-[#232329] hover:border-[#36363F]"
+        }`}
       >
-        {/* ── FRONT ── */}
-        <div
-          className={`[grid-area:1/1] flex flex-col rounded-2xl p-6 bg-[#161618] border transition-colors ${
-            project.featured ? "border-[#5E5CE6]/25 hover:border-[#5E5CE6]/40" : "border-[#232329] hover:border-[#36363F]"
-          }`}
-          style={{ backfaceVisibility: "hidden" }}
-        >
-          {/* Status row */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-1.5">
-              <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
-              <span className={`text-xs ${cfg.color}`}>{cfg.label}</span>
-            </div>
-            {project.url && (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="w-7 h-7 rounded-lg border border-[#232329] flex items-center justify-center text-[#4B4C58] hover:border-[#5E5CE6]/40 hover:text-[#5E5CE6] transition-all"
-              >
-                <ArrowUpRight size={13} />
-              </a>
-            )}
+        {/* Status row */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-1.5">
+            <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
+            <span className={`text-xs ${cfg.color}`}>{cfg.label}</span>
           </div>
-
-          {/* Content */}
-          <div className="flex-1 mb-5">
-            <h3 className="text-base font-semibold text-[#F7F8F8] mb-1">{project.title}</h3>
-            <p className="text-sm text-[#5E5CE6] mb-3">{project.tagline}</p>
-            <p className="text-sm text-[#8A8B97] leading-relaxed">{project.description}</p>
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-[10px] text-[#4B4C58] bg-[#1C1C1F] border border-[#232329] rounded-md px-2 py-0.5"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <p className="text-[10px] text-[#4B4C58] text-center tracking-wide">
-            hover to fund →
-          </p>
+          <a
+            href={BMAC}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-7 h-7 rounded-lg border border-[#232329] flex items-center justify-center text-[#4B4C58] hover:border-[#5E5CE6]/40 hover:text-[#5E5CE6] transition-all"
+          >
+            <ArrowUpRight size={13} />
+          </a>
         </div>
 
-        {/* ── BACK ── */}
-        <div
-          className={`[grid-area:1/1] flex flex-col justify-center rounded-2xl p-6 bg-[#161618] border ${
-            project.featured ? "border-[#5E5CE6]/25" : "border-[#232329]"
-          }`}
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-        >
-          <p className="text-sm text-[#8A8B97] text-center mb-1">{project.title}</p>
-          <p className="text-xs text-[#4B4C58] text-center mb-6">What&apos;s your action?</p>
+        {/* Content */}
+        <div className="flex-1 mb-5">
+          <h3 className="text-base font-semibold text-[#F7F8F8] mb-1">{project.title}</h3>
+          <p className="text-sm text-[#5E5CE6] mb-3">{project.tagline}</p>
+          <p className="text-sm text-[#8A8B97] leading-relaxed">{project.description}</p>
+        </div>
 
-          <div className="flex flex-col gap-2">
-            {FUNDING_TIERS.map((tier) => (
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-5">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[10px] text-[#4B4C58] bg-[#1C1C1F] border border-[#232329] rounded-md px-2 py-0.5"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Funding tiers */}
+        <div className="flex flex-col gap-1.5">
+          {/* Small tiers row */}
+          <div className="grid grid-cols-2 gap-1.5">
+            {SMALL_TIERS.map((tier) => (
               <button
                 key={tier.label}
                 onClick={() => handleFund(tier.amount)}
-                className={`flex items-center justify-between w-full rounded-xl px-4 py-2.5 text-sm border transition-all duration-150 cursor-pointer ${tier.style}`}
+                className={`rounded-xl py-2 text-xs border transition-all duration-150 cursor-pointer text-center ${tier.style}`}
               >
-                <span>{tier.label}</span>
-                <span className="text-[11px] opacity-60">{tier.sub}</span>
+                {tier.label} · ${tier.amount}
               </button>
             ))}
           </div>
+
+          {/* Hero tier — Over Shove */}
+          <button
+            onClick={() => handleFund(500)}
+            className="w-full rounded-xl border border-amber-500/40 bg-amber-500/5 hover:bg-amber-500/10 hover:border-amber-400 transition-all duration-150 cursor-pointer px-4 py-3 text-left group"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="text-sm font-semibold text-amber-400">Over Shove · $500</span>
+                <p className="text-[11px] text-[#4B4C58] mt-0.5 group-hover:text-[#8A8B97] transition-colors">
+                  Most players fold here. You don&apos;t.
+                </p>
+              </div>
+              <ArrowUpRight size={14} className="text-amber-500/50 group-hover:text-amber-400 transition-colors shrink-0" />
+            </div>
+          </button>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
 
 export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState<FilterKey>("All");
-
-  const filtered = projects.filter((p) => {
-    if (activeFilter === "All") return true;
-    const matchTags = FILTERS.find((f) => f.key === activeFilter)?.match ?? [];
-    return p.tags.some((t) => matchTags.includes(t));
-  });
-
   return (
     <section id="projects" className="py-24 px-6 border-t border-[#232329]">
       <div className="max-w-5xl mx-auto">
@@ -146,31 +110,13 @@ export default function Projects() {
         <div className="mb-10">
           <p className="text-xs text-[#8A8B97] mb-3">Projects</p>
           <h2 className="text-3xl md:text-4xl font-bold text-[#F7F8F8] tracking-tight">
-            Hover a card —{" "}
-            <span className="text-[#4B4C58]">put money on what matters.</span>
+            Back the build.{" "}
+            <span className="text-[#4B4C58]">Pick your action.</span>
           </h2>
         </div>
 
-        {/* Filter pills */}
-        <div className="flex items-center gap-2 mb-8 flex-wrap">
-          {FILTERS.map(({ key }) => (
-            <button
-              key={key}
-              onClick={() => setActiveFilter(key)}
-              className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
-                activeFilter === key
-                  ? "border-[#5E5CE6]/50 bg-[#5E5CE6]/10 text-[#5E5CE6]"
-                  : "border-[#232329] text-[#4B4C58] hover:border-[#36363F] hover:text-[#8A8B97]"
-              }`}
-            >
-              {key}
-            </button>
-          ))}
-        </div>
-
-        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filtered.map((p) => (
+          {projects.map((p) => (
             <ProjectCard key={p.slug} project={p} />
           ))}
         </div>

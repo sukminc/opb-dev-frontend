@@ -1,106 +1,99 @@
-import { ArrowRight, Shield, Zap, Users } from "lucide-react";
+"use client";
 
-const tiers = [
+import { ArrowUpRight } from "lucide-react";
+
+const BMAC = "https://buymeacoffee.com/chris.yoon";
+
+const TIERS = [
   {
-    icon: Zap,
-    name: "Early Backer",
-    price: "$49",
-    desc: "Lifetime access to the analytics dashboard + early feature previews.",
-    highlight: false,
+    label: "Open",
+    amount: 30,
+    desc: "Skin in the game. You see the direction.",
+    hero: false,
   },
   {
-    icon: Shield,
-    name: "Reg Tier",
-    price: "$149",
-    desc: "Everything in Early Backer + opponent leak database + priority support.",
-    highlight: true,
+    label: "3-Bet",
+    amount: 150,
+    desc: "Committed backer. Early access when we ship.",
+    hero: false,
   },
   {
-    icon: Users,
-    name: "Stake Me",
-    price: "Custom",
-    desc: "White-label analytics for staking groups and coaching pools. Let&apos;s talk.",
-    highlight: false,
+    label: "Over Shove",
+    amount: 500,
+    desc: "Most players fold here. You don't.",
+    hero: false,
+  },
+  {
+    label: "All-In",
+    amount: 2000,
+    desc: null,
+    hero: true,
   },
 ];
 
+function handleFund(amount: number) {
+  window.open(`${BMAC}?amount=${amount}`, "_blank", "noopener,noreferrer");
+}
+
 export default function FundingCTA() {
   return (
-    <section id="invest" className="py-32 border-t border-[#1a1a1a]">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <span className="text-xs font-mono text-[#007AFF] tracking-widest uppercase">
-            Back the Project
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4 tracking-tight">
-            Invest in the edge.
+    <section id="fund" className="py-24 px-6 border-t border-[#232329]">
+      <div className="max-w-5xl mx-auto">
+
+        <div className="mb-10">
+          <p className="text-xs text-[#8A8B97] mb-3">What Gets Built</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#F7F8F8] tracking-tight">
+            Fund the edge.{" "}
+            <span className="text-[#4B4C58]">Shape what ships.</span>
           </h2>
-          <p className="text-[#666] max-w-lg mx-auto text-base">
-            We&apos;re funding development through early access. Back the project now
-            and lock in founder pricing before public launch.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {tiers.map((t) => {
-            const Icon = t.icon;
-            return (
-              <div
-                key={t.name}
-                className={`rounded-lg p-6 border flex flex-col ${
-                  t.highlight
-                    ? "border-[#007AFF] bg-[#007AFF]/5"
-                    : "border-[#2a2a2a] bg-black"
-                }`}
+        <div className="flex flex-col gap-2">
+          {/* Standard tiers — 3 col */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            {TIERS.filter((t) => !t.hero).map((tier) => (
+              <button
+                key={tier.label}
+                onClick={() => handleFund(tier.amount)}
+                className="flex flex-col rounded-2xl p-5 bg-[#161618] border border-[#232329] hover:border-[#36363F] transition-all text-left group cursor-pointer"
               >
-                {t.highlight && (
-                  <div className="text-xs font-mono text-[#007AFF] tracking-widest uppercase mb-4">
-                    Most Popular
-                  </div>
-                )}
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className={`w-9 h-9 rounded-md flex items-center justify-center ${
-                      t.highlight
-                        ? "bg-[#007AFF] text-white"
-                        : "bg-[#1a1a1a] text-[#007AFF]"
-                    }`}
-                  >
-                    <Icon size={16} />
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-white">{t.name}</div>
-                    <div className="font-mono text-lg font-bold text-white">
-                      {t.price}
-                    </div>
-                  </div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-sm font-medium text-[#F7F8F8]">{tier.label}</span>
+                  <span className="text-xs text-[#5E5CE6] font-mono">${tier.amount}</span>
                 </div>
-                <p
-                  className="text-sm text-[#666] leading-relaxed flex-1 mb-6"
-                  dangerouslySetInnerHTML={{ __html: t.desc }}
-                />
-                <a
-                  href="https://buymeacoffee.com/chris.yoon"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-full py-2.5 rounded-md text-sm font-semibold flex items-center justify-center gap-2 transition-colors ${
-                    t.highlight
-                      ? "bg-[#007AFF] text-white hover:bg-[#0066DD]"
-                      : "bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] border border-[#2a2a2a]"
-                  }`}
-                >
-                  {t.price === "Custom" ? "Get in Touch" : "Back Now"}
-                  <ArrowRight size={14} />
-                </a>
+                <p className="text-xs text-[#4B4C58] group-hover:text-[#8A8B97] transition-colors leading-relaxed">
+                  {tier.desc}
+                </p>
+              </button>
+            ))}
+          </div>
+
+          {/* Hero tier — All-In */}
+          <button
+            onClick={() => handleFund(2000)}
+            className="w-full rounded-2xl border border-amber-500/40 bg-amber-500/5 hover:bg-amber-500/8 hover:border-amber-400/60 transition-all cursor-pointer px-6 py-5 text-left group"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-base font-semibold text-amber-400">All-In · $2,000</span>
+                  <span className="text-[10px] text-amber-500/70 border border-amber-500/30 rounded-full px-2 py-0.5 tracking-wide">
+                    Advisor + Shareholder
+                  </span>
+                </div>
+                <p className="text-sm text-[#8A8B97] leading-relaxed max-w-xl">
+                  You&apos;re not a backer — you&apos;re in the cap table. Direct line to product decisions,
+                  equity stake in what gets built, and your name in the product when we launch.
+                </p>
+                <p className="text-xs text-amber-500/60 mt-3 group-hover:text-amber-400/80 transition-colors">
+                  Limited seats. One conversation before we commit. →
+                </p>
               </div>
-            );
-          })}
+              <ArrowUpRight size={16} className="text-amber-500/40 group-hover:text-amber-400 transition-colors shrink-0 mt-1" />
+            </div>
+          </button>
         </div>
 
-        {/* Bottom note */}
-        <p className="text-center text-xs text-[#444] font-mono">
-          No subscriptions. One-time payment. All future updates included.
-        </p>
       </div>
     </section>
   );

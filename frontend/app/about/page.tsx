@@ -149,10 +149,10 @@ export default function AboutPage() {
           {/* Summary */}
           <div className="border-l-2 border-[#5E5CE6]/30 pl-5">
             <p className="text-sm text-[#8A8B97] leading-relaxed">
-              Senior Data Engineer with 10+ years making data systems production-worthy — by learning every way they fail, then engineering so they don&apos;t. At TheScore / ESPN Bet, designed Airflow-orchestrated ETL pipelines processing millions of daily transactions across BigQuery and Redshift; built a Python observability framework that cut debugging overhead by 60% and shipped SOX-compliant reconciliation systems under regulatory scrutiny.
+              Senior Data Engineer with 10+ years architecting production-grade data systems across fintech, media, and enterprise domains. At TheScore / ESPN Bet, designed Airflow-orchestrated ETL pipelines processing millions of daily transactions across BigQuery and Redshift; built a Python observability framework that reduced debugging overhead by 60% and delivered SOX-compliant reconciliation systems under regulatory scrutiny.
             </p>
             <p className="text-sm text-[#8A8B97] leading-relaxed mt-3">
-              Quality-first background means fail-fast DQ gates, schema drift detection, and self-validating pipelines baked in from day one. When AI went from hype to production-ready, founded onepercentbetter: a live data platform with an LLM agent layer in active development.
+              Specializes in data quality engineering — fail-fast DQ gates, schema drift detection, and self-validating pipeline architectures as foundational design principles. Currently building onepercentbetter: an AI-augmented analytics platform integrating LLM agent layers for automated decision intelligence.
             </p>
           </div>
         </div>
