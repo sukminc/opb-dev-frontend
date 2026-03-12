@@ -261,6 +261,9 @@ export default function Projects() {
           setCommitMap((snap) => {
             sortedSlugsRef.current = [...projects]
               .sort((a, b) => {
+                // featured always pins to top
+                if (a.featured && !b.featured) return -1;
+                if (!a.featured && b.featured) return 1;
                 const aDate = snap[a.slug]?.commits[0]?.date ?? "";
                 const bDate = snap[b.slug]?.commits[0]?.date ?? "";
                 return bDate.localeCompare(aDate);
