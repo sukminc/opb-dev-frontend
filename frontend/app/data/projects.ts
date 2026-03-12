@@ -16,6 +16,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "opb-today",
+    repoName: "one-percent-better-today",
+    title: "1% Better Today",
+    tagline: "One Button. One Day. One Percent.",
+    description:
+      "Mobile-first daily growth app (iOS + Android via Capacitor) built on a single philosophy: growth is a posture, not a metric. One tap. No logging. No judgment. FastAPI + Supabase backend with Twilio phone auth decoupled from account identity — number changes never lose history. Freemium: free tier with ecosystem ads, $6/mo Pro unlocks widgets, milestone celebrations, and a 365-day heatmap.",
+    status: "building",
+    tags: ["FastAPI", "Supabase", "Stripe", "iOS", "Android"],
+    url: "https://github.com/sukminc/one-percent-better-today",
+    featured: true,
+    seed: 74,
+    mvpProgress: 25,
+  },
+  {
     slug: "onepercentbetter",
     repoName: "one-percent-better-poker",
     title: "onepercentbetter",
@@ -25,7 +39,6 @@ export const projects: Project[] = [
     status: "building",
     tags: ["Next.js", "FastAPI", "SQLAlchemy", "Pandas", "NumPy", "Vercel"],
     url: "https://onepercentbetter.poker",
-    featured: true,
     seed: 47,
     mvpProgress: 55,
   },
@@ -67,19 +80,6 @@ export const projects: Project[] = [
     url: "https://github.com/sukminc/one-percent-better-focus",
     seed: 63,
     mvpProgress: 70,
-  },
-  {
-    slug: "opb-today",
-    repoName: "one-percent-better-today",
-    title: "1% Better Today",
-    tagline: "One Button. One Day. One Percent.",
-    description:
-      "Mobile-first daily growth app (iOS + Android via Capacitor) built on a single philosophy: growth is a posture, not a metric. One tap. No logging. No judgment. FastAPI + Supabase backend with Twilio phone auth decoupled from account identity — number changes never lose history. Freemium: free tier with ecosystem ads, $6/mo Pro unlocks widgets, milestone celebrations, and a 365-day heatmap.",
-    status: "building",
-    tags: ["FastAPI", "Supabase", "Stripe", "iOS", "Android"],
-    url: "https://github.com/sukminc/one-percent-better-today",
-    seed: 74,
-    mvpProgress: 25,
   },
   {
     slug: "twelvelabs-validator",

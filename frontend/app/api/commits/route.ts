@@ -12,7 +12,12 @@ export async function GET(request: NextRequest) {
     const res = await fetch(
       `https://api.github.com/repos/${GH_OWNER}/${repo}/commits?per_page=3`,
       {
-        headers: { Accept: "application/vnd.github+json" },
+        headers: {
+          Accept: "application/vnd.github+json",
+          ...(process.env.GITHUB_TOKEN
+            ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
+            : {}),
+        },
         next: { revalidate: 300 }, // 5-min server-side cache
       }
     );
