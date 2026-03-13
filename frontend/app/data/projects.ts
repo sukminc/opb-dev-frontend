@@ -15,7 +15,6 @@ export interface Project {
   tags: string[];
   url?: string;
   featured?: boolean;
-  seed: number;
   mvpEta?: string;
   repoName?: string;   // GitHub repo name under sukminc/ (omit if no repo)
 }
@@ -35,7 +34,6 @@ export const projects: Project[] = [
     tags: ["FastAPI", "Supabase", "Stripe", "iOS", "Android"],
     url: "https://github.com/sukminc/one-percent-better-today",
     featured: true,
-    seed: 74,
     mvpEta: "Target MVP: April 2026",
   },
   {
@@ -51,7 +49,6 @@ export const projects: Project[] = [
     stage: "ops-layer",
     tags: ["Next.js", "TypeScript", "Vercel"],
     url: "https://github.com/sukminc/one-percent-better-landing",
-    seed: 69,
   },
   {
     slug: "onepercentbetter",
@@ -66,8 +63,21 @@ export const projects: Project[] = [
     stage: "concept",
     tags: ["Next.js", "FastAPI", "SQLAlchemy", "Pandas", "NumPy", "Vercel"],
     url: "https://github.com/sukminc/one-percent-better-poker",
-    seed: 47,
     mvpEta: "Target MVP: June 2026",
+  },
+  {
+    slug: "onepercentbetter-poker-site",
+    title: "onepercentbetter.poker",
+    tagline: "A quiet front door for the poker product line.",
+    description:
+      "A coming-soon surface for the poker side of the brand. It should signal the category clearly without exposing the full product detail too early.",
+    status: "idea",
+    repoType: "web-app",
+    category: "poker",
+    stage: "concept",
+    tags: ["Next.js", "Vercel"],
+    url: "https://onepercentbetter.poker",
+    mvpEta: "Coming soon",
   },
   {
     slug: "opb-os",
@@ -82,7 +92,6 @@ export const projects: Project[] = [
     stage: "ops-layer",
     tags: ["Python", "GitHub Actions", "JSON", "CLI"],
     url: "https://github.com/sukminc/one-percent-better-os",
-    seed: 56,
     mvpEta: "Target MVP: March 2026",
   },
   {
@@ -98,7 +107,6 @@ export const projects: Project[] = [
     stage: "archive",
     tags: ["Python", "Apache Airflow", "PostgreSQL", "Docker", "GitHub Actions"],
     url: "https://github.com/sukminc/bluejays-financial-mlops",
-    seed: 18,
   },
   {
     slug: "actionkeeper",
@@ -113,7 +121,6 @@ export const projects: Project[] = [
     stage: "workflow-build",
     tags: ["Python (FastAPI)", "TypeScript (Next.js)", "PostgreSQL", "Docker", "Stripe"],
     url: "https://github.com/sukminc/one-percent-better-poker-staking",
-    seed: 31,
     mvpEta: "Target MVP: July 2026",
   },
   {
@@ -129,7 +136,6 @@ export const projects: Project[] = [
     stage: "mvp-loop",
     tags: ["Flutter", "Dart", "Supabase", "iOS", "Android"],
     url: "https://github.com/sukminc/one-percent-better-focus",
-    seed: 63,
     mvpEta: "Target MVP: March 2026",
   },
   {
@@ -145,6 +151,5 @@ export const projects: Project[] = [
     stage: "archive",
     tags: ["Python", "TwelveLabs", "Pytest"],
     url: "https://github.com/sukminc/TwelveLabs",
-    seed: 12,
   },
 ];
