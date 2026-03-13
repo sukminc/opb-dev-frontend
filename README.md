@@ -1,73 +1,57 @@
-# onepercentbetter.poker
+# one-percent-better-landing
 
-**GTO Defends. We Exploit.**
+Public landing hub for the 1% Better portfolio.
 
-Data-driven poker exploit quantification platform. Parses GGPoker hand histories, quantifies GTO deviations, and surfaces the exact exploit strategies that maximize bb/100 edge.
+This repo powers the site that presents Chris Yoon's current projects, recent GitHub activity, and funding-first product story. It is not just a marketing page. It is meant to behave like a live operating board for the public-facing portfolio.
 
-## Stack
+## What lives here
 
-| Layer | Tech |
-|---|---|
-| Frontend | Next.js 16 (App Router), Tailwind CSS, Lucide React |
-| Backend | FastAPI, SQLAlchemy, SQLite, Pandas/NumPy |
-| Deployment | Vercel (frontend), any ASGI host (backend) |
+- a Next.js frontend for the landing site
+- lightweight route handlers that proxy GitHub activity into the UI
+- project-card metadata in `frontend/app/data/projects.ts`
+- commit-driven project sorting and MVP progress hints
 
-## Quick Start
+## Product Card Model
 
-### Backend
-```bash
-cd backend
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-# API → http://localhost:8000
-# Docs → http://localhost:8000/docs
-```
+Each project card should:
+
+- map to a real GitHub repository
+- show latest linked GitHub activity
+- display an MVP ETA set by judgment
+- compute MVP progress automatically from `status`, `repoType`, and recent 14-day activity
+
+Progress is intentionally heuristic. The goal is to show truthful momentum, not fake precision.
+
+## Current Direction
+
+- simple, fast-shipping products stay near the center of the story
+- deeper products can exist publicly, but should not dominate the narrative unless they are actively shipping
+- `1% Better OS` belongs on the site because it is now part of the real build workflow
+
+## Local Development
 
 ### Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
-# UI → http://localhost:3000
 ```
 
-## Structure
-```
-backend/
-  app/
-    main.py       # FastAPI routes
-    parser.py     # GGPoker hand history parser
-    analytics.py  # Positional stats & exploit signals
-    models.py     # SQLAlchemy ORM models
-    db.py         # DB engine & session
-  tests/
-frontend/
-  app/
-    page.tsx      # Landing page
-    components/   # Navbar, Hero, About, Roadmap, FundingCTA, Footer
-    layout.tsx
-testdata/         # GGPoker .txt files (git-ignored)
-```
-
-## API Endpoints
-
-| Method | Path | Description |
-|---|---|---|
-| GET | `/health` | Service health check |
-| POST | `/ingest` | Upload GGPoker .txt hand history |
-| GET | `/tournaments` | List all tournaments |
-| PATCH | `/tournaments/{id}` | Update result/finish position |
-| GET | `/analytics/signals` | Top-level exploit edge metrics |
-| GET | `/analytics/positional` | Stats broken down by position |
-| GET | `/analytics/pnl` | Cumulative P&L over time |
-
-## Tests
+### Verification
 ```bash
-cd backend
-PYTHONPATH=. pytest -v
+cd frontend
+npm run build
+npm test
 ```
 
----
+## Key Paths
 
-© 2026 onepercentbetter.poker
+- `frontend/app/data/projects.ts`: public project registry
+- `frontend/app/components/Projects.tsx`: project card UI and auto-progress logic
+- `frontend/app/api/commits/route.ts`: GitHub commit proxy used by the cards
+- `frontend/tests/projects.spec.ts`: smoke coverage for the projects section
+
+## Deploy
+
+- deploy target: Vercel
+- production branch: `main`

@@ -1,89 +1,83 @@
-# CLAUDE.md — onepercentbetter (Landing Page Hub)
+# CLAUDE.md — 1% Better Landing Hub
 
 ## What this is
-Brand hub + portfolio for **onepercentbetter.poker** (current) → **OnePercentBetter.now** (post-MVP)
-Tagline: "Marginal gains. Exponential results."
-Repo: `one-percent-better-landing` (GitHub) → `one-percent-better-landing` (local)
+Public brand hub and shipping board for the 1% Better portfolio.
 
-**Rule: If a project is not listed on the site, it is not a brand asset.**
+- Primary role: show current projects, recent GitHub execution, and funding intent
+- Current deploy target: `onepercentbetter.poker`
+- Long-term brand direction: `OnePercentBetter.now`
+- Local repo: `one-percent-better-landing`
+
+Rule: if a project is not listed in `frontend/app/data/projects.ts`, it is not an active public brand asset.
 
 ## Owner
-Chris S. Yoon · Senior Data Engineer & AI Builder · Toronto ON
-`linkedin.com/in/sukminyoon` · `github.com/sukminc` · Open to Work
+Chris S. Yoon · Senior Data Engineer & AI Builder · Toronto, ON
 
----
+## Brand Strategy
 
-## Key Strategy (Brand Split)
-
-### Phase 1 — Now (Job Hunting)
-- Public brand: clean data engineering / AI builder. Zero poker association.
-- `onepercentbetter.poker` exists but is NOT promoted. Keep poker encoded/hidden.
-- This site is for employers, friends, potential investors — all must see a clean profile.
+### Phase 1 — Now
+- Public story: data engineer + AI builder who ships fast
+- Emphasize proof of execution, not grand claims
+- The landing page is a live portfolio, not a static resume
 
 ### Phase 2 — Post-MVP
-- Rebrand main domain to **OnePercentBetter.now**
-- Brand name: "One Percent Better" or "1% Better" — general, universal
-- No poker in the public brand
+- Move public brand toward `OnePercentBetter.now`
+- Keep the umbrella brand broad: systems, automation, tooling, small products
+- Let simple shipping-first apps fund deeper products
 
 ### Phase 3 — Long term
-- `.poker` domain → dedicated poker vertical: staking + ActionKeeper + OPB analytics
-- Managed separately, not linked from main brand
+- Split niche verticals into their own surfaces when they deserve it
+- Keep the main brand clean, general, and portfolio-first
 
----
+## Projects Canon
+Current public projects live in `frontend/app/data/projects.ts`.
 
-## Current Projects on Site (`frontend/app/data/projects.ts`)
-1. **onepercentbetter** — Performance Analytics & Edge Intelligence · `building` · featured
-2. **Blue Jays Moneyball ETL** — Self-Validating ELT Pipeline · `live`
-3. **ActionKeeper** — Agreement & Negotiation Platform · `building`
-4. **1% Better Focus** — Minimalist Deep-Work Timer · `building`
-5. **TwelveLabs API Validator** — Multimodal Search Validation · `live`
+At the moment the site should represent:
+- `opb-today`
+- `onepercentbetter`
+- `opb-os`
+- `bluejays-moneyball`
+- `actionkeeper`
+- `onepercent-focus`
+- `twelvelabs-validator`
 
-**Revenue plan:** Easy consumer apps (focus tools, simple utilities) ship fast → capture income → fund the deep work.
+## Project Card Rules
+- Every project card must map to one repo via `repoName`
+- Latest commit and total commit count come from `frontend/app/api/commits/route.ts`
+- Project ordering is driven by recent GitHub activity, with featured cards pinned first
+- MVP progress is not hand-entered anymore
+- MVP progress is auto-recommended from:
+  - project `status`
+  - project `repoType`
+  - recent 14-day commit activity
+- Keep `mvpEta` human-authored, because timeline is still editorial judgment
+
+## Editing Rules
+- When adding a new public project, update `frontend/app/data/projects.ts`
+- Add a `repoType` that reflects the actual shape of the repo
+- Do not hardcode progress percentages in cards
+- If the progress heuristic changes, update both the card UI and the explanatory copy
+- If tests mention project names or progress hints, update `frontend/tests/projects.spec.ts`
+
+## Voice
+- Precise, calm, and direct
+- Shipping-focused
+- No inflated startup language
+- Prefer evidence: commits, working links, concrete outcomes
 
 ## Stack
-Next.js · Tailwind CSS v4 · TypeScript
-Deploy: Vercel → `onepercentbetter.poker`
+- Frontend: Next.js 16, TypeScript, Tailwind CSS v4
+- APIs in this repo: App Router route handlers
+- Deploy: Vercel
 
 ## Commands
 ```bash
-cd frontend && npm run dev    # localhost:3000
-npx next build                # build check
-git push origin main          # always push directly to main (no PRs)
+cd frontend && npm run dev
+cd frontend && npm run build
+cd frontend && npm test
 ```
 
----
-
-## Brand Identity
-
-### Public copy (use these — no poker, no exploitation language)
-- Hero: "Marginal gains. Exponential results."
-- Description: "Every system has inefficiencies. Every market has edges. We build data tools that find them — and compound the advantage 1% at a time."
-
-### Internal DNA (never surface publicly)
-피쉬 잡는 공략법 — exploit edges against weak players. Quantify it. Compound it.
-The surface story is data tools. The real story stays internal.
-
-### Voice
-- Precise, confident, minimal
-- No fluff
-- Never mention poker explicitly in public-facing copy
-
-### Colors
-| Token       | Hex       | Use                          |
-|-------------|-----------|------------------------------|
-| `bg`        | `#0D0D11` | Site background              |
-| `purple`    | `#5E5CE6` | Primary accent               |
-| `violet`    | `#8B5CF6` | Logo ring, secondary accents |
-| `text-mute` | `#8A8B97` | Body / secondary text        |
-| `border`    | `#232329` | Dividers, card borders       |
-
-### Logo
-- `/public/logo.svg` — circle badge "1%"
-- `/public/logo-lockup.svg` — badge + wordmark
-
----
-
 ## Notes
-- Resume PDF is gitignored — never commit
-- Worktree: `git push origin HEAD:main`
-- Vercel auto-deploys from `main`
+- Vercel deploys from `main`
+- The project cards are part portfolio, part operating dashboard
+- If a repo is newly created but missing on the site, add it quickly so the brand stays truthful

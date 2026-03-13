@@ -2,7 +2,7 @@
 
 import { Clock, ExternalLink, GitBranch } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { projects, type Project, type ProjectStatus } from "../data/projects";
+import { projects, type Project, type ProjectRepoType, type ProjectStatus } from "../data/projects";
 
 const GH_OWNER = "sukminc";
 
@@ -20,7 +20,54 @@ interface Commit {
 interface CommitState {
   commits:    Commit[];
   totalCount: number | null;
+  recent14Count: number | null;
   loading:    boolean;
+}
+
+const REPO_TYPE_BASELINE: Record<ProjectRepoType, number> = {
+  "mobile-app": 20,
+  "web-app": 18,
+  automation: 10,
+  platform: 28,
+  "data-pipeline": 22,
+  validation: 14,
+};
+
+const STATUS_MULTIPLIER: Record<ProjectStatus, number> = {
+  live: 1,
+  building: 1,
+  idea: 1.35,
+};
+
+function getRecommendedMvpTarget(project: Project, recent14Count: number | null): number {
+  if (project.status === "live") return 1;
+
+  const baseline = REPO_TYPE_BASELINE[project.repoType];
+  const recent = recent14Count ?? 0;
+  const activityAdjustment = Math.min(12, recent * 2);
+  const target = Math.round((baseline + activityAdjustment) * STATUS_MULTIPLIER[project.status]);
+
+  return Math.max(6, target);
+}
+
+function getMvpProgress(project: Project, totalCount: number | null, recent14Count: number | null): number {
+  if (project.status === "live") return 100;
+  if (totalCount === null) return 0;
+  const target = getRecommendedMvpTarget(project, recent14Count);
+  return Math.max(0, Math.min(100, Math.round((totalCount / target) * 100)));
+}
+
+function getMvpLabel(project: Project, progress: number, loading: boolean): string {
+  if (project.status === "live" || progress >= 100) return "Live ✓";
+  if (loading) return "Syncing...";
+  return `${progress}%`;
+}
+
+function getMvpHint(project: Project, recent14Count: number | null): string {
+  if (project.status === "live") return "MVP reached";
+  const target = getRecommendedMvpTarget(project, recent14Count);
+  const recent = recent14Count ?? 0;
+  return `Auto target ${target} commits · 14d activity ${recent}`;
 }
 
 const statusConfig: Record<ProjectStatus, { label: string; color: string; dot: string }> = {
@@ -55,6 +102,8 @@ const TECH_COLORS: Record<string, string> = {
   "Supabase": "#6fe2a5",
   "Stripe": "#b8a1ff",
   "Pytest": "#6fdcff",
+  "JSON": "#f3a86b",
+  "CLI": "#6e6a62",
   "iOS": "#111111",
   "Android": "#7de38d",
 };
@@ -86,6 +135,9 @@ function timeAgo(iso: string): string {
 function ProjectCard({ project, commitState }: { project: Project; commitState: CommitState }) {
   const cfg = statusConfig[project.status];
   const repoName = REPO_MAP[project.slug];
+  const progress = getMvpProgress(project, commitState.totalCount, commitState.recent14Count);
+  const progressLabel = getMvpLabel(project, progress, commitState.loading);
+  const progressHint = getMvpHint(project, commitState.recent14Count);
 
   return (
     <div className={project.featured ? "md:col-span-2" : ""}>
@@ -123,16 +175,18 @@ function ProjectCard({ project, commitState }: { project: Project; commitState: 
         <div className="mb-4">
           <div className="flex justify-between text-[10px] text-[#8b857b] mb-1.5">
             <span className="truncate pr-2">{project.tagline}</span>
-            <span className="flex-shrink-0">
-              {project.mvpProgress === 100 ? "Live ✓" : `${project.mvpProgress}%`}
-            </span>
+            <span className="flex-shrink-0">{progressLabel}</span>
           </div>
           <div className="h-1 bg-[#ebe5db] rounded-full overflow-hidden">
             <div
               className={`h-full rounded-full transition-all duration-700 ${STATUS_BAR[project.status] ?? "bg-[#8b857b]"}`}
-              style={{ width: `${project.mvpProgress}%` }}
+              style={{ width: `${progress}%` }}
             />
           </div>
+          {project.mvpEta && progress < 100 && (
+            <p className="mt-2 text-[10px] text-[#8b857b]">{project.mvpEta}</p>
+          )}
+          <p className="mt-1 text-[10px] text-[#b0a99d]">{progressHint}</p>
         </div>
 
         {/* Commit feed */}
@@ -193,7 +247,7 @@ function ProjectCard({ project, commitState }: { project: Project; commitState: 
 export default function Projects() {
   const [commitMap, setCommitMap] = useState<Record<string, CommitState>>(() =>
     Object.fromEntries(
-      projects.map((p) => [p.slug, { commits: [], totalCount: null, loading: !!REPO_MAP[p.slug] }])
+      projects.map((p) => [p.slug, { commits: [], totalCount: null, recent14Count: null, loading: !!REPO_MAP[p.slug] }])
     )
   );
 
@@ -212,12 +266,17 @@ export default function Projects() {
         const data = await res.json();
         setCommitMap((prev) => ({
           ...prev,
-          [project.slug]: { commits: data.commits, totalCount: data.totalCount, loading: false },
+          [project.slug]: {
+            commits: data.commits,
+            totalCount: data.totalCount,
+            recent14Count: data.recent14Count ?? null,
+            loading: false,
+          },
         }));
       } catch {
         setCommitMap((prev) => ({
           ...prev,
-          [project.slug]: { commits: [], totalCount: null, loading: false },
+          [project.slug]: { commits: [], totalCount: null, recent14Count: null, loading: false },
         }));
       } finally {
         loadedCount.current += 1;
@@ -270,7 +329,7 @@ export default function Projects() {
             <ProjectCard
               key={p.slug}
               project={p}
-              commitState={commitMap[p.slug] ?? { commits: [], totalCount: null, loading: false }}
+              commitState={commitMap[p.slug] ?? { commits: [], totalCount: null, recent14Count: null, loading: false }}
             />
           ))}
         </div>
