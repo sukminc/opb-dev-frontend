@@ -1,6 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
+import type { CSSProperties } from "react";
+import { useState } from "react";
 
 const notes = [
   "Shipping simple ideas fast is the current point.",
@@ -9,9 +12,47 @@ const notes = [
 ];
 
 export default function Hero() {
+  const [offset, setOffset] = useState({ x: 0, y: 0, r: 0 });
+
   return (
-    <section className="relative overflow-hidden px-6 pt-28 pb-16 sm:pb-24">
+    <section
+      className="relative overflow-hidden px-6 pt-28 pb-16 sm:pb-24"
+      onMouseMove={(event) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width - 0.5) * 18;
+        const y = ((event.clientY - rect.top) / rect.height - 0.5) * 18;
+        setOffset({ x, y, r: x * 0.08 });
+      }}
+      onMouseLeave={() => setOffset({ x: 0, y: 0, r: 0 })}
+    >
       <div className="absolute inset-0 paper-grid opacity-50 pointer-events-none" />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={
+          {
+            "--hero-x": `${offset.x}px`,
+            "--hero-y": `${offset.y}px`,
+            "--hero-r": `${offset.r}deg`,
+          } as CSSProperties
+        }
+      >
+        <div className="hero-orbit absolute right-[-2%] top-8 h-[32rem] w-[32rem] rounded-full border border-[#d7d0c5] opacity-70" />
+        <div className="hero-orbit absolute right-[6%] top-20 h-[24rem] w-[24rem] rounded-full border border-[#e5dfd5]" style={{ animationDelay: "0.8s" }} />
+        <div className="hero-symbol absolute right-[4%] top-12 opacity-[0.12]">
+          <Image
+            src="/logo.svg"
+            alt=""
+            aria-hidden="true"
+            width={420}
+            height={420}
+            priority
+            className="h-[18rem] w-[18rem] sm:h-[22rem] sm:w-[22rem] lg:h-[28rem] lg:w-[28rem]"
+          />
+        </div>
+        <div className="absolute right-[9%] top-[24rem] text-[11px] font-mono uppercase tracking-[0.22em] text-[#8b857b]">
+          1.01 ^ 365 = 37.8x
+        </div>
+      </div>
 
       <div className="relative mx-auto max-w-6xl">
         <div className="max-w-4xl">
@@ -34,6 +75,12 @@ export default function Hero() {
             onepercentbetter started from a poker idea, but right now it is a
             product studio for fast learning loops: simple apps, LLM experiments,
             and public reps that make the next build better than the last one.
+          </p>
+
+          <p className="mt-5 max-w-3xl text-sm leading-7 text-[#5f5a52]">
+            The logo is the thesis. One percent looks small in isolation. Repeated
+            daily, it becomes compounding. That idea sits underneath the apps, the
+            pacing, and the way this whole brand is built.
           </p>
 
           <p className="mt-5 max-w-2xl text-sm leading-7 text-[#8b857b]">
@@ -68,7 +115,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mt-16 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="mt-16 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="glass-panel rounded-[2rem] p-6 sm:p-8">
             <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#8b857b]">
               Current thesis
@@ -84,10 +131,10 @@ export default function Hero() {
               </div>
               <div>
                 <p className="text-4xl font-semibold tracking-[-0.05em] text-[#111111]">
-                  2
+                  37.8x
                 </p>
                 <p className="mt-2 text-sm leading-6 text-[#5f5a52]">
-                  Tracks in progress: today&apos;s simple apps and tomorrow&apos;s deeper products.
+                  What tiny gains look like when they compound long enough.
                 </p>
               </div>
               <div>
@@ -95,7 +142,7 @@ export default function Hero() {
                   Now
                 </p>
                 <p className="mt-2 text-sm leading-6 text-[#5f5a52]">
-                  Focus and 1% Better Today are about shipping fast and learning in public.
+                  Focus and today are both expressions of daily measurable progress.
                 </p>
               </div>
             </div>

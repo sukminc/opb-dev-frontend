@@ -80,3 +80,33 @@ a {
     linear-gradient(90deg, rgba(17, 17, 17, 0.03) 1px, transparent 1px);
   background-size: 24px 24px;
 }
+
+.hero-symbol {
+  animation: heroFloat 10s ease-in-out infinite;
+  transform: translate3d(var(--hero-x, 0px), var(--hero-y, 0px), 0) rotate(var(--hero-r, 0deg));
+  transition: transform 180ms ease-out;
+}
+
+.hero-orbit {
+  animation: orbitPulse 6s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translate3d(var(--hero-x, 0px), calc(var(--hero-y, 0px) - 4px), 0) rotate(var(--hero-r, 0deg));
+  }
+  50% {
+    transform: translate3d(var(--hero-x, 0px), calc(var(--hero-y, 0px) + 6px), 0) rotate(calc(var(--hero-r, 0deg) + 1deg));
+  }
+}
+
+@keyframes orbitPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.52;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.8;
+  }
+}

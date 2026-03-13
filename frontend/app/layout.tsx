@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: "onepercentbetter — Small apps. Fast loops.",
   description:
     "Chris S. Yoon's product studio: small apps, fast learning loops, and funding for the next season of building.",
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
   openGraph: {
     title: "onepercentbetter — Small apps. Fast loops.",
     description:
