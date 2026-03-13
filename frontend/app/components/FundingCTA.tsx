@@ -4,32 +4,25 @@ import { ArrowUpRight } from "lucide-react";
 
 const TIERS = [
   {
-    label: "Spark",
-    amount: 30,
-    desc: "Skin in the game. You see the direction.",
-    hero: false,
-    url: "https://buy.stripe.com/fZu8wQbT81DO8dIf6I1wY00",
-  },
-  {
     label: "Build",
-    amount: 150,
-    desc: "Committed backer. Early access when we ship.",
+    amount: 200,
+    desc: "Early access to all tools at launch. Your name in the credits.",
     hero: false,
-    url: "https://buy.stripe.com/5kQbJ20aqeqA51w4s41wY01",
+    url: "https://buy.stripe.com/5kQ7sMaP496ggKe4s41wY04",
   },
   {
     label: "Accelerate",
     amount: 500,
-    desc: "You believe before others do.",
+    desc: "Above + direct feedback channel + priority feature requests.",
     hero: false,
-    url: "https://buy.stripe.com/8x2cN67CSdmw2To6Ac1wY02",
+    url: "https://buy.stripe.com/6oU5kEaP45U451w9Mo1wY05",
   },
   {
     label: "Partner",
-    amount: 2000,
+    amount: 3000,
     desc: null,
     hero: true,
-    url: "https://buy.stripe.com/28EfZi3mCfuE1Pk7Eg1wY03",
+    url: "https://buy.stripe.com/6oUeVe1eueqA79E7Eg1wY06",
   },
 ];
 
@@ -52,7 +45,7 @@ export default function FundingCTA() {
 
         <div className="flex flex-col gap-2">
           {/* Standard tiers — 3 col */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {TIERS.filter((t) => !t.hero).map((tier) => (
               <button
                 key={tier.label}
@@ -78,7 +71,7 @@ export default function FundingCTA() {
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="text-base font-semibold text-amber-400">Partner · $2,000</span>
+                  <span className="text-base font-semibold text-amber-400">Partner · $3,000</span>
                   <span className="text-[10px] text-amber-500/70 border border-amber-500/30 rounded-full px-2 py-0.5 tracking-wide">
                     Advisor + Shareholder
                   </span>
