@@ -72,18 +72,19 @@ export const projects: Project[] = [
   },
   {
     slug: "onepercentbetter-poker-site",
+    repoName: "one-percent-better-poker-site",
     title: "onepercentbetter.poker",
-    tagline: "A quiet front door for the poker product line.",
+    tagline: "A dedicated front door for the poker analytics product line.",
     description:
-      "A coming-soon surface for the poker side of the brand. It should signal the category clearly without exposing the full product detail too early.",
-    status: "idea",
+      "A poker-specific surface for analytics, exploit review, and action workflow tools. It should feel related to 1% Better.dev, but speak more directly to serious players and study loops.",
+    status: "building",
     repoType: "web-app",
     category: "poker",
     stage: "concept",
     tags: ["Next.js", "Vercel"],
     url: "https://onepercentbetter.poker",
     visibility: "public",
-    readinessSignals: ["Brand shell ready", "Landing direction set", "Positioning locked"],
+    readinessSignals: ["Brand shell ready", "Product family framed", "Front-door build live"],
     mvpEta: "Coming soon",
   },
   {
