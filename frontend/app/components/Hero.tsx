@@ -5,9 +5,9 @@ import type { CSSProperties } from "react";
 import { useState } from "react";
 
 const notes = [
-  "Shipping simple ideas fast is the current point.",
-  "The funding page exists to buy time to keep learning and building.",
-  "The poker products are still early and not the headline right now.",
+  "Public products stay small enough to ship before they become architecture projects.",
+  "This website is the trust layer for hiring, funding, and visible execution.",
+  "Poker stays a separate vertical until it earns more surface area.",
 ];
 
 export default function Hero() {
@@ -71,9 +71,9 @@ export default function Hero() {
           </h1>
 
           <p className="mt-8 max-w-3xl text-lg leading-8 text-[#5f5a52] sm:text-xl">
-            1% Better started from a poker idea, but right now it is also a
-            product studio for fast learning loops: simple apps, LLM experiments,
-            and public reps that make the next build better than the last one.
+            1% Better is a simple-product brand. The goal is not to build the
+            biggest system first. The goal is to ship small, useful things in
+            public, learn fast, and let that momentum compound.
           </p>
 
           <p className="mt-5 max-w-3xl text-sm leading-7 text-[#5f5a52]">
@@ -83,9 +83,9 @@ export default function Hero() {
           </p>
 
           <p className="mt-5 max-w-3xl text-sm leading-7 text-[#8b857b]">
-            `1% Better.dev` is the public build, funding, and career-facing track.
-            `1% Better.poker` is the specialist track I plan to grow into more deeply.
-            For now, both live as landing pages with the same philosophy underneath.
+            `1% Better.dev` is the public build, hiring, and funding layer.
+            `1% Better.poker` is a separate specialist vertical. For now, the
+            homepage stays centered on simple products and visible execution.
           </p>
 
           <p className="mt-5 max-w-2xl text-sm leading-7 text-[#8b857b]">
@@ -131,7 +131,7 @@ export default function Hero() {
                   Now
                 </p>
                 <p className="mt-2 text-sm leading-6 text-[#5f5a52]">
-                  Focus and today are both expressions of daily measurable progress.
+                  Today and Focus are the cleanest expressions of the current thesis.
                 </p>
               </div>
             </div>

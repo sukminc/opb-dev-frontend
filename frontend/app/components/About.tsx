@@ -115,22 +115,21 @@ export default function About() {
             <p>
               I built data systems for over a decade, most recently as a senior
               data engineer at TheScore / ESPN Bet. After that chapter, I started
-              using 1% Better as a place to keep moving: learn LLMs, ship
-              simple apps quickly, and turn ideas into real product reps instead
-              of waiting for perfect conditions.
+              using 1% Better as a place to keep moving: ship simple apps,
+              learn LLM workflows in public, and turn ideas into real product
+              reps instead of waiting for perfect conditions.
             </p>
             <p>
               `1% Better.dev` is where that current season shows up most clearly:
-              learning, funding, and shipping. `1% Better.poker` is the more
-              specialized direction I still intend to grow into when time and
-              resources allow.
+              simple products, public execution, and a hiring story that stays
+              grounded in recent work. `1% Better.poker` is the more specialized
+              direction I still intend to grow into when time and resources allow.
             </p>
             <p>
               The original domain came from a poker product idea. That part of the
-              story is still there, but it is not the main thing I want this page
-              to communicate right now. The poker apps are early. The more honest
-              story is that I am building small, fast, useful things while I create
-              runway for the next chapter.
+              story still matters, but it is not the main thing I want this page
+              to communicate right now. The more honest story is simpler: build
+              small useful things, avoid over-engineering, and keep the work visible.
             </p>
             <p>
               That is also why the funding page exists. It is not startup theater.
@@ -160,8 +159,8 @@ export default function About() {
               Fast shipping.
             </p>
             <p className="mt-3 text-sm leading-6 text-[#5f5a52]">
-              1% Better Focus and 1% Better Today are lightweight products meant to get out
-              fast and teach me something immediately.
+              1% Better Today and 1% Better Focus are lightweight products meant
+              to get out fast and teach me something immediately.
             </p>
           </div>
           <div className="glass-panel rounded-[1.6rem] p-6">
@@ -173,7 +172,7 @@ export default function About() {
             </p>
             <p className="mt-3 text-sm leading-6 text-[#5f5a52]">
               If income or runway improves, I expect to return to the poker-side
-              products with more focus and more patience.
+              products with more focus and more patience, as a separate vertical.
             </p>
           </div>
         </div>
