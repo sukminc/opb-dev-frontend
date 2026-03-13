@@ -1,42 +1,37 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
-test.describe("Page smoke tests", () => {
-  test("/ — loads and shows hero", async ({ page }) => {
+test.describe("Responsive smoke", () => {
+  test("home page loads without page errors", async ({ page }) => {
     const errors: string[] = [];
     page.on("pageerror", (err) => errors.push(err.message));
 
     await page.goto("/");
-    await expect(page.locator("body")).toContainText("Marginal gains");
-    await expect(page.locator("body")).toContainText("Exponential results");
+    await expect(page.locator("body")).toContainText("Ship small.");
+    await expect(page.locator("body")).toContainText("1.01 ^ 365 = 37.8x");
 
-    expect(errors.filter((e) => !e.includes("favicon"))).toHaveLength(0);
+    expect(errors).toHaveLength(0);
   });
 
-  test("/ — shows all 5 project cards", async ({ page }) => {
+  test("mobile layout avoids horizontal overflow on home", async ({ page, browserName }) => {
+    test.skip(browserName !== "chromium", "Mobile assertions run on chromium project only");
+
     await page.goto("/");
-    const cards = page.locator("[data-testid='project-card']");
-    await expect(cards).toHaveCount(5);
+
+    const bodyBox = await page.locator("body").boundingBox();
+    expect(bodyBox).not.toBeNull();
+
+    const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+    const clientWidth = await page.evaluate(() => document.documentElement.clientWidth);
+    expect(scrollWidth).toBeLessThanOrEqual(clientWidth + 4);
   });
 
-  test("/about — loads with Chris's name", async ({ page }) => {
-    const errors: string[] = [];
-    page.on("pageerror", (err) => errors.push(err.message));
+  test("mobile about page keeps activity section visible", async ({ page, browserName }) => {
+    test.skip(browserName !== "chromium", "Mobile assertions run on chromium project only");
 
     await page.goto("/about");
-    await expect(page.locator("body")).toContainText("Chris");
+    await page.locator("text=Build activity").scrollIntoViewIfNeeded();
 
-    expect(errors.filter((e) => !e.includes("favicon"))).toHaveLength(0);
-  });
-
-  test("/activity — loads build log", async ({ page }) => {
-    const errors: string[] = [];
-    page.on("pageerror", (err) => errors.push(err.message));
-
-    await page.goto("/activity");
-    await expect(page.locator("body")).toContainText("build log", {
-      ignoreCase: true,
-    });
-
-    expect(errors.filter((e) => !e.includes("favicon"))).toHaveLength(0);
+    await expect(page.locator("text=Build activity")).toBeVisible();
+    await expect(page.locator("text=Open GitHub")).toBeVisible();
   });
 });

@@ -1,38 +1,31 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 test.describe("Navigation", () => {
-  test("nav links are present on home page", async ({ page }) => {
+  test("home nav links are present", async ({ page }) => {
     await page.goto("/");
-    // Verify primary nav links exist
+
     await expect(page.locator("a[href='/about']").first()).toBeVisible();
-    await expect(page.locator("a[href='/activity']").first()).toBeVisible();
+    await expect(page.locator("a[href='#projects']").first()).toBeVisible();
   });
 
-  test("clicking About nav link navigates to /about", async ({ page }) => {
+  test("about link navigates correctly", async ({ page }) => {
     await page.goto("/");
     await page.locator("a[href='/about']").first().click();
+
     await expect(page).toHaveURL(/\/about/);
-    await expect(page.locator("body")).toContainText("Chris");
+    await expect(page.locator("body")).toContainText("This is a working season");
   });
 
-  test("clicking Activity nav link navigates to /activity", async ({
-    page,
-  }) => {
-    await page.goto("/");
-    await page.locator("a[href='/activity']").first().click();
-    await expect(page).toHaveURL(/\/activity/);
-  });
-
-  test("logo / site name links back to /", async ({ page }) => {
+  test("logo returns to home", async ({ page }) => {
     await page.goto("/about");
     await page.locator("a[href='/']").first().click();
+
     await expect(page).toHaveURL(/\/$/);
-    await expect(page.locator("body")).toContainText("Marginal gains");
+    await expect(page.locator("body")).toContainText("Ship small.");
   });
 
-  test("all internal links resolve without 404", async ({ page }) => {
-    const paths = ["/", "/about", "/activity"];
-    for (const path of paths) {
+  test("core pages return 200", async ({ page }) => {
+    for (const path of ["/", "/about"]) {
       const response = await page.goto(path);
       expect(response?.status(), `${path} returned non-200`).toBe(200);
     }
