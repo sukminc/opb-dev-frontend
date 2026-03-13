@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex items-center gap-3">
           <Image
             src="/logo.svg"
-            alt="onepercentbetter.poker"
+            alt="1% Better"
             className="h-8 w-8"
             width={32}
             height={32}

@@ -16,7 +16,7 @@ export default function AboutSection() {
             <p className="text-sm text-[#5f5a52] leading-7">
               I spent the last decade building production data systems across fintech,
               media, and enterprise. Right now I am in a transition period: looking
-              for the right next role while using onepercentbetter as a place to learn
+              for the right next role while using 1% Better as a place to learn
               LLM workflows, ship simple products fast, and stay in motion.
             </p>
 

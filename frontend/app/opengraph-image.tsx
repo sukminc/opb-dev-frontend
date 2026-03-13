@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "onepercentbetter — Small apps. Fast loops.";
+export const alt = "1% Better — Small apps. Fast loops.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -38,7 +38,7 @@ export default function OGImage() {
             1%
           </div>
           <span style={{ color: "#6b655d", fontSize: "18px", letterSpacing: "0.05em" }}>
-            onepercentbetter
+            1% Better
           </span>
         </div>
 

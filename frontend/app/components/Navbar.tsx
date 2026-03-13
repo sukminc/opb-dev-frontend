@@ -25,14 +25,14 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-3 group">
           <Image
             src="/logo.svg"
-            alt="onepercentbetter"
+            alt="1% Better"
             className="h-8 w-8 transition-opacity group-hover:opacity-80"
             width={32}
             height={32}
           />
           <div className="hidden sm:block">
             <span className="block text-sm font-semibold text-[#111111] tracking-[0.14em] uppercase leading-none">
-              onepercentbetter
+              1% Better
             </span>
             <span className="block text-[10px] text-[#8b857b] font-mono mt-1">
               ship small. learn fast.

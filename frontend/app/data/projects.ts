@@ -18,10 +18,10 @@ export const projects: Project[] = [
   {
     slug: "opb-today",
     repoName: "one-percent-better-today",
-    title: "onepercentbetter today",
+    title: "1% Better Today",
     tagline: "A tiny daily reset for staying in motion.",
     description:
-      "A tiny daily reset app built to ship quickly and prove the loop: one action, one tap, no guilt, no setup friction. This is the kind of product onepercentbetter is focused on right now: small, clear, and easy to release.",
+      "A tiny daily reset app built to ship quickly and prove the loop: one action, one tap, no guilt, no setup friction. This is the kind of product 1% Better is focused on right now: small, clear, and easy to release.",
     status: "building",
     tags: ["FastAPI", "Supabase", "Stripe", "iOS", "Android"],
     url: "https://github.com/sukminc/one-percent-better-today",
@@ -32,7 +32,7 @@ export const projects: Project[] = [
   {
     slug: "onepercentbetter",
     repoName: "one-percent-better-poker",
-    title: "onepercentbetter edge",
+    title: "1% Better Edge",
     tagline: "A deeper decision-support product still in the idea phase.",
     description:
       "A longer-horizon analytics product where model-driven signals and LLM-assisted workflows may eventually converge. Important to the bigger story, but not the primary focus of this landing page right now.",
@@ -71,10 +71,10 @@ export const projects: Project[] = [
   {
     slug: "onepercent-focus",
     repoName: "one-percent-better-focus",
-    title: "onepercentbetter focus",
+    title: "1% Better Focus",
     tagline: "A lightweight focus timer built to ship fast.",
     description:
-      "A lightweight focus timer built as a fast-release product: simple loop, clear value, and low friction. It represents the current onepercentbetter thesis better than the deeper products do.",
+      "A lightweight focus timer built as a fast-release product: simple loop, clear value, and low friction. It represents the current 1% Better thesis better than the deeper products do.",
     status: "building",
     tags: ["Flutter", "Dart", "Supabase", "iOS", "Android"],
     url: "https://github.com/sukminc/one-percent-better-focus",

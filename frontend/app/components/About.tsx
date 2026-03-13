@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const experience = [
   {
-    company: "onepercentbetter",
+    company: "OnePercentBetter.dev",
     role: "Founder",
     period: "2025 - Present",
     summary:
@@ -43,9 +43,15 @@ export default function About() {
             <p>
               I built data systems for over a decade, most recently as a senior
               data engineer at TheScore / ESPN Bet. After that chapter, I started
-              using onepercentbetter as a place to keep moving: learn LLMs, ship
+              using 1% Better as a place to keep moving: learn LLMs, ship
               simple apps quickly, and turn ideas into real product reps instead
               of waiting for perfect conditions.
+            </p>
+            <p>
+              `1% Better.dev` is where that current season shows up most clearly:
+              learning, funding, and shipping. `1% Better.poker` is the more
+              specialized direction I still intend to grow into when time and
+              resources allow.
             </p>
             <p>
               The original domain came from a poker product idea. That part of the
@@ -82,7 +88,7 @@ export default function About() {
               Fast shipping.
             </p>
             <p className="mt-3 text-sm leading-6 text-[#5f5a52]">
-              Focus and 1% Better Today are lightweight products meant to get out
+              1% Better Focus and 1% Better Today are lightweight products meant to get out
               fast and teach me something immediately.
             </p>
           </div>
