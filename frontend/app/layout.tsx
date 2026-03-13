@@ -3,13 +3,13 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://onepercentbetter.poker"),
-  title: "onepercentbetter — Ship small. Learn fast.",
+  title: "onepercentbetter — Small apps. Fast loops.",
   description:
-    "Chris S. Yoon's product studio and funding page: small apps, fast shipping, and one core value repeated daily.",
+    "Chris S. Yoon's product studio: small apps, fast learning loops, and funding for the next season of building.",
   openGraph: {
-    title: "onepercentbetter — Ship small. Learn fast.",
+    title: "onepercentbetter — Small apps. Fast loops.",
     description:
-      "Small apps, fast learning loops, and a funding page built around one core value: get one percent better.",
+      "A minimal product studio built around one core value: get one percent better, then do it again.",
     url: "https://onepercentbetter.poker",
     siteName: "onepercentbetter",
     locale: "en_US",
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "onepercentbetter — Ship small. Learn fast.",
+    title: "onepercentbetter — Small apps. Fast loops.",
     description:
-      "Small apps, fast learning loops, and a funding page built around one core value: get one percent better.",
+      "A minimal product studio built around one core value: get one percent better, then do it again.",
   },
 };
 

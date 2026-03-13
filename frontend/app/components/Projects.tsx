@@ -252,13 +252,17 @@ export default function Projects() {
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#111111]" />
-            <p className="text-xs text-[#8b857b]">Projects · Live from GitHub</p>
+            <p className="text-xs text-[#8b857b]">Projects · Latest linked GitHub activity</p>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-[#111111] tracking-tight">
             Fast shipping first.
             {" "}
             <span className="text-[#8b857b]">The bigger bets can wait.</span>
           </h2>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-[#5f5a52]">
+            Each card is tied to one GitHub repository. The latest commit and total
+            commit count update from that repo, then the cards are re-sorted by recent activity.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
