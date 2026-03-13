@@ -15,7 +15,7 @@ export default function Footer() {
             width={96}
             height={20}
           />
-          <Link href="/about" className="text-xs text-[#61746a] hover:text-[#a6b8ae] transition-colors">
+          <Link href="/about" className="text-xs text-[#8b857b] hover:text-[#111111] transition-colors">
             © {new Date().getFullYear()} Chris S. Yoon
           </Link>
         </div>
@@ -24,7 +24,7 @@ export default function Footer() {
             href="https://linkedin.com/in/sukminyoon"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs text-[#61746a] hover:text-[#a6b8ae] transition-colors"
+            className="flex items-center gap-1.5 text-xs text-[#8b857b] hover:text-[#111111] transition-colors"
           >
             <Linkedin size={12} />
             sukminyoon
@@ -33,7 +33,7 @@ export default function Footer() {
             href="https://github.com/sukminc"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs text-[#61746a] hover:text-[#a6b8ae] transition-colors"
+            className="flex items-center gap-1.5 text-xs text-[#8b857b] hover:text-[#111111] transition-colors"
           >
             <Github size={12} />
             sukminc

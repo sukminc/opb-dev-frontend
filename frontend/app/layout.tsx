@@ -2,24 +2,24 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://onepercentbetter.xyz"),
-  title: "onepercentbetter — Systems for compound growth",
+  metadataBase: new URL("https://onepercentbetter.poker"),
+  title: "onepercentbetter — Ship small. Learn fast.",
   description:
-    "A landing page for Chris S. Yoon's products, experiments, and systems built around one core belief: small improvements compound.",
+    "Chris S. Yoon's product studio and funding page: small apps, fast shipping, and one core value repeated daily.",
   openGraph: {
-    title: "onepercentbetter — Systems for compound growth",
+    title: "onepercentbetter — Ship small. Learn fast.",
     description:
-      "Products, experiments, and operating systems built around one core belief: get one percent better, repeatedly.",
-    url: "https://onepercentbetter.xyz",
+      "Small apps, fast learning loops, and a funding page built around one core value: get one percent better.",
+    url: "https://onepercentbetter.poker",
     siteName: "onepercentbetter",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "onepercentbetter — Systems for compound growth",
+    title: "onepercentbetter — Ship small. Learn fast.",
     description:
-      "Products, experiments, and operating systems built around one core belief: get one percent better, repeatedly.",
+      "Small apps, fast learning loops, and a funding page built around one core value: get one percent better.",
   },
 };
 

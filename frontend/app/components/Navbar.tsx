@@ -17,7 +17,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#08110d]/72 backdrop-blur-xl border-b border-[#21312b]"
+          ? "bg-[#f7f5f1]/88 backdrop-blur-xl border-b border-[#ddd8cf]"
           : "bg-transparent"
       }`}
     >
@@ -31,26 +31,26 @@ export default function Navbar() {
             height={32}
           />
           <div className="hidden sm:block">
-            <span className="block text-sm font-semibold text-[#eff6ef] tracking-[0.14em] uppercase leading-none">
+            <span className="block text-sm font-semibold text-[#111111] tracking-[0.14em] uppercase leading-none">
               onepercentbetter
             </span>
-            <span className="block text-[10px] text-[#7d9086] font-mono mt-1">
-              systems for compound growth
+            <span className="block text-[10px] text-[#8b857b] font-mono mt-1">
+              ship small. learn fast.
             </span>
           </div>
         </Link>
 
         <div className="flex items-center gap-3 sm:gap-6">
-          <div className="hidden md:flex items-center gap-2 rounded-full border border-[#2b3f37] bg-[#0f1915]/80 px-3 py-1.5">
-            <span className="h-2 w-2 rounded-full bg-[#b8ff72] shadow-[0_0_14px_rgba(184,255,114,0.75)]" />
-            <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#a6b8ae]">
-              +1% in progress
+          <div className="hidden md:flex items-center gap-2 rounded-full border border-[#ddd8cf] bg-[#fbfaf7] px-3 py-1.5">
+            <span className="h-2 w-2 rounded-full bg-[#111111]" />
+            <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#5f5a52]">
+              building in public
             </span>
           </div>
-          <a href="#projects" className="text-sm text-[#a6b8ae] hover:text-[#eff6ef] transition-colors">
+          <a href="#projects" className="text-sm text-[#5f5a52] hover:text-[#111111] transition-colors">
             Projects
           </a>
-          <Link href="/about" className="text-sm text-[#a6b8ae] hover:text-[#eff6ef] transition-colors">
+          <Link href="/about" className="text-sm text-[#5f5a52] hover:text-[#111111] transition-colors">
             About
           </Link>
         </div>

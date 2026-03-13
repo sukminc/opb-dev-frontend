@@ -24,28 +24,28 @@ interface CommitState {
 }
 
 const statusConfig: Record<ProjectStatus, { label: string; color: string; dot: string }> = {
-  live:     { label: "Live",     color: "text-emerald-400", dot: "bg-emerald-400" },
-  building: { label: "Building", color: "text-[#b8ff72]",   dot: "bg-[#b8ff72] animate-pulse" },
-  idea:     { label: "Idea",     color: "text-[#61746a]",   dot: "bg-[#61746a]" },
+  live:     { label: "Live",     color: "text-[#111111]",   dot: "bg-[#111111]" },
+  building: { label: "Building", color: "text-[#5f5a52]",   dot: "bg-[#5f5a52] animate-pulse" },
+  idea:     { label: "Idea",     color: "text-[#8b857b]",   dot: "bg-[#8b857b]" },
 };
 
 const STATUS_BAR: Record<string, string> = {
-  live:     "bg-emerald-400",
-  building: "bg-[#b8ff72]",
-  idea:     "bg-[#61746a]",
+  live:     "bg-[#111111]",
+  building: "bg-[#5f5a52]",
+  idea:     "bg-[#8b857b]",
 };
 
 const TECH_COLORS: Record<string, string> = {
-  "Next.js": "#eff6ef",
+  "Next.js": "#111111",
   "FastAPI": "#57d1b2",
   "Python": "#8eb9ff",
   "Python (FastAPI)": "#57d1b2",
   "TypeScript": "#66a8ff",
-  "TypeScript (Next.js)": "#eff6ef",
+  "TypeScript (Next.js)": "#111111",
   "SQLAlchemy": "#ff8a70",
   "Pandas": "#b89cff",
   "NumPy": "#82d4ff",
-  "Vercel": "#eff6ef",
+  "Vercel": "#111111",
   "PostgreSQL": "#7ea8ff",
   "Docker": "#79ccff",
   "Apache Airflow": "#5fb7ff",
@@ -55,18 +55,18 @@ const TECH_COLORS: Record<string, string> = {
   "Supabase": "#6fe2a5",
   "Stripe": "#b8a1ff",
   "Pytest": "#6fdcff",
-  "iOS": "#eff6ef",
+  "iOS": "#111111",
   "Android": "#7de38d",
 };
 
 function TechBadge({ tag }: { tag: string }) {
   return (
-    <div title={tag} className="h-7 flex items-center gap-2 bg-[#12201a] border border-[#24372f] rounded-full px-3">
+    <div title={tag} className="h-7 flex items-center gap-2 bg-[#f6f3ee] border border-[#ddd8cf] rounded-full px-3">
       <span
         className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-        style={{ backgroundColor: TECH_COLORS[tag] ?? "#61746a" }}
+        style={{ backgroundColor: TECH_COLORS[tag] ?? "#8b857b" }}
       />
-      <span className="text-[10px] text-[#a6b8ae] leading-none">{tag}</span>
+      <span className="text-[10px] text-[#5f5a52] leading-none">{tag}</span>
     </div>
   );
 }
@@ -93,8 +93,8 @@ function ProjectCard({ project, commitState }: { project: Project; commitState: 
         onClick={() => document.getElementById("fund")?.scrollIntoView({ behavior: "smooth" })}
         className={`glass-panel flex flex-col rounded-[1.75rem] p-6 transition-colors h-full cursor-pointer ${
           project.featured
-            ? "border-[#b8ff72]/35 hover:border-[#d3ff9a]/45"
-            : "border-[#24372f] hover:border-[#4d7263]"
+            ? "border-[#111111]/20 hover:border-[#111111]/45"
+            : "border-[#ddd8cf] hover:border-[#b9b2a7]"
         }`}
       >
         {/* Header */}
@@ -102,10 +102,10 @@ function ProjectCard({ project, commitState }: { project: Project; commitState: 
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-0.5">
               <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${cfg.dot}`} />
-              <h3 className="text-sm font-semibold text-[#eff6ef] truncate">{project.title}</h3>
+              <h3 className="text-sm font-semibold text-[#111111] truncate">{project.title}</h3>
             </div>
             {repoName && (
-              <div className="flex items-center gap-1.5 text-[10px] text-[#61746a] pl-3.5">
+              <div className="flex items-center gap-1.5 text-[10px] text-[#8b857b] pl-3.5">
                 <GitBranch size={9} />
                 <span className="font-mono">{GH_OWNER}/{repoName}</span>
               </div>
@@ -113,23 +113,23 @@ function ProjectCard({ project, commitState }: { project: Project; commitState: 
           </div>
           {commitState.totalCount !== null && (
             <div className="text-right flex-shrink-0">
-              <span className="text-base font-bold text-[#eff6ef] leading-none">{commitState.totalCount}</span>
-              <p className="text-[9px] text-[#61746a]">commits</p>
+              <span className="text-base font-bold text-[#111111] leading-none">{commitState.totalCount}</span>
+              <p className="text-[9px] text-[#8b857b]">commits</p>
             </div>
           )}
         </div>
 
         {/* Progress bar */}
         <div className="mb-4">
-          <div className="flex justify-between text-[10px] text-[#61746a] mb-1.5">
+          <div className="flex justify-between text-[10px] text-[#8b857b] mb-1.5">
             <span className="truncate pr-2">{project.tagline}</span>
             <span className="flex-shrink-0">
               {project.mvpProgress === 100 ? "Live ✓" : `${project.mvpProgress}%`}
             </span>
           </div>
-          <div className="h-1 bg-[#1a2923] rounded-full overflow-hidden">
+          <div className="h-1 bg-[#ebe5db] rounded-full overflow-hidden">
             <div
-              className={`h-full rounded-full transition-all duration-700 ${STATUS_BAR[project.status] ?? "bg-[#61746a]"}`}
+              className={`h-full rounded-full transition-all duration-700 ${STATUS_BAR[project.status] ?? "bg-[#8b857b]"}`}
               style={{ width: `${project.mvpProgress}%` }}
             />
           </div>
@@ -141,10 +141,10 @@ function ProjectCard({ project, commitState }: { project: Project; commitState: 
             <div className="space-y-2 py-1">
               {[0, 1, 2].map((i) => (
                 <div key={i} className="flex gap-2.5 animate-pulse">
-                  <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#24372f] flex-shrink-0" />
+                  <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#d8d1c4] flex-shrink-0" />
                   <div className="flex-1 space-y-1.5">
-                    <div className="h-2.5 bg-[#12201a] rounded w-3/4" />
-                    <div className="h-2 bg-[#12201a] rounded w-1/3" />
+                    <div className="h-2.5 bg-[#efebe4] rounded w-3/4" />
+                    <div className="h-2 bg-[#efebe4] rounded w-1/3" />
                   </div>
                 </div>
               ))}
@@ -158,23 +158,23 @@ function ProjectCard({ project, commitState }: { project: Project; commitState: 
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="group flex items-start gap-2.5 py-1.5 hover:bg-white/[0.02] rounded-lg px-1.5 -mx-1.5 transition-colors"
+                className="group flex items-start gap-2.5 py-1.5 hover:bg-[#f1efea] rounded-lg px-1.5 -mx-1.5 transition-colors"
               >
-                <div className={`mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0 ${i === 0 ? "bg-[#b8ff72]" : "bg-[#4d7263]"}`} />
+                <div className={`mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0 ${i === 0 ? "bg-[#111111]" : "bg-[#b9b2a7]"}`} />
                 <div className="flex-1 min-w-0">
-                  <p className={`text-xs truncate leading-snug ${i === 0 ? "text-[#eff6ef]" : "text-[#a6b8ae]"} group-hover:text-[#eff6ef] transition-colors`}>
+                  <p className={`text-xs truncate leading-snug ${i === 0 ? "text-[#111111]" : "text-[#5f5a52]"} group-hover:text-[#111111] transition-colors`}>
                     {c.message.split("\n")[0]}
                   </p>
                   <div className="flex items-center gap-1.5 mt-0.5">
-                    <code className="text-[9px] text-[#61746a] font-mono">{c.sha.slice(0, 7)}</code>
-                    <span className="text-[9px] text-[#4d7263]">·</span>
-                    <span className="flex items-center gap-1 text-[9px] text-[#61746a]">
+                    <code className="text-[9px] text-[#8b857b] font-mono">{c.sha.slice(0, 7)}</code>
+                    <span className="text-[9px] text-[#c5bfb4]">·</span>
+                    <span className="flex items-center gap-1 text-[9px] text-[#8b857b]">
                       <Clock size={8} />
                       {timeAgo(c.date)}
                     </span>
                   </div>
                 </div>
-                <ExternalLink size={10} className="mt-1 flex-shrink-0 text-[#61746a] opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ExternalLink size={10} className="mt-1 flex-shrink-0 text-[#8b857b] opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
             ))}
         </div>
@@ -251,12 +251,13 @@ export default function Projects() {
       <div className="relative max-w-6xl mx-auto">
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <p className="text-xs text-[#a6b8ae]">Projects · Live from GitHub</p>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#111111]" />
+            <p className="text-xs text-[#8b857b]">Projects · Live from GitHub</p>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#eff6ef] tracking-tight">
-            Built to reward{" "}
-            <span className="text-[#61746a]">consistent motion.</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-[#111111] tracking-tight">
+            Fast shipping first.
+            {" "}
+            <span className="text-[#8b857b]">The bigger bets can wait.</span>
           </h2>
         </div>
 
