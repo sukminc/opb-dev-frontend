@@ -2,7 +2,14 @@
 
 import { Clock, ExternalLink, GitBranch } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { projects, type Project, type ProjectRepoType, type ProjectStatus } from "../data/projects";
+import {
+  projects,
+  type Project,
+  type ProjectCategory,
+  type ProjectRepoType,
+  type ProjectStage,
+  type ProjectStatus,
+} from "../data/projects";
 
 const GH_OWNER = "sukminc";
 
@@ -35,8 +42,43 @@ const REPO_TYPE_BASELINE: Record<ProjectRepoType, number> = {
 
 const STATUS_MULTIPLIER: Record<ProjectStatus, number> = {
   live: 1,
-  building: 1,
+  building: 0.9,
   idea: 1.35,
+};
+
+const CATEGORY_PRIORITY: Record<ProjectCategory, number> = {
+  featured: 0,
+  poker: 1,
+  ops: 2,
+  archive: 3,
+};
+
+const STAGE_LABELS: Record<ProjectStage, string> = {
+  prototype: "Prototype",
+  "mvp-loop": "MVP Loop",
+  "workflow-build": "Workflow Build",
+  concept: "Concept",
+  "ops-layer": "Ops Layer",
+  archive: "Archive",
+};
+
+const CATEGORY_META: Record<ProjectCategory, { title: string; description: string }> = {
+  featured: {
+    title: "Featured Products",
+    description: "The products most closely tied to the 1% Better brand and most likely to ship into real revenue first.",
+  },
+  poker: {
+    title: "Poker Product Line",
+    description: "Products that belong specifically to the poker brand: exploit analysis, staking, and trust-heavy decision workflows.",
+  },
+  ops: {
+    title: "Operating Layer",
+    description: "Internal systems that help the whole portfolio ship more consistently.",
+  },
+  archive: {
+    title: "Archive / Proof of Work",
+    description: "Past work and interview artifacts that support the story, but are not active brand products.",
+  },
 };
 
 function getRecommendedMvpTarget(project: Project, recent14Count: number | null): number {
@@ -45,7 +87,8 @@ function getRecommendedMvpTarget(project: Project, recent14Count: number | null)
   const baseline = REPO_TYPE_BASELINE[project.repoType];
   const recent = recent14Count ?? 0;
   const activityAdjustment = Math.min(12, recent * 2);
-  const target = Math.round((baseline + activityAdjustment) * STATUS_MULTIPLIER[project.status]);
+  const featuredAdjustment = project.category === "featured" ? 0.72 : 1;
+  const target = Math.round((baseline + activityAdjustment) * STATUS_MULTIPLIER[project.status] * featuredAdjustment);
 
   return Math.max(6, target);
 }
@@ -58,12 +101,15 @@ function getMvpProgress(project: Project, totalCount: number | null, recent14Cou
 }
 
 function getMvpLabel(project: Project, progress: number, loading: boolean): string {
+  if (project.stage === "archive") return "Archive";
   if (project.status === "live" || progress >= 100) return "Live ✓";
   if (loading) return "Syncing...";
-  return `${progress}%`;
+  return `${STAGE_LABELS[project.stage]} · ${progress}%`;
 }
 
 function getMvpHint(project: Project, recent14Count: number | null): string {
+  if (project.category === "archive") return "Proof-of-work archive";
+  if (project.category === "featured") return "Core brand product";
   if (project.status === "live") return "MVP reached";
   const target = getRecommendedMvpTarget(project, recent14Count);
   const recent = recent14Count ?? 0;
@@ -285,7 +331,8 @@ export default function Projects() {
           setCommitMap((snap) => {
             sortedSlugsRef.current = [...projects]
               .sort((a, b) => {
-                // featured always pins to top
+                const categoryDelta = CATEGORY_PRIORITY[a.category] - CATEGORY_PRIORITY[b.category];
+                if (categoryDelta !== 0) return categoryDelta;
                 if (a.featured && !b.featured) return -1;
                 if (!a.featured && b.featured) return 1;
                 const aDate = snap[a.slug]?.commits[0]?.date ?? "";
@@ -304,6 +351,11 @@ export default function Projects() {
   const displayOrder = sortedSlugsRef.current
     ? sortedSlugsRef.current.map((slug) => projects.find((p) => p.slug === slug)!).filter(Boolean)
     : projects;
+  const sections = (["featured", "poker", "ops", "archive"] as ProjectCategory[]).map((category) => ({
+    category,
+    meta: CATEGORY_META[category],
+    items: displayOrder.filter((project) => project.category === category),
+  }));
 
   return (
     <section id="projects" className="section-shell py-24 px-6">
@@ -314,23 +366,34 @@ export default function Projects() {
             <p className="text-xs text-[#8b857b]">Projects · Latest linked GitHub activity</p>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-[#111111] tracking-tight">
-            Fast shipping first.
+            Brand first.
             {" "}
-            <span className="text-[#8b857b]">The bigger bets can wait.</span>
+            <span className="text-[#8b857b]">Archives stay visible, but products stay clear.</span>
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-[#5f5a52]">
-            Each card is tied to one GitHub repository. The latest commit and total
-            commit count update from that repo, then the cards are re-sorted by recent activity.
+            The public portfolio is separated into active 1% Better products, poker-specific product lines,
+            internal operating tools, and archived proof-of-work. GitHub activity still updates each card,
+            but brand meaning now comes first.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {displayOrder.map((p) => (
-            <ProjectCard
-              key={p.slug}
-              project={p}
-              commitState={commitMap[p.slug] ?? { commits: [], totalCount: null, recent14Count: null, loading: false }}
-            />
+        <div className="space-y-10">
+          {sections.map((section) => (
+            <div key={section.category}>
+              <div className="mb-4">
+                <h3 className="text-xl md:text-2xl font-semibold text-[#111111]">{section.meta.title}</h3>
+                <p className="mt-2 max-w-3xl text-sm leading-7 text-[#5f5a52]">{section.meta.description}</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {section.items.map((p) => (
+                  <ProjectCard
+                    key={p.slug}
+                    project={p}
+                    commitState={commitMap[p.slug] ?? { commits: [], totalCount: null, recent14Count: null, loading: false }}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,5 +1,7 @@
 export type ProjectStatus = "live" | "building" | "idea";
 export type ProjectRepoType = "mobile-app" | "web-app" | "automation" | "platform" | "data-pipeline" | "validation";
+export type ProjectCategory = "featured" | "poker" | "ops" | "archive";
+export type ProjectStage = "prototype" | "mvp-loop" | "workflow-build" | "concept" | "ops-layer" | "archive";
 
 export interface Project {
   slug: string;
@@ -8,6 +10,8 @@ export interface Project {
   description: string;
   status: ProjectStatus;
   repoType: ProjectRepoType;
+  category: ProjectCategory;
+  stage: ProjectStage;
   tags: string[];
   url?: string;
   featured?: boolean;
@@ -21,11 +25,13 @@ export const projects: Project[] = [
     slug: "opb-today",
     repoName: "one-percent-better-today",
     title: "1% Better Today",
-    tagline: "A tiny daily reset for staying in motion.",
+    tagline: "The core daily product in the 1% Better brand.",
     description:
-      "A tiny daily reset app built to ship quickly and prove the loop: one action, one tap, no guilt, no setup friction. This is the kind of product 1% Better is focused on right now: small, clear, and easy to release.",
+      "The clearest expression of the 1% Better thesis so far: one small action, one clean loop, and almost no setup friction. Early stage, but strategically the core product because it is the most likely to launch first and validate the brand.",
     status: "building",
     repoType: "mobile-app",
+    category: "featured",
+    stage: "prototype",
     tags: ["FastAPI", "Supabase", "Stripe", "iOS", "Android"],
     url: "https://github.com/sukminc/one-percent-better-today",
     featured: true,
@@ -35,26 +41,30 @@ export const projects: Project[] = [
   {
     slug: "onepercentbetter",
     repoName: "one-percent-better-poker",
-    title: "1% Better Edge",
-    tagline: "A deeper decision-support product still in the idea phase.",
+    title: "1% Better - Exploit Better",
+    tagline: "Poker decision support and exploit intelligence.",
     description:
-      "A longer-horizon analytics product where model-driven signals and LLM-assisted workflows may eventually converge. Important to the bigger story, but not the primary focus of this landing page right now.",
+      "The main poker product line: decision support, exploit analysis, and a deeper product thesis for players looking to improve edge. Important to the poker brand, but still earlier than the simple consumer products.",
     status: "idea",
     repoType: "platform",
+    category: "poker",
+    stage: "concept",
     tags: ["Next.js", "FastAPI", "SQLAlchemy", "Pandas", "NumPy", "Vercel"],
-    url: "https://onepercentbetter.poker",
+    url: "https://github.com/sukminc/one-percent-better-poker",
     seed: 47,
     mvpEta: "Target MVP: June 2026",
   },
   {
     slug: "opb-os",
     repoName: "one-percent-better-os",
-    title: "1% Better OS",
+    title: "1% Better - OS",
     tagline: "Workflow automation for repeatable project shipping.",
     description:
       "An internal operating system for the 1% Better build loop. It already scaffolds new projects, audits sprint windows, syncs landing-page entries, checks README quality, and generates weekly operating reviews so the portfolio stays current without manual drift.",
     status: "building",
     repoType: "automation",
+    category: "ops",
+    stage: "ops-layer",
     tags: ["Python", "GitHub Actions", "JSON", "CLI"],
     url: "https://github.com/sukminc/one-percent-better-os",
     seed: 56,
@@ -64,11 +74,13 @@ export const projects: Project[] = [
     slug: "bluejays-moneyball",
     repoName: "bluejays-financial-mlops",
     title: "Blue Jays Moneyball ETL",
-    tagline: "Production-Grade ELT & Self-Validating Pipeline",
+    tagline: "Archive of data engineering work and pipeline thinking.",
     description:
-      "Airflow + PostgreSQL pipeline integrating Spotrac payroll vs. MLB stats; DQ gates block all downstream transformation until checks pass — no silent failures. Regression DAG fires known-bad datasets against DQ gates, asserting failure — guardrails are CI/CD citizens that break the build if the safety net breaks.",
+      "An archive project that captures data engineering work: Airflow orchestration, PostgreSQL modeling, and testable pipeline quality gates. It stays on the site as proof of craft, not as an active product line.",
     status: "live",
     repoType: "data-pipeline",
+    category: "archive",
+    stage: "archive",
     tags: ["Python", "Apache Airflow", "PostgreSQL", "Docker", "GitHub Actions"],
     url: "https://github.com/sukminc/bluejays-financial-mlops",
     seed: 18,
@@ -76,12 +88,14 @@ export const projects: Project[] = [
   {
     slug: "actionkeeper",
     repoName: "one-percent-better-poker-staking",
-    title: "ActionKeeper",
-    tagline: "Structured deal workflows for trust-heavy decisions.",
+    title: "1% Better - Action Keeper",
+    tagline: "Poker staking and action workflows with cleaner agreements.",
     description:
-      "A structured workflow product for offers, counters, and agreement tracking. More mature than a sketch, still early enough that it belongs in the second-wave bucket rather than the current hero story.",
+      "A poker-adjacent workflow product for staking deals, offers, counters, and agreement tracking. It belongs clearly in the poker product family, not as a generic standalone brand.",
     status: "idea",
     repoType: "platform",
+    category: "poker",
+    stage: "workflow-build",
     tags: ["Python (FastAPI)", "TypeScript (Next.js)", "PostgreSQL", "Docker", "Stripe"],
     url: "https://github.com/sukminc/one-percent-better-poker-staking",
     seed: 31,
@@ -90,12 +104,14 @@ export const projects: Project[] = [
   {
     slug: "onepercent-focus",
     repoName: "one-percent-better-focus",
-    title: "1% Better Focus",
-    tagline: "A lightweight focus timer built to ship fast.",
+    title: "1% Better - Focus",
+    tagline: "A simple focus tool built to ship fast inside the brand.",
     description:
-      "A lightweight focus timer built as a fast-release product: simple loop, clear value, and low friction. It represents the current 1% Better thesis better than the deeper products do.",
+      "A lightweight focus timer that supports the same simple-shipping thesis as Today. Smaller than the core product, but still part of the public 1% Better product family.",
     status: "building",
     repoType: "mobile-app",
+    category: "featured",
+    stage: "mvp-loop",
     tags: ["Flutter", "Dart", "Supabase", "iOS", "Android"],
     url: "https://github.com/sukminc/one-percent-better-focus",
     seed: 63,
@@ -105,11 +121,13 @@ export const projects: Project[] = [
     slug: "twelvelabs-validator",
     repoName: "TwelveLabs",
     title: "TwelveLabs API Validator",
-    tagline: "Multimodal Search Validation Framework",
+    tagline: "Interview challenge archive for multimodal API validation.",
     description:
-      "JSON-driven validation suite for TwelveLabs multimodal video search API — decouples test logic from test data; covers linguistic edge cases (plurals, i18n: Korean/Japanese/Arabic), fuzzy matching, and injection attempts. Built to the same standard as a production observability tool.",
+      "A technical interview challenge delivered as a serious validation suite. Useful as proof of engineering quality, but it is an archive item rather than a live brand product.",
     status: "live",
     repoType: "validation",
+    category: "archive",
+    stage: "archive",
     tags: ["Python", "TwelveLabs", "Pytest"],
     url: "https://github.com/sukminc/TwelveLabs",
     seed: 12,

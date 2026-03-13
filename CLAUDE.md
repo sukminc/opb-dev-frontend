@@ -4,7 +4,7 @@
 Public brand hub and shipping board for the 1% Better portfolio.
 
 - Primary role: show current projects, recent GitHub execution, and funding intent
-- Current deploy target: `onepercentbetter.poker`
+- Current deploy target: primary 1% Better landing domain
 - Long-term brand direction: `OnePercentBetter.now`
 - Local repo: `one-percent-better-landing`
 
@@ -33,23 +33,28 @@ Chris S. Yoon · Senior Data Engineer & AI Builder · Toronto, ON
 Current public projects live in `frontend/app/data/projects.ts`.
 
 At the moment the site should represent:
-- `opb-today`
-- `onepercentbetter`
-- `opb-os`
-- `bluejays-moneyball`
-- `actionkeeper`
-- `onepercent-focus`
-- `twelvelabs-validator`
+- Featured Products:
+  - `1% Better Today`
+  - `1% Better - Focus`
+- Poker Product Line:
+  - `1% Better - Exploit Better`
+  - `1% Better - Action Keeper`
+- Operating Layer:
+  - `1% Better - OS`
+- Archive / Proof of Work:
+  - `Blue Jays Moneyball ETL`
+  - `TwelveLabs API Validator`
 
 ## Project Card Rules
 - Every project card must map to one repo via `repoName`
 - Latest commit and total commit count come from `frontend/app/api/commits/route.ts`
-- Project ordering is driven by recent GitHub activity, with featured cards pinned first
+- Project grouping is driven by `category`, then recent GitHub activity inside each group
 - MVP progress is not hand-entered anymore
 - MVP progress is auto-recommended from:
   - project `status`
   - project `repoType`
   - recent 14-day commit activity
+- Featured products should read like strategic products, not like low-progress experiments
 - Keep `mvpEta` human-authored, because timeline is still editorial judgment
 
 ## Editing Rules

@@ -19,14 +19,16 @@ Each project card should:
 - show latest linked GitHub activity
 - display an MVP ETA set by judgment
 - compute MVP progress automatically from `status`, `repoType`, and recent 14-day activity
+- belong clearly to one of four groups: featured products, poker product line, operating layer, or archive
 
 Progress is intentionally heuristic. The goal is to show truthful momentum, not fake precision.
 
 ## Current Direction
 
 - simple, fast-shipping products stay near the center of the story
-- deeper products can exist publicly, but should not dominate the narrative unless they are actively shipping
-- `1% Better OS` belongs on the site because it is now part of the real build workflow
+- poker projects should read as one explicit product family, not random side projects
+- archive work should support credibility without confusing the active brand
+- `1% Better - OS` belongs on the site because it is now part of the real build workflow
 
 ## Local Development
 
