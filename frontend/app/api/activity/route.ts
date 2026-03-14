@@ -32,7 +32,7 @@ function isPublicRepo(repoName: string) {
   }
 
   const matchedProject = projects.find((project) => project.repoName === repoName);
-  return matchedProject?.visibility !== "internal";
+  return matchedProject?.visibility === "public";
 }
 
 export async function GET() {
@@ -44,6 +44,7 @@ export async function GET() {
     new Set([
       ...ALWAYS_INCLUDE_REPOS,
       ...projects
+        .filter((project) => project.visibility === "public")
         .map((project) => project.repoName)
         .filter((repoName): repoName is string => Boolean(repoName)),
     ])

@@ -1,110 +1,147 @@
-"use client";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import BrandMark from "./BrandMark";
 
-import Image from "next/image";
-import type { CSSProperties } from "react";
-import { useState } from "react";
+const signals = [
+  {
+    label: "Role",
+    value: "Senior Data Engineer",
+    detail: "Shipping small product loops while staying sharp on production systems.",
+  },
+  {
+    label: "Mode",
+    value: "Build in public",
+    detail: "Use visible work to create signal instead of waiting for a perfect launch.",
+  },
+  {
+    label: "Focus",
+    value: "Useful first",
+    detail: "Tight scope, fast feedback, and enough clarity to ship again tomorrow.",
+  },
+];
 
-const notes = [
-  "Public products stay small enough to ship before they become architecture projects.",
-  "This website is the trust layer for hiring, funding, and visible execution.",
-  "Poker stays a separate vertical until it earns more surface area.",
+const principles = [
+  "Keep the product small enough to ship before it turns into a systems project.",
+  "Use this site as the public trust layer for hiring, product, and next-step conversations.",
+  "Let each new release earn more surface area instead of claiming it early.",
 ];
 
 export default function Hero() {
-  const [offset, setOffset] = useState({ x: 0, y: 0, r: 0 });
-
   return (
-    <section
-      className="relative overflow-hidden px-6 pt-28 pb-16 sm:pb-24"
-      onMouseMove={(event) => {
-        const rect = event.currentTarget.getBoundingClientRect();
-        const x = ((event.clientX - rect.left) / rect.width - 0.5) * 18;
-        const y = ((event.clientY - rect.top) / rect.height - 0.5) * 18;
-        setOffset({ x, y, r: x * 0.08 });
-      }}
-      onMouseLeave={() => setOffset({ x: 0, y: 0, r: 0 })}
-    >
-      <div className="absolute inset-0 paper-grid opacity-50 pointer-events-none" />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={
-          {
-            "--hero-x": `${offset.x}px`,
-            "--hero-y": `${offset.y}px`,
-            "--hero-r": `${offset.r}deg`,
-          } as CSSProperties
-        }
-      >
-        <div className="hero-orbit absolute right-[-2%] top-8 h-[32rem] w-[32rem] rounded-full border border-[#d7d0c5] opacity-70" />
-        <div className="hero-orbit absolute right-[6%] top-20 h-[24rem] w-[24rem] rounded-full border border-[#e5dfd5]" style={{ animationDelay: "0.8s" }} />
-        <div className="hero-symbol absolute right-[4%] top-12 opacity-[0.12]">
-          <Image
-            src="/logo.svg"
-            alt=""
-            aria-hidden="true"
-            width={420}
-            height={420}
-            priority
-            className="h-[18rem] w-[18rem] sm:h-[22rem] sm:w-[22rem] lg:h-[28rem] lg:w-[28rem]"
-          />
-        </div>
-        <div className="absolute right-[9%] top-[24rem] text-[11px] font-mono uppercase tracking-[0.22em] text-[#8b857b]">
-          1.01 ^ 365 = 37.8x
-        </div>
-      </div>
+    <section className="relative overflow-hidden px-6 pb-18 pt-30 sm:pb-24 sm:pt-34">
+      <div className="pointer-events-none absolute inset-0 paper-grid opacity-24 sm:opacity-30" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-52 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.65),_transparent_72%)]" />
+      <div className="pointer-events-none absolute right-[-12rem] top-20 hidden h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,_rgba(111,98,80,0.12),_transparent_68%)] lg:block" />
+      <div className="pointer-events-none absolute left-[-10rem] bottom-[-12rem] hidden h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.55),_transparent_68%)] lg:block" />
 
       <div className="relative mx-auto max-w-6xl">
-        <div className="max-w-4xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#ddd8cf] bg-[#fbfaf7] px-4 py-2">
-            <span className="h-2 w-2 rounded-full bg-[#111111]" />
-            <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#5f5a52]">
-              one core value
-            </span>
+        <div className="grid gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-end">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#ddd3c6] bg-[#fbf7f0] px-4 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#111111]" />
+              <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#6f6250]">
+                public build surface
+              </span>
+            </div>
+            <h1 className="mt-8 max-w-5xl text-[3.45rem] font-semibold leading-[0.92] tracking-[-0.08em] text-[#111111] sm:text-[4.6rem] lg:text-[6.2rem]">
+              Build useful things in public.
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-[1.08rem] leading-8 text-[#5f5a52] sm:text-[1.18rem]">
+              1% Better.dev is the public layer for my next season of work:
+              small products, fast feedback loops, and visible execution that
+              creates real signal for hiring, product, and future bets.
+            </p>
+
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-[#7f7569]">
+              Built by{" "}
+              <a
+                href="https://linkedin.com/in/sukminyoon"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#111111] underline decoration-[#b9b2a7] underline-offset-4 transition-colors hover:text-[#5f5a52]"
+              >
+                Chris S. Yoon
+              </a>
+              . Senior data engineer using this surface to keep shipping while
+              the next role, product, and operating system take shape.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#projects"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#111111] bg-[#111111] px-5 py-3 text-sm font-medium text-[#fbf7f0] transition-colors hover:bg-[#252525]"
+              >
+                See current work
+                <ArrowRight size={16} />
+              </a>
+              <Link
+                href="/about"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#d2c7b6] bg-[#fbf7f0] px-5 py-3 text-sm font-medium text-[#111111] transition-colors hover:border-[#b9b2a7] hover:bg-[#f4eee5]"
+              >
+                Read the story
+                <ArrowUpRight size={16} />
+              </Link>
+            </div>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              {signals.map((signal) => (
+                <div key={signal.label} className="rounded-[1.5rem] border border-[#ddd3c6] bg-[#fbf7f0]/92 p-4">
+                  <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#8b857b]">
+                    {signal.label}
+                  </p>
+                  <p className="mt-3 text-lg font-semibold tracking-[-0.04em] text-[#111111]">
+                    {signal.value}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-[#5f5a52]">
+                    {signal.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <h1 className="mt-8 max-w-5xl text-5xl font-semibold tracking-[-0.06em] text-[#111111] sm:text-7xl lg:text-[6.1rem] lg:leading-[0.95]">
-            Ship small.
-            <br />
-            Learn fast.
-            <br />
-            Keep going.
-          </h1>
+          <div className="lg:justify-self-end">
+            <div className="glass-panel overflow-hidden rounded-[2.5rem] border px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#8b857b]">
+                    one percent, repeated
+                  </p>
+                  <h2 className="mt-3 text-2xl font-semibold tracking-[-0.05em] text-[#111111] sm:text-3xl">
+                    Small enough to ship. Strong enough to mean something.
+                  </h2>
+                </div>
+                <span className="hidden rounded-full border border-[#ddd3c6] bg-[#f7f0e4] px-3 py-1 text-[10px] font-mono uppercase tracking-[0.18em] text-[#7d6850] sm:inline-flex">
+                  1% Better.dev
+                </span>
+              </div>
 
-          <p className="mt-8 max-w-3xl text-lg leading-8 text-[#5f5a52] sm:text-xl">
-            1% Better is a simple-product brand. The goal is not to build the
-            biggest system first. The goal is to ship small, useful things in
-            public, learn fast, and let that momentum compound.
-          </p>
+              <div className="mt-8 flex justify-center rounded-[2.4rem] border border-[#ddd3c6] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.92),_rgba(247,240,228,0.94)_58%,_rgba(241,231,216,0.92)_100%)] px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] sm:px-8 lg:justify-start">
+                <BrandMark size="hero" showWordmark={true} subtitle="dev · ship small. learn fast." />
+              </div>
 
-          <p className="mt-5 max-w-3xl text-sm leading-7 text-[#5f5a52]">
-            The logo is the thesis. One percent looks small in isolation. Repeated
-            daily, it becomes compounding. That idea sits underneath the apps, the
-            pacing, and the way this whole brand is built.
-          </p>
+              <p className="mt-8 max-w-lg text-sm leading-7 text-[#5f5a52] sm:text-[15px]">
+                The brand is not about motivational copy. It is about a working
+                pace: keep the surface simple, ship the useful version first, and
+                let repeated proof build trust over time.
+              </p>
 
-          <p className="mt-5 max-w-3xl text-sm leading-7 text-[#8b857b]">
-            `1% Better.dev` is the public build, hiring, and funding layer.
-            `1% Better.poker` is a separate specialist vertical. For now, the
-            homepage stays centered on simple products and visible execution.
-          </p>
-
-          <p className="mt-5 max-w-2xl text-sm leading-7 text-[#8b857b]">
-            Built by{" "}
-            <a
-              href="https://linkedin.com/in/sukminyoon"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#111111] underline decoration-[#b9b2a7] underline-offset-4 transition-colors hover:text-[#5f5a52]"
-            >
-              Chris S. Yoon
-            </a>
-            . Senior data engineer, currently in a learn-fast season, using this
-            page to ship ideas quickly while buying runway for what comes next.
-          </p>
-
+              <div className="mt-8 space-y-4">
+                {principles.map((principle, index) => (
+                  <div key={principle} className="flex gap-4 border-t border-[#e8e0d4] pt-4 first:border-t-0 first:pt-0">
+                    <span className="w-7 flex-shrink-0 text-xs font-mono text-[#8b857b]">
+                      0{index + 1}
+                    </span>
+                    <p className="text-sm leading-6 text-[#5f5a52]">{principle}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
-          <div className="mt-16 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="mt-16 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="glass-panel rounded-[2rem] p-6 sm:p-8">
             <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#8b857b]">
               Current thesis
@@ -115,23 +152,23 @@ export default function Hero() {
                   1%
                 </p>
                 <p className="mt-2 text-sm leading-6 text-[#5f5a52]">
-                  Better every cycle is a strategy, not a slogan.
+                  Improvement is a compounding operating system, not branding theater.
                 </p>
               </div>
               <div>
                 <p className="text-4xl font-semibold tracking-[-0.05em] text-[#111111]">
-                  37.8x
+                  Useful
                 </p>
                 <p className="mt-2 text-sm leading-6 text-[#5f5a52]">
-                  What tiny gains look like when they compound long enough.
+                  The first version should help someone before it tries to impress everyone.
                 </p>
               </div>
               <div>
                 <p className="text-4xl font-semibold tracking-[-0.05em] text-[#111111]">
-                  Now
+                  Visible
                 </p>
                 <p className="mt-2 text-sm leading-6 text-[#5f5a52]">
-                  Today and Focus are the cleanest expressions of the current thesis.
+                  Public proof matters because it shortens the distance between idea and trust.
                 </p>
               </div>
             </div>
@@ -139,10 +176,14 @@ export default function Hero() {
 
           <div className="glass-panel rounded-[2rem] p-6 sm:p-8">
             <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#8b857b]">
-              What changes next
+              Scope control
             </p>
             <div className="mt-5 flex flex-col gap-4">
-              {notes.map((note, index) => (
+              {[
+                "Keep poker as a separate specialist vertical until it earns more brand surface.",
+                "Use the landing page as a clean hiring, product, and credibility layer.",
+                "Let the operating system stay underneath the brand instead of dominating it.",
+              ].map((note, index) => (
                 <div key={note} className="flex gap-4 border-t border-[#ebe5db] pt-4 first:border-t-0 first:pt-0">
                   <span className="text-xs font-mono text-[#8b857b]">
                     0{index + 1}

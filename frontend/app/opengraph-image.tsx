@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { BRAND } from "./lib/brand";
 
 export const runtime = "edge";
 export const alt = "1% Better — Small apps. Fast loops.";
@@ -10,7 +11,8 @@ export default function OGImage() {
     (
       <div
         style={{
-          background: "#f5f3ef",
+          background:
+            "linear-gradient(180deg, #f7f5f1 0%, #f3efe7 100%)",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -20,26 +22,50 @@ export default function OGImage() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
           <div
             style={{
-              width: "52px",
-              height: "52px",
-              borderRadius: "50%",
-              border: "2px solid #111111",
+              width: "72px",
+              height: "72px",
+              borderRadius: "22px",
+              border: `3px solid ${BRAND.ink}`,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#111111",
-              fontSize: "16px",
+              color: BRAND.ink,
+              background: BRAND.surface,
+              boxShadow: "0 18px 42px rgba(24, 21, 17, 0.06)",
+              fontSize: "28px",
               fontWeight: 700,
+              letterSpacing: "-0.12em",
             }}
           >
             1%
           </div>
-          <span style={{ color: "#6b655d", fontSize: "18px", letterSpacing: "0.05em" }}>
-            1% Better
-          </span>
+          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+            <span
+              style={{
+                color: BRAND.ink,
+                fontSize: "24px",
+                fontWeight: 700,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+              }}
+            >
+              1% Better
+            </span>
+            <span
+              style={{
+                color: BRAND.muted,
+                fontSize: "12px",
+                fontFamily: "monospace",
+                letterSpacing: "0.28em",
+                textTransform: "uppercase",
+              }}
+            >
+              ship small. learn fast.
+            </span>
+          </div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -47,15 +73,15 @@ export default function OGImage() {
             style={{
               fontSize: "64px",
               fontWeight: 700,
-              color: "#111111",
+              color: BRAND.ink,
               lineHeight: 1.05,
               letterSpacing: "-0.02em",
             }}
           >
             Small apps.
-            <span style={{ color: "#6b655d" }}> Fast loops.</span>
+            <span style={{ color: BRAND.muted }}> Fast loops.</span>
           </div>
-          <div style={{ fontSize: "24px", color: "#6b655d", maxWidth: "760px", lineHeight: 1.4 }}>
+          <div style={{ fontSize: "24px", color: BRAND.muted, maxWidth: "760px", lineHeight: 1.4 }}>
             A minimal product studio for learning in public, shipping quickly,
             and getting one percent better on every cycle.
           </div>
@@ -67,9 +93,9 @@ export default function OGImage() {
               display: "flex",
               alignItems: "center",
               gap: "12px",
-              background: "#fbfaf7",
-              border: "1px solid #d9d2c8",
-              borderRadius: "8px",
+              background: BRAND.surfaceStrong,
+              border: `1px solid ${BRAND.border}`,
+              borderRadius: "14px",
               padding: "12px 20px",
             }}
           >
@@ -77,12 +103,13 @@ export default function OGImage() {
               style={{
                 width: "36px",
                 height: "36px",
-                borderRadius: "50%",
-                border: "1.5px solid #111111",
+                borderRadius: "12px",
+                border: `1.5px solid ${BRAND.ink}`,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#111111",
+                color: BRAND.ink,
+                background: BRAND.surface,
                 fontSize: "11px",
                 fontWeight: 700,
               }}
@@ -90,10 +117,10 @@ export default function OGImage() {
               SY
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-              <span style={{ color: "#111111", fontSize: "14px", fontWeight: 600 }}>
+              <span style={{ color: BRAND.ink, fontSize: "14px", fontWeight: 600 }}>
                 Chris S. Yoon
               </span>
-              <span style={{ color: "#6b655d", fontSize: "12px" }}>
+              <span style={{ color: BRAND.muted, fontSize: "12px" }}>
                 Product studio · funding page · linkedin.com/in/sukminyoon
               </span>
             </div>
@@ -108,10 +135,10 @@ export default function OGImage() {
                 key={s.label}
                 style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "4px" }}
               >
-                <span style={{ color: "#111111", fontSize: "22px", fontWeight: 700, fontFamily: "monospace" }}>
+                <span style={{ color: BRAND.ink, fontSize: "22px", fontWeight: 700, fontFamily: "monospace" }}>
                   {s.value}
                 </span>
-                <span style={{ color: "#8a8378", fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                <span style={{ color: BRAND.mutedSoft, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.1em" }}>
                   {s.label}
                 </span>
               </div>

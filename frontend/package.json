@@ -8,8 +8,11 @@
     "start": "next start",
     "lint": "eslint",
     "test": "playwright test",
+    "test:visual": "playwright test tests/visual.spec.ts",
+    "test:visual:live": "PLAYWRIGHT_BASE_URL=https://www.onepercentbetter.dev playwright test tests/visual.spec.ts",
     "test:ui": "playwright test --ui",
-    "test:ci": "playwright test --reporter=github"
+    "test:ci": "playwright test --reporter=github",
+    "test:qa": "npm run lint && npm run build && npm test"
   },
   "dependencies": {
     "framer-motion": "^12.35.2",

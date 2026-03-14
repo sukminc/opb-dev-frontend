@@ -21,7 +21,7 @@ test.describe("Navigation", () => {
     await page.locator("a[href='/']").first().click();
 
     await expect(page).toHaveURL(/\/$/);
-    await expect(page.locator("body")).toContainText("Ship small.");
+    await expect(page.locator("body")).toContainText("Build useful things in public.");
   });
 
   test("core pages return 200", async ({ page }) => {

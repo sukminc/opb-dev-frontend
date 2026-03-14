@@ -6,8 +6,7 @@ test.describe("Responsive smoke", () => {
     page.on("pageerror", (err) => errors.push(err.message));
 
     await page.goto("/");
-    await expect(page.locator("body")).toContainText("Ship small.");
-    await expect(page.locator("body")).toContainText("1.01 ^ 365 = 37.8x");
+    await expect(page.locator("body")).toContainText("Build useful things in public.");
 
     expect(errors).toHaveLength(0);
   });

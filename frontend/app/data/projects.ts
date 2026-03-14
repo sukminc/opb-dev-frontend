@@ -16,7 +16,7 @@ export interface Project {
   url?: string;
   featured?: boolean;
   mvpEta?: string;
-  visibility?: "public" | "internal";
+  visibility?: "public" | "private" | "internal";
   readinessSignals?: string[];
   repoName?: string;   // GitHub repo name under sukminc/ (omit if no repo)
 }
@@ -34,9 +34,8 @@ export const projects: Project[] = [
     category: "featured",
     stage: "prototype",
     tags: ["FastAPI", "Supabase", "Stripe", "iOS", "Android"],
-    url: "https://github.com/sukminc/one-percent-better-today",
     featured: true,
-    visibility: "public",
+    visibility: "private",
     mvpEta: "Target MVP: April 2026",
   },
   {

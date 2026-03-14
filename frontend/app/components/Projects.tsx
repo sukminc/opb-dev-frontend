@@ -17,6 +17,10 @@ const REPO_MAP: Record<string, string> = Object.fromEntries(
   projects.filter((p) => p.repoName).map((p) => [p.slug, p.repoName!])
 );
 
+const FETCHABLE_PROJECTS = projects.filter(
+  (project) => Boolean(project.repoName) && project.visibility === "public" && project.category !== "featured"
+);
+
 interface Commit {
   sha: string;
   message: string;
@@ -35,8 +39,12 @@ function isInternalProject(project: Project) {
   return project.visibility === "internal";
 }
 
+function hasPublicRepo(project: Project) {
+  return Boolean(project.repoName) && project.visibility === "public";
+}
+
 function shouldShowRepoDetails(project: Project) {
-  return Boolean(project.repoName) && !isInternalProject(project);
+  return hasPublicRepo(project) && !isInternalProject(project);
 }
 
 const STAGE_BASELINE_PROGRESS: Record<ProjectStage, number> = {
@@ -357,16 +365,24 @@ function RichProjectCard({ project, commitState }: { project: Project; commitSta
 export default function Projects() {
   const [commitMap, setCommitMap] = useState<Record<string, CommitState>>(() =>
     Object.fromEntries(
-      projects.map((p) => [p.slug, { commits: [], totalCount: null, recent14Count: null, loading: !!REPO_MAP[p.slug] }])
+      projects.map((p) => [
+        p.slug,
+        {
+          commits: [],
+          totalCount: null,
+          recent14Count: null,
+          loading: FETCHABLE_PROJECTS.some((project) => project.slug === p.slug),
+        },
+      ])
     )
   );
 
   const sortedSlugsRef = useRef<string[] | null>(null);
   const loadedCount = useRef(0);
-  const totalRepos = projects.filter((p) => REPO_MAP[p.slug]).length;
+  const totalRepos = FETCHABLE_PROJECTS.length;
 
   useEffect(() => {
-    projects.forEach(async (project) => {
+    FETCHABLE_PROJECTS.forEach(async (project) => {
       const repoName = REPO_MAP[project.slug];
       if (!repoName) return;
       try {
@@ -428,12 +444,11 @@ export default function Projects() {
             <p className="text-xs text-[#8b857b]">Projects · Latest linked GitHub activity</p>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-[#111111] tracking-tight">
-            Brand first.
-            {" "}
-            <span className="text-[#8b857b]">The core products whisper. The rest can explain themselves.</span>
+            Current products and public proof.
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-[#5f5a52]">
-            Featured products stay quieter on purpose. The broader product lines, operating layer, and archive still carry the visible GitHub proof.
+            The front page stays focused on a few strong surfaces. Everything
+            underneath still carries enough visible work to prove the pace is real.
           </p>
         </div>
 
