@@ -1,37 +1,39 @@
-# Site Idea — onepercentbetter.poker
+# Historical Site Idea
 
-## Core Purpose
+This file is an archived concept note.
+It is not the current source of truth for the landing repo.
 
-**Funding-first portfolio.** Every project card is a bet — visitors signal real interest by putting money on it. No donations = no work done. Chris only builds what the market actually wants.
+Current canonical direction lives in:
 
-## Funding Philosophy
+- `/Users/chrisyoon/GitHub/one-percent-better-os/brand.json`
+- `/Users/chrisyoon/GitHub/one-percent-better-os/projects.json`
+- `/Users/chrisyoon/GitHub/one-percent-better-os/public_profile.json`
+- `/Users/chrisyoon/GitHub/one-percent-better-landing/CLAUDE.md`
 
-> "돈이 되지 않는 프로젝트, 관심없는 프로젝트에 내 열정을 쏟고 싶지 않아"
-> (I don't want to pour my passion into projects nobody pays for.)
+## What This Note Represents
 
-Interest is measured in poker terms. If people want it built, they act. If not, it's a FOLD.
+An earlier funding-first concept where project prioritization was framed through poker-style backing actions.
 
-## Funding Tiers (Poker Actions)
+Useful as historical context:
 
-| Action | Amount | Meaning |
-|--------|--------|---------|
-| FOLD | $0 | No interest — project gets deprioritized |
-| Check | $10 | Mild interest — "I'd use this" |
-| Call | $20 | Real interest — "Build this" |
-| 10x Raise | $100+ | Strong signal — "I need this ASAP" |
-| All-In | $1,000 | Sponsor-level — dedicated build time |
+- stronger funding language
+- poker-flavored CTA concepts
+- donation-driven project prioritization
 
-All tiers link to BMAC: https://buymeacoffee.com/chris.yoon
+Not canonical now:
 
-## UX — Card Flip Mechanic
+- main landing positioning
+- public project hierarchy
+- repo status definitions
+- current site information architecture
 
-- Projects displayed as a **bento grid of cards**
-- **Front of card:** Project name, one-line description, status tag
-- **Back of card (on hover):** Funding action buttons (FOLD / Check / Call / 10x Raise / All-In)
-- Flip animation via **Framer Motion**
-- Hover = flip; mouse leave = flip back
-- Click any funding button → opens BMAC with preset amount (if supported)
+## Current Direction
 
-## Goal
+The landing site is now a public portfolio and shipping board for the main `1% Better` brand.
 
-Chris prioritizes build time based on which projects accumulate the most funding signals. High-funded projects ship first. Zero-funded projects get folded.
+That means:
+
+- `1% Better Today` stays the core product
+- the site should support hiring and credibility first
+- poker remains a separate vertical
+- project cards should reflect OS truth, not a standalone funding thesis

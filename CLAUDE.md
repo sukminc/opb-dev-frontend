@@ -10,6 +10,8 @@ Public brand hub and shipping board for the 1% Better portfolio.
 
 Rule: if a project is not listed in `frontend/app/data/projects.ts`, it is not an active public brand asset.
 Rule: if `frontend/app/data/projects.ts` conflicts with `../one-percent-better-os/projects.json` or `../one-percent-better-os/public_profile.json`, treat the OS files as canonical and update the landing data intentionally.
+Rule: landing display status should map from OS status, not invent a parallel workflow state:
+`sprint_active -> building`, `proof_of_work -> live`, `idea -> idea`.
 
 ## Owner
 Chris S. Yoon · Senior Data Engineer & AI Builder · Toronto, ON

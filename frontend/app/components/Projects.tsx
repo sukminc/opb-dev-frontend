@@ -433,7 +433,7 @@ export default function Projects() {
     category,
     meta: CATEGORY_META[category],
     items: displayOrder.filter((project) => project.category === category),
-  }));
+  })).filter((section) => section.items.length > 0);
 
   return (
     <section id="projects" className="section-shell py-24 px-6">
