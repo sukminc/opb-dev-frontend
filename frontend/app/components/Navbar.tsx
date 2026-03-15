@@ -41,10 +41,16 @@ export default function Navbar() {
               small products. real signal.
             </span>
           </div>
-          <a href="#projects" className="text-sm text-[#5f5a52] transition-colors hover:text-[#6f5336]">
+          <a
+            href="#projects"
+            className="inline-flex min-h-10 items-center rounded-full px-2 text-sm text-[#5f5a52] transition-colors hover:text-[#6f5336]"
+          >
             Projects
           </a>
-          <Link href="/about" className="text-sm text-[#5f5a52] transition-colors hover:text-[#6f5336]">
+          <Link
+            href="/about"
+            className="inline-flex min-h-10 items-center rounded-full px-2 text-sm text-[#5f5a52] transition-colors hover:text-[#6f5336]"
+          >
             About
           </Link>
         </div>

@@ -43,7 +43,7 @@ export default function Hero() {
                 hiring + trust surface
               </span>
             </div>
-            <h1 className="mt-8 max-w-5xl text-[3.45rem] font-semibold leading-[0.92] tracking-[-0.08em] text-[#111111] sm:text-[4.6rem] lg:text-[6.2rem]">
+            <h1 className="mt-8 max-w-5xl text-[3.1rem] font-semibold leading-[0.92] tracking-[-0.08em] text-[#111111] sm:text-[4.6rem] lg:text-[6.2rem]">
               Senior data engineer building useful products in public.
             </h1>
 
