@@ -97,7 +97,7 @@ The clearest mixing points are:
 
 Important drift against canonical strategy:
 
-- In `one-percent-better-os/projects.json`, the poker repos are marked with `"landing": false`.
+- In `opb-os/projects.json`, the poker repos are marked with `"landing": false`.
 - In `one-percent-better-landing/CLAUDE.md`, the rule is to keep the dev surface centered on hiring and trust, not poker commercialization.
 
 So the current codebase is mostly respecting the strategy at the repo-card level, but some landing copy still leaks poker into the dev narrative more than necessary.
@@ -173,8 +173,8 @@ Smallest useful change:
 
 - Add a short review habit: whenever landing copy changes, check it against
   - `one-percent-better-landing/CLAUDE.md`
-  - `one-percent-better-os/public_profile.json`
-  - `one-percent-better-os/projects.json`
+  - `opb-os/public_profile.json`
+  - `opb-os/projects.json`
 
 Why:
 
