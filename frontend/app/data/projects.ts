@@ -1,6 +1,6 @@
 export type ProjectStatus = "live" | "building" | "idea";
 export type ProjectRepoType = "mobile-app" | "web-app" | "automation" | "platform" | "data-pipeline" | "validation";
-export type ProjectCategory = "featured" | "poker" | "ops" | "archive";
+export type ProjectCategory = "featured" | "secondary" | "ops" | "archive";
 export type ProjectStage = "prototype" | "mvp-loop" | "workflow-build" | "concept" | "ops-layer" | "archive";
 
 export interface Project {
@@ -23,34 +23,33 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "opb-coaching",
-    repoName: "opb-poker-app",
-    title: "1% Better - Coaching",
-    tagline: "AI coaching platform with credit economy and Stripe billing.",
+    slug: "private-ai-poker-backend",
+    title: "Private AI Poker Backend",
+    tagline: "Current main build in poker, rebuilt from the foundation up to support backend truth, memory, and product iteration.",
     description:
-      "A live subscription SaaS product. GPT-4o-mini powered coaching loop, credit wallet, Stripe payments, and Supabase backend — built and shipped solo.",
-    status: "live",
-    repoType: "web-app",
+      "A private poker performance system focused on session ingestion, cumulative memory, runtime outputs, and reviewable product logic. The public surface shows the technical depth, not the private strategy.",
+    status: "building",
+    repoType: "platform",
     category: "featured",
-    stage: "mvp-loop",
-    tags: ["Next.js", "GPT-4o-mini", "Stripe", "Supabase", "TypeScript"],
+    stage: "workflow-build",
+    tags: ["Python", "PostgreSQL", "FastAPI", "Pytest", "JSON"],
+    featured: true,
     url: "https://onepercentbetter.poker",
     visibility: "private",
-    featured: true,
+    mvpEta: "Private build · technical proof only",
   },
   {
     slug: "opb-today",
     repoName: "opb-dev-today",
     title: "1% Better Today",
-    tagline: "A narrow daily product loop built to ship quickly and earn trust through use.",
+    tagline: "A smaller daily product loop that now sits behind the current main build.",
     description:
-      "The clearest product thesis in the brand so far: one small action, one clean loop, and a scope tight enough to ship.",
+      "A narrow loop still worth showing, but no longer the center of the public story now that the poker backend has become the main focus.",
     status: "building",
     repoType: "mobile-app",
-    category: "featured",
+    category: "secondary",
     stage: "prototype",
     tags: ["FastAPI", "Supabase", "Stripe", "iOS", "Android"],
-    featured: true,
     visibility: "private",
     mvpEta: "Target MVP: April 2026",
   },
@@ -104,12 +103,12 @@ export const projects: Project[] = [
     slug: "onepercent-focus",
     repoName: "opb-dev-focus",
     title: "1% Better - Focus",
-    tagline: "A lightweight focus timer that shows the same thesis in practice: simple, useful, and shippable.",
+    tagline: "A lightweight focus timer kept as a secondary build rather than the current main focus.",
     description:
-      "A smaller public product loop that reinforces scope control, build quality, and fast iteration inside the same brand.",
+      "A supporting product loop that still shows scope control and shipping instinct, but it is no longer the main build driving the story.",
     status: "building",
     repoType: "mobile-app",
-    category: "featured",
+    category: "secondary",
     stage: "mvp-loop",
     tags: ["Flutter", "Dart", "Supabase", "iOS", "Android"],
     url: "https://github.com/sukminc/opb-dev-focus",

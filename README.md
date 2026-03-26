@@ -6,9 +6,9 @@ This repo powers the site that presents Chris Yoon's current projects, recent Gi
 
 Shared strategy lives in:
 
-- `../one-percent-better-os/projects.json`
-- `../one-percent-better-os/public_profile.json`
-- `../one-percent-better-os/brand.json`
+- `../../career-growth-os/data/projects.json`
+- `../../career-growth-os/data/public_profile.json`
+- `../../career-growth-os/docs/repo-role-contract.md`
 
 ## What lives here
 
@@ -21,19 +21,20 @@ Shared strategy lives in:
 
 Each project card should:
 
-- map to a real GitHub repository
+- map to a real public repo or an intentional public surface
 - show latest linked GitHub activity
 - display an MVP ETA set by judgment
 - compute MVP progress automatically from `status`, `repoType`, and recent 14-day activity
-- belong clearly to one of four groups: featured products, poker product line, operating layer, or archive
+- belong clearly to one of four groups: current main build, secondary builds, operating layer, or archive
 
 Progress is intentionally heuristic. The goal is to show truthful momentum, not fake precision.
 
 ## Current Direction
 
-- simple, fast-shipping products stay near the center of the story
-- dev repos should strengthen hiring and trust
-- poker should stay on its own domain and surface
+- the site stays hiring-first, but the current main build is now poker
+- poker appears as technical proof, not as a public strategy dump
+- the poker card links to `.poker`, not to a public source repo
+- smaller products like Focus and Today still appear, but as secondary builds
 - archive work should support credibility without confusing the active brand
 - `1% Better - OS` belongs on the site because it is now part of the real build workflow
 - `1% Better - OS` should still read as internal leverage rather than the main public hero

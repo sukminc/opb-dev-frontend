@@ -5,10 +5,10 @@ It is not the current source of truth for the landing repo.
 
 Current canonical direction lives in:
 
-- `/Users/chrisyoon/GitHub/one-percent-better-os/brand.json`
-- `/Users/chrisyoon/GitHub/one-percent-better-os/projects.json`
-- `/Users/chrisyoon/GitHub/one-percent-better-os/public_profile.json`
-- `/Users/chrisyoon/GitHub/one-percent-better-landing/CLAUDE.md`
+- `/Users/chrisyoon/GitHub/career-growth-os/data/projects.json`
+- `/Users/chrisyoon/GitHub/career-growth-os/data/public_profile.json`
+- `/Users/chrisyoon/GitHub/career-growth-os/docs/repo-role-contract.md`
+- `/Users/chrisyoon/GitHub/opb-dev/opb-dev-frontend/CLAUDE.md`
 
 ## What This Note Represents
 
@@ -33,7 +33,8 @@ The landing site is now a public portfolio and shipping board for the main `1% B
 
 That means:
 
-- `1% Better Today` stays the core product
+- the current main build can be poker without turning the whole site into a poker brand
+- private poker details stay private, while technical depth stays visible
+- `1% Better Today` and `1% Better - Focus` are secondary builds
 - the site should support hiring and credibility first
-- poker remains a separate vertical
-- project cards should reflect OS truth, not a standalone funding thesis
+- project cards should reflect curated cross-repo truth, not a standalone funding thesis

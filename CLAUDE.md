@@ -8,7 +8,8 @@ Public brand hub and shipping board for the 1% Better portfolio.
 - Local repo: `opb-dev-frontend` (GitHub: `sukminc/opb-dev-frontend`)
 
 Rule: if a project is not listed in `frontend/app/data/projects.ts`, it is not an active public brand asset.
-Rule: if `frontend/app/data/projects.ts` conflicts with `../one-percent-better-os/projects.json` or `../one-percent-better-os/public_profile.json`, treat the OS files as canonical and update the landing data intentionally.
+Rule: if `frontend/app/data/projects.ts` conflicts with `../../career-growth-os/data/projects.json` or `../../career-growth-os/data/public_profile.json`, treat the curated career files as canonical and update the landing data intentionally.
+Rule: if poker copy is being updated, keep it high-level and technical. Do not expose private strategy, roadmap, or differentiating logic.
 Rule: landing display status should map from OS status, not invent a parallel workflow state:
 `sprint_active -> building`, `proof_of_work -> live`, `idea -> idea`.
 
@@ -20,14 +21,15 @@ Chris S. Yoon · Senior Data Engineer & AI Builder · Toronto, ON
 - Public story: data engineer + AI builder who ships fast
 - Emphasize proof of execution, not grand claims
 - The landing page is a live portfolio, not a static resume
-- Keep the dev surface centered on hiring and trust, not poker commercialization
+- Keep the dev surface centered on hiring and trust, while making the current poker build legible as the main focus
 
 ## Projects Canon
 Current public projects live in `frontend/app/data/projects.ts`.
 
 At the moment the site should represent:
-- Featured Products:
-  - `1% Better - Coaching` (opb-poker-app — AI coaching SaaS, Stripe, GPT-4o-mini)
+- Current Main Build:
+  - `Private AI Poker Backend` (private build, links to `.poker`)
+- Secondary Builds:
   - `1% Better Today` (opb-dev-today)
   - `1% Better - Focus` (opb-dev-focus)
 - Operating Layer:
@@ -39,14 +41,15 @@ At the moment the site should represent:
 
 Public hierarchy matters:
 
-- `1% Better Today` is the core product.
-- `1% Better - Focus` supports the same thesis.
+- `Private AI Poker Backend` is the current main build.
+- `1% Better Today` and `1% Better - Focus` are supporting builds.
 - `1% Better - This Website` is the hiring and trust layer.
 - `1% Better - OS` is internal leverage and should not overpower the main public story.
-- Poker is a separate vertical, not the default face of the brand.
+- Poker should be visible as serious backend proof, but private details stay private.
 
 ## Project Card Rules
-- Every project card must map to one repo via `repoName`
+- Public repo-backed cards should map to one repo via `repoName`
+- Private-build cards may use a public destination link instead of a repo link
 - Latest commit and total commit count come from `frontend/app/api/commits/route.ts`
 - Project grouping is driven by `category`, then recent GitHub activity inside each group
 - MVP progress is not hand-entered anymore
@@ -54,12 +57,13 @@ Public hierarchy matters:
   - project `status`
   - project `repoType`
   - recent 14-day commit activity
-- Featured products should read like strategic products, not like low-progress experiments
+- The main poker card should read like a serious current build, not like a public repo launch
+- The main poker card should link to `.poker`, not to GitHub
 - Keep `mvpEta` human-authored, because timeline is still editorial judgment
 
 ## Editing Rules
 - When adding a new public project, update `frontend/app/data/projects.ts`
-- Before changing project strategy, check `../one-percent-better-os/projects.json` and `../one-percent-better-os/public_profile.json`
+- Before changing project strategy, check `../../career-growth-os/data/projects.json` and `../../career-growth-os/data/public_profile.json`
 - Add a `repoType` that reflects the actual shape of the repo
 - Do not hardcode progress percentages in cards
 - If the progress heuristic changes, update both the card UI and the explanatory copy
@@ -89,4 +93,4 @@ cd frontend && npm test
 - Vercel deploys from `main`
 - The project cards are part portfolio, part operating dashboard
 - If a repo is newly created but missing on the site, add it quickly so the brand stays truthful
-- The landing page is allowed to style and sequence the story, but it should not invent a different strategy from the OS registry
+- The landing page is allowed to style and sequence the story, but it should not invent a different strategy from the curated career registry

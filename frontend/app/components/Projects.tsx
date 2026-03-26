@@ -73,7 +73,7 @@ const STATUS_MULTIPLIER: Record<ProjectStatus, number> = {
 
 const CATEGORY_PRIORITY: Record<ProjectCategory, number> = {
   featured: 0,
-  poker: 1,
+  secondary: 1,
   ops: 2,
   archive: 3,
 };
@@ -89,12 +89,12 @@ const STAGE_LABELS: Record<ProjectStage, string> = {
 
 const CATEGORY_META: Record<ProjectCategory, { title: string; description: string }> = {
   featured: {
-    title: "Current Product Work",
-    description: "Small product loops that show judgment and active execution.",
+    title: "Current Main Build",
+    description: "The project that best represents current direction, technical depth, and active focus.",
   },
-  poker: {
-    title: "Poker Vertical",
-    description: "A separate specialist lane. Visible, but not the main hiring story.",
+  secondary: {
+    title: "Secondary Builds",
+    description: "Smaller products that still show judgment and shipping instinct, but are no longer the main focus.",
   },
   ops: {
     title: "Operating Layer",
@@ -168,9 +168,10 @@ function getMvpProgress(project: Project, totalCount: number | null, recent14Cou
 
 function getMvpLabel(project: Project, progress: number, loading: boolean): string {
   if (project.stage === "archive") return "Archive";
-  if (project.status === "live" || progress >= 100) return "Live ✓";
+  if (project.status === "live") return "Live ✓";
   if (!project.repoName || isInternalProject(project)) return `${STAGE_LABELS[project.stage]} · Ready`;
   if (loading) return "Syncing...";
+  if (progress >= 100) return `${STAGE_LABELS[project.stage]} · Ready`;
   return `${STAGE_LABELS[project.stage]} · ${progress}%`;
 }
 
@@ -219,14 +220,14 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
         "border-[#111111]/15 bg-[radial-gradient(circle_at_top_left,_rgba(17,17,17,0.08),_transparent_48%),linear-gradient(135deg,#fbf7f1_0%,#f1e9df_100%)]",
       badge: "border-[#111111]/20 bg-[#111111] text-[#f8f3ea]",
       accent: "bg-[#111111]",
-      note: "Core brand product",
+      note: "Current main build",
     },
     {
       shell:
         "border-[#8d8574]/20 bg-[radial-gradient(circle_at_top_left,_rgba(166,145,109,0.18),_transparent_45%),linear-gradient(135deg,#fbf7f1_0%,#efe8dc_100%)]",
       badge: "border-[#a6916d]/25 bg-[#f6ecda] text-[#7a6745]",
       accent: "bg-[#a6916d]",
-      note: "Shipping quietly",
+      note: "Supporting build",
     },
   ][index % 2];
 
@@ -236,7 +237,7 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
         <div className="min-w-0">
           <div className="flex items-center gap-2">
             <span className={`h-2 w-2 rounded-full ${variants.accent}`} />
-            <p className="text-[10px] uppercase tracking-[0.22em] text-[#8b857b]">Current product</p>
+            <p className="text-[10px] uppercase tracking-[0.22em] text-[#8b857b]">Current focus</p>
           </div>
           <h3 className="mt-3 text-lg font-semibold text-[#111111]">{project.title}</h3>
           <p className="mt-2 max-w-xl text-sm leading-6 text-[#4f4a43]">{project.tagline}</p>
@@ -259,30 +260,19 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
           {project.mvpEta && <p className="mt-1 text-[11px] text-[#8b857b]">{project.mvpEta}</p>}
         </div>
       </div>
-    </div>
-  );
-}
-
-function PokerVerticalCard() {
-  return (
-    <div className="glass-panel rounded-[1.75rem] border border-[#d8c3a4] bg-[radial-gradient(circle_at_top_left,rgba(195,166,125,0.18),transparent_42%),linear-gradient(135deg,#fbf7f1_0%,#f1e4d3_100%)] p-6 shadow-[0_18px_60px_rgba(17,17,17,0.05)]">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div className="max-w-2xl">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#8a6f50]" />
-            <p className="text-[10px] uppercase tracking-[0.22em] text-[#8a6f50]">Separate specialist lane</p>
-          </div>
-          <h3 className="mt-3 text-xl font-semibold text-[#111111]">
-            Poker remains visible, but secondary.
-          </h3>
-          <p className="mt-3 text-sm leading-7 text-[#5f5a52]">
-            1% Better.poker stays separate from the recruiter-facing story here.
-          </p>
+      {project.url && (
+        <div className="mt-5">
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-[#6f5336] transition-colors hover:text-[#111111]"
+          >
+            <span>Poker surface</span>
+            <ExternalLink size={14} />
+          </a>
         </div>
-        <span className="rounded-full border border-[#d8c4a6] bg-[linear-gradient(180deg,#fcf7ee_0%,#f3e7d7_100%)] px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-[#6f5336]">
-          Not the main hiring story
-        </span>
-      </div>
+      )}
     </div>
   );
 }
@@ -330,7 +320,7 @@ function RichProjectCard({ project, commitState }: { project: Project; commitSta
               style={{ width: `${progress}%` }}
             />
           </div>
-          {project.mvpEta && progress < 100 && (
+          {project.mvpEta && (
             <p className="mt-2 text-[10px] text-[#8b857b]">{project.mvpEta}</p>
           )}
           <p className="mt-1 text-[10px] text-[#a68a68]">{progressHint}</p>
@@ -466,11 +456,11 @@ export default function Projects() {
     ? sortedSlugsRef.current.map((slug) => projects.find((p) => p.slug === slug)!).filter(Boolean)
     : projects;
 
-  const sections = (["featured", "poker", "ops", "archive"] as ProjectCategory[]).map((category) => ({
+  const sections = (["featured", "secondary", "ops", "archive"] as ProjectCategory[]).map((category) => ({
     category,
     meta: CATEGORY_META[category],
     items: displayOrder.filter((project) => project.category === category),
-  })).filter((section) => section.items.length > 0 || section.category === "poker");
+  })).filter((section) => section.items.length > 0);
 
   return (
     <section id="projects" className="section-shell py-24 px-6">
@@ -495,23 +485,19 @@ export default function Projects() {
                 <h3 className="text-xl md:text-2xl font-semibold text-[#111111]">{section.meta.title}</h3>
                 <p className="mt-2 max-w-3xl text-sm leading-7 text-[#5f5a52]">{section.meta.description}</p>
               </div>
-              {section.category === "poker" ? (
-                <PokerVerticalCard />
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {section.items.map((project, index) =>
-                    section.category === "featured" ? (
-                      <FeaturedProjectCard key={project.slug} project={project} index={index} />
-                    ) : (
-                      <RichProjectCard
-                        key={project.slug}
-                        project={project}
-                        commitState={commitMap[project.slug] ?? { commits: [], totalCount: null, recent14Count: null, loading: false }}
-                      />
-                    )
-                  )}
-                </div>
-              )}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {section.items.map((project, index) =>
+                  section.category === "featured" ? (
+                    <FeaturedProjectCard key={project.slug} project={project} index={index} />
+                  ) : (
+                    <RichProjectCard
+                      key={project.slug}
+                      project={project}
+                      commitState={commitMap[project.slug] ?? { commits: [], totalCount: null, recent14Count: null, loading: false }}
+                    />
+                  )
+                )}
+              </div>
             </div>
           ))}
         </div>

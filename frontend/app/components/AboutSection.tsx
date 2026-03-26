@@ -15,8 +15,10 @@ export default function AboutSection() {
             </Link>
             <p className="text-sm text-[#5f5a52] leading-7">
               10+ years in data engineering, validation, and automation. Most recent
-              role: Senior Data Engineer at theScore / ESPN Bet. Current proof layer:
-              small products, public repos, visible execution.
+              role: Senior Data Engineer at theScore / ESPN Bet. Current main build:
+              a private AI poker backend and poker performance system rebuilt from
+              the foundation around backend truth, cumulative memory, runtime
+              outputs, and QA-shaped product iteration.
             </p>
 
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#d9c9b3] bg-[linear-gradient(180deg,#fcf6ed_0%,#f3e7d7_100%)] px-3 py-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]">
