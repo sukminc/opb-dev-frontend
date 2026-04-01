@@ -1,116 +1,153 @@
-const experience = [
+import Link from "next/link";
+import { ExternalLink } from "lucide-react";
+
+const timeline = [
   {
-    company: "OnePercentBetter.dev",
-    role: "Founder",
-    period: "2025 - Present",
-    summary:
-      "Building the public hiring surface plus small product loops that keep recent execution visible and useful.",
+    period: "2025 — Now",
+    role: "AI Builder",
+    company: "1% Better",
+    detail:
+      "Using Claude Code, Codex, and the full AI-assisted dev loop to build products I actually want to exist. Current build: opb-poker — a backend that remembers every session and knows my patterns. I am the target user.",
+    active: true,
   },
   {
-    company: "theScore / ESPN Bet",
+    period: "2023 — 2025",
     role: "Senior Data Engineer",
-    period: "2023 - 2025",
-    summary:
-      "Built pipelines, observability, and reporting systems for high-volume betting operations where correctness and reliability mattered daily.",
+    company: "theScore / ESPN Bet",
+    detail:
+      "Pipelines, observability, and reporting for high-volume betting operations. Correctness and reliability at scale, daily.",
+    active: false,
   },
   {
-    company: "Earlier roles",
-    role: "Data / QA / Automation",
-    period: "2016 - 2023",
-    summary:
-      "Built the habits that still shape the work: validate the data, automate repetitive pain, and ship systems people can trust.",
+    period: "2016 — 2023",
+    role: "QA → SDET / Automation → Data",
+    company: "Multiple roles",
+    detail:
+      "Ten years of evolution across the same core instinct: understand the system before you trust it. QA first, then automation engineering, then data. Each step built on the last.",
+    active: false,
   },
 ];
 
-const principles = [
-  {
-    label: "Current build",
-    value: "Small products. Live surface.",
-  },
-  {
-    label: "How I work",
-    value: "Useful first. Tight scope. Visible proof.",
-  },
-  {
-    label: "Why it matters",
-    value: "Credibility comes faster when work is easy to verify.",
-  },
+const tools = [
+  "Claude Code",
+  "Codex",
+  "Python · FastAPI",
+  "PostgreSQL",
+  "Next.js · TypeScript",
+  "Pytest · QA systems",
 ];
 
 export default function About() {
   return (
-    <section id="about" className="px-6 pb-24">
+    <section id="about" className="px-6 pb-20">
       <div className="mx-auto max-w-4xl">
-        <div className="glass-panel rounded-[2rem] p-8 sm:p-10">
-          <p className="text-xs font-mono uppercase tracking-[0.22em] text-[#2d6a47]">
+
+        {/* Header */}
+        <div className="mb-14">
+          <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#2d6a47]">
             About
           </p>
-
-          <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-[#111111] md:text-5xl">
-            Build small. Keep it legible. Let the work carry the proof.
-          </h2>
-
-          <div className="mt-8 max-w-3xl space-y-5 text-base leading-8 text-[#5f5a52]">
-            <p>
-              Right now I am building 1% Better.dev and a small set of product
-              loops around it. The goal is simple: keep shipping and keep the
-              work easy to see.
-            </p>
-            <p>
-              This is how I prefer to work. Tight scope, fast feedback, and
-              useful first. I would rather ship something real than
-              over-explain a bigger promise. Behind that is 10+ years in data
-              engineering, QA, automation, and data quality work, most recently
-              as a Senior Data Engineer at theScore / ESPN Bet.
-            </p>
-          </div>
+          <h1 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#111111] sm:text-5xl md:text-6xl">
+            Engineer. Builder.<br className="hidden sm:block" /> Obsessed.
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-[#5f5a52] sm:text-lg">
+            Ten years across QA, SDET / automation, and data engineering — now
+            using AI tools to build products I actually want to use. The
+            background informs the build. The obsession drives it.
+          </p>
         </div>
 
-        <div className="mt-8 grid gap-3 md:grid-cols-3">
-          {principles.map((item) => (
-            <div key={item.label} className="glass-panel rounded-[1.45rem] p-4">
-              <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#2d6a47]">
-                {item.label}
-              </p>
-              <p className="mt-2 text-sm leading-5 text-[#111111]">{item.value}</p>
-            </div>
-          ))}
-        </div>
+        {/* Two-column: timeline + sidebar */}
+        <div className="grid gap-12 lg:grid-cols-[1fr_260px]">
 
-        <div className="mt-10 glass-panel rounded-[2rem] p-8 sm:p-10">
-          <div className="max-w-3xl">
-            <p className="text-xs font-mono uppercase tracking-[0.22em] text-[#2d6a47]">
-              Experience
-            </p>
-            <h3 className="mt-4 text-2xl font-semibold tracking-tight text-[#111111]">
-              Current build, proven background.
-            </h3>
-          </div>
+          {/* Timeline */}
+          <div className="relative pl-7">
+            <div className="absolute left-[7px] top-2 bottom-2 w-[2px] bg-[#bdd8ca]" />
 
-          <div className="mt-8 space-y-6">
-            {experience.map((item) => (
+            {timeline.map((item, i) => (
               <div
-                key={item.company}
-                className="border-t border-[rgba(45,106,71,0.18)] pt-6 first:border-t-0 first:pt-0"
+                key={i}
+                className="relative mb-10 pb-10 border-b border-[#c8ddd4] last:border-0 last:pb-0 last:mb-0"
               >
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
-                  <div>
-                    <p className="text-lg font-medium text-[#111111]">
-                      {item.company}
-                    </p>
-                    <p className="text-sm text-[#5f5a52]">{item.role}</p>
-                  </div>
-                  <p className="text-xs font-mono uppercase tracking-[0.14em] text-[#2d6a47]">
-                    {item.period}
-                  </p>
-                </div>
-                <p className="mt-3 max-w-3xl text-sm leading-7 text-[#5f5a52]">
-                  {item.summary}
+                {/* Dot */}
+                <div
+                  className={`absolute -left-7 top-[6px] h-3 w-3 rounded-full border-2 border-[#1a3a2e] ${
+                    item.active ? "bg-[#1a3a2e]" : "bg-[#bdd8ca]"
+                  }`}
+                />
+
+                <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#2d6a47]">
+                  {item.period}
                 </p>
+                <h3 className="mt-2 text-lg font-semibold text-[#111111]">
+                  {item.role}
+                </h3>
+                <p className="text-sm text-[#2d6a47] mt-0.5">{item.company}</p>
+                <p className="mt-4 text-sm leading-7 text-[#5f5a52]">
+                  {item.detail}
+                </p>
+
+                {item.active && (
+                  <div className="mt-5">
+                    <a
+                      href="https://onepercentbetter.poker"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-[#1a3a2e] bg-[#1a3a2e] px-4 py-2 text-xs font-medium text-[#f2faf6] transition-colors hover:bg-[#24523a]"
+                    >
+                      onepercentbetter.poker
+                      <ExternalLink size={11} />
+                    </a>
+                  </div>
+                )}
               </div>
             ))}
           </div>
+
+          {/* Sidebar */}
+          <div className="flex flex-col gap-4">
+
+            {/* Building with */}
+            <div className="rounded-[1.5rem] border border-[#bdd8ca] bg-[linear-gradient(180deg,rgba(242,250,246,0.96),rgba(216,240,228,0.92))] p-5">
+              <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#2d6a47]">
+                Building with
+              </p>
+              <div className="mt-3 flex flex-col gap-2">
+                {tools.map((t) => (
+                  <span
+                    key={t}
+                    className="text-sm text-[#1a3a2e] border-l-2 border-[#aacfbe] pl-3"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Open to */}
+            <div className="rounded-[1.5rem] border border-[#bdd8ca] bg-[linear-gradient(180deg,rgba(242,250,246,0.96),rgba(216,240,228,0.92))] p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#2d6a47] animate-pulse" />
+                <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#2d6a47]">
+                  Open to
+                </p>
+              </div>
+              <p className="text-sm leading-6 text-[#111111]">
+                AI Product<br />Senior Data<br />Platform roles
+              </p>
+              <a
+                href="https://linkedin.com/in/sukminyoon"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-xs text-[#2d6a47] hover:text-[#1a3a2e] transition-colors"
+              >
+                LinkedIn ↗
+              </a>
+            </div>
+
+          </div>
         </div>
+
       </div>
     </section>
   );
