@@ -34,7 +34,6 @@ At the moment the site should represent:
   - `1% Better - Focus` (opb-dev-focus)
 - Operating Layer:
   - `1% Better - This Website` (opb-dev-frontend)
-  - `1% Better - OS` (opb-os)
 - Archive / Proof of Work:
   - `Blue Jays Moneyball ETL` (deng-bluejays-financial)
   - `TwelveLabs API Validator` (sdet-twelvelabs)
