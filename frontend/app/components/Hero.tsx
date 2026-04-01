@@ -5,7 +5,7 @@ const signals = [
   {
     label: "Background",
     value: "10+ years",
-    detail: "6 yrs SDET / QA, then data engineering at theScore / ESPN Bet.",
+    detail: "QA → SDET / automation → Data Engineering at theScore / ESPN Bet.",
   },
   {
     label: "Building with",
@@ -46,7 +46,7 @@ export default function Hero() {
           >
             Chris S. Yoon
           </a>
-          . Six years in SDET and QA, then data engineering. Now using AI tools to build products I actually want to use — starting with poker.
+          . 10 years across QA, SDET / automation, and Data Engineering — now using AI tools to build products I actually want to use.
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">

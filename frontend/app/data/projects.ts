@@ -111,7 +111,7 @@ export const projects: Project[] = [
   {
     slug: "opb-today",
     repoName: "opb-dev-today",
-    title: "1% Better Today",
+    title: "1% Better - Today",
     tagline: "A daily product loop, paused while opb-poker is the main focus.",
     description:
       "A narrow loop still worth showing as proof of product range, but no longer the center of the public story. Paused while opb-poker is the active build.",

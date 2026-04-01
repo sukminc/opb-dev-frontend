@@ -14,12 +14,11 @@ export default function AboutSection() {
               </h2>
             </Link>
             <p className="text-sm text-[#5f5a52] leading-7">
-              10+ years across SDET, QA, and data engineering. Six years validating
-              and testing systems before moving into data engineering — most recently
-              Senior Data Engineer at theScore / ESPN Bet. Now building AI products:
-              current main build is opb-poker, a backend-first performance system
-              built on real session ingestion, cumulative memory, and deterministic
-              AI-driven outputs.
+              10 years across QA, SDET / automation, and Data Engineering — most
+              recently Senior Data Engineer at theScore / ESPN Bet. Now building AI
+              products: current main build is opb-poker, a backend-first performance
+              system built on real session ingestion, cumulative memory, and
+              deterministic AI-driven outputs.
             </p>
 
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#aacfbe] bg-[linear-gradient(180deg,#f2faf6_0%,#d8f0e4_100%)] px-3 py-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]">
