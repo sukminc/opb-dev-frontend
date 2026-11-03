@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #f5f3ef;
-  --color-foreground: #111111;
-  --color-accent: #111111;
-  --color-accent-hover: #2d2d2d;
-  --color-brand: #8a6f50;
-  --color-brand-strong: #6f5336;
-  --color-brand-soft: #f3e7d7;
-  --color-brand-soft-strong: #ead7be;
-  --color-surface: #fbfaf7;
-  --color-surface-hover: #f1efea;
-  --color-border: #ddd8cf;
-  --color-border-hover: #b9b2a7;
-  --color-secondary: #5f5a52;
-  --color-muted: #8b857b;
+  --color-background: #0a0e0c;
+  --color-foreground: #e9f4ec;
+  --color-accent: #4ade80;
+  --color-accent-hover: #22c55e;
+  --color-brand: #4ade80;
+  --color-brand-strong: #22c55e;
+  --color-brand-soft: #0e1a12;
+  --color-brand-soft-strong: #12241a;
+  --color-surface: #101511;
+  --color-surface-hover: #141b16;
+  --color-border: #223128;
+  --color-border-hover: #2b4234;
+  --color-secondary: #9db3a5;
+  --color-muted: #7d8f84;
   --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
   --font-mono: "SFMono-Regular", "Menlo", "Monaco", monospace;
 }
@@ -24,14 +24,14 @@
 }
 
 html {
-  background: #f7f2e8;
+  background: #0a0e0c;
 }
 
 body {
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.7), transparent 38%),
-    linear-gradient(180deg, #faf6ef 0%, #f2ece2 100%);
-  color: #111111;
+    radial-gradient(circle at top, rgba(74, 222, 128, 0.07), transparent 38%),
+    linear-gradient(180deg, #0b100d 0%, #070a08 100%);
+  color: #d7e6db;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -42,27 +42,27 @@ a {
 }
 
 ::selection {
-  background: #6f5336;
-  color: #f5f3ef;
+  background: #4ade80;
+  color: #0a0e0c;
 }
 
 ::-webkit-scrollbar {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #f5f3ef;
+  background: #0a0e0c;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c8c1b6;
+  background: #223128;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8a6f50;
+  background: #2b4234;
 }
 
 .section-shell {
   position: relative;
-  border-top: 1px solid rgba(138, 111, 80, 0.22);
+  border-top: 1px solid rgba(74, 222, 128, 0.14);
 }
 
 .section-shell::before {
@@ -70,24 +70,24 @@ a {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(234, 215, 190, 0.28), transparent 24%, transparent 76%, rgba(234, 215, 190, 0.22)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.52), transparent 24%);
+    linear-gradient(90deg, rgba(74, 222, 128, 0.05), transparent 24%, transparent 76%, rgba(74, 222, 128, 0.04)),
+    linear-gradient(180deg, rgba(74, 222, 128, 0.04), transparent 24%);
   pointer-events: none;
 }
 
 .glass-panel {
   background:
-    linear-gradient(180deg, rgba(255, 251, 245, 0.94), rgba(247, 240, 229, 0.9));
-  border: 1px solid rgba(190, 173, 150, 0.68);
+    linear-gradient(180deg, rgba(18, 26, 20, 0.94), rgba(11, 17, 13, 0.92));
+  border: 1px solid rgba(43, 66, 52, 0.75);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.75),
-    0 20px 60px rgba(17, 17, 17, 0.05),
-    0 1px 0 rgba(138, 111, 80, 0.08);
+    inset 0 1px 0 rgba(74, 222, 128, 0.07),
+    0 20px 60px rgba(0, 0, 0, 0.42),
+    0 1px 0 rgba(0, 0, 0, 0.4);
 }
 
 .paper-grid {
   background-image:
-    linear-gradient(rgba(45, 36, 25, 0.032) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(45, 36, 25, 0.032) 1px, transparent 1px);
+    linear-gradient(rgba(74, 222, 128, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 222, 128, 0.05) 1px, transparent 1px);
   background-size: 26px 26px;
 }

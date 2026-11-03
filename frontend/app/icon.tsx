@@ -39,7 +39,7 @@ export default function Icon() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: BRAND.ink,
+              color: "#4ade80",
               fontSize: 182,
               fontWeight: 700,
               letterSpacing: "-0.16em",
