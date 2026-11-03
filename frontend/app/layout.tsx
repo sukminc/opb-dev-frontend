@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const TITLE = "Chris Yoon — Senior SDET | Test Automation & Data Quality";
+const DESCRIPTION =
+  "Senior SDET and Data Quality engineer in Toronto with 10+ years across test automation, data quality, and production reliability. Most recently Data QA Architect at theScore, where I designed the QA regression framework guarding millions of daily transactions.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://onepercentbetter.dev"),
-  title: "1% Better",
-  description:
-    "Senior data engineer building useful products in public. Hiring-friendly proof of work, small product loops, and visible execution.",
+  title: TITLE,
+  description: DESCRIPTION,
   icons: {
     icon: [
       { url: "/icon", sizes: "512x512", type: "image/png" },
@@ -14,11 +17,10 @@ export const metadata: Metadata = {
     apple: "/apple-icon",
   },
   openGraph: {
-    title: "1% Better",
-    description:
-      "Senior data engineer building useful products in public. Hiring-friendly proof of work, small product loops, and visible execution.",
+    title: TITLE,
+    description: DESCRIPTION,
     url: "https://onepercentbetter.dev",
-    siteName: "1% Better",
+    siteName: "Chris Yoon",
     locale: "en_US",
     type: "website",
     images: [
@@ -26,15 +28,14 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "1% Better — Small apps. Fast loops.",
+        alt: "Chris Yoon — Senior SDET | Test Automation & Data Quality",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "1% Better",
-    description:
-      "Senior data engineer building useful products in public. Hiring-friendly proof of work, small product loops, and visible execution.",
+    title: TITLE,
+    description: DESCRIPTION,
     images: ["/opengraph-image"],
   },
 };

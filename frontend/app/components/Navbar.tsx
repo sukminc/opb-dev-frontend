@@ -24,12 +24,12 @@ export default function Navbar() {
       <div className="mx-auto flex h-18 max-w-6xl items-center justify-between px-6">
         <Link href="/" className="group flex items-center gap-4">
           <BrandMark size="sm" />
-          <div className="min-w-0 transition-opacity group-hover:opacity-82">
+          <div className="hidden min-w-0 transition-opacity group-hover:opacity-82 sm:block">
             <span className="block text-sm font-semibold uppercase tracking-[0.18em] text-[#2d2419]">
-              1% Better.dev
+              Chris Yoon
             </span>
             <span className="mt-1 block text-[10px] font-mono uppercase tracking-[0.2em] text-[#2d6a47]">
-              public build surface
+              onepercentbetter.dev
             </span>
           </div>
         </Link>
@@ -38,9 +38,15 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-2 rounded-full border border-[#aacfbe] bg-[linear-gradient(180deg,#f2faf6_0%,#d8f0e4_100%)] px-3 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]">
             <span className="h-2 w-2 rounded-full bg-[#2d6a47]" />
             <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#1a3a2e]">
-              engineer. builder. obsessed.
+              Senior SDET · Data Quality
             </span>
           </div>
+          <a
+            href="#experience"
+            className="inline-flex min-h-10 items-center rounded-full px-2 text-sm text-[#5f5a52] transition-colors hover:text-[#1a3a2e]"
+          >
+            Experience
+          </a>
           <a
             href="#projects"
             className="inline-flex min-h-10 items-center rounded-full px-2 text-sm text-[#5f5a52] transition-colors hover:text-[#1a3a2e]"
