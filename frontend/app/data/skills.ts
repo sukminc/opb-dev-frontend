@@ -27,12 +27,15 @@ export const ICON_MAP: Record<string, TechIcon> = {
   "Pandas":           { slug: "pandas",            hex: "150458" },
   "NumPy":            { slug: "numpy",             hex: "013243" },
   "Pytest":           { slug: "pytest",            hex: "0A9EDC" },
+  "Playwright":       { slug: "playwright",        hex: "2EAD33" },
+  "Selenium":         { slug: "selenium",          hex: "43B02A" },
 
   // Data Infrastructure
   "Apache Airflow":   { slug: "apacheairflow",     hex: "017CEE" },
   "PostgreSQL":       { slug: "postgresql",        hex: "4169E1" },
   "SQLite":           { slug: "sqlite",            hex: "003B57" },
   "BigQuery":         { slug: "googlebigquery",    hex: "4285F4" },
+  "Redshift":         { slug: "amazonredshift",    hex: "391715" },
   "Supabase":         { slug: "supabase",          hex: "3ECF8E" },
 
   // DevOps & Cloud
@@ -65,31 +68,34 @@ export interface SkillGroup {
 
 export const SKILL_GROUPS: SkillGroup[] = [
   {
-    label: "Data Engineering",
+    label: "Test Automation",
     items: [
-      "Apache Airflow", "ETL/ELT Design", "Data Lakehouse",
-      "Star Schema", "Data Observability", "DQ Gates", "Schema Drift",
+      "Playwright", "Selenium", "Python", "Pytest", "API Testing",
+      "E2E Testing", "Test Strategy", "CI/CD Gates",
     ],
   },
   {
-    label: "Languages & Libraries",
-    items: ["Python", "SQL", "TypeScript", "Pandas", "NumPy", "FastAPI", "Pytest"],
+    label: "Data Quality & Reliability",
+    items: [
+      "SQL", "Apache Airflow", "ETL/ELT Validation",
+      "Source-to-Target Reconciliation", "DQ Gates", "Schema Drift",
+      "Data Observability", "SOX Reporting Controls",
+    ],
   },
   {
-    label: "Cloud & Infrastructure",
-    items: ["GCP", "BigQuery", "AWS", "PostgreSQL", "SQLite", "Docker", "GitHub Actions", "Jenkins"],
+    label: "Data Platforms & Cloud",
+    items: ["BigQuery", "Redshift", "PostgreSQL", "GCP", "AWS", "Docker"],
   },
   {
-    label: "AI / Agentic Systems",
-    items: ["Claude API", "OpenAI", "LangChain", "Agentic Orchestration", "LLM Integration"],
+    label: "Engineering & Delivery",
+    items: ["Jenkins", "GitHub Actions", "Git", "FastAPI", "TypeScript", "Next.js"],
   },
   {
-    label: "Observability & Tools",
-    items: ["DataDog", "Git", "Stripe", "Alembic", "Pydantic"],
-  },
-  {
-    label: "Frontend & Mobile",
-    items: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "Flutter", "Dart", "Supabase"],
+    label: "Leadership",
+    items: [
+      "Team Leadership", "QA Strategy", "Mentoring",
+      "Release Sign-off", "Stakeholder Reporting",
+    ],
   },
 ];
 

@@ -13,7 +13,7 @@ test.describe("Navigation", () => {
     await page.locator("a[href='/about']").first().click();
 
     await expect(page).toHaveURL(/\/about/);
-    await expect(page.locator("body")).toContainText("This is a working season");
+    await expect(page.locator("body")).toContainText("Data QA Architect");
   });
 
   test("logo returns to home", async ({ page }) => {
@@ -21,7 +21,7 @@ test.describe("Navigation", () => {
     await page.locator("a[href='/']").first().click();
 
     await expect(page).toHaveURL(/\/$/);
-    await expect(page.locator("body")).toContainText("Build useful things in public.");
+    await expect(page.locator("body")).toContainText("Senior SDET");
   });
 
   test("core pages return 200", async ({ page }) => {

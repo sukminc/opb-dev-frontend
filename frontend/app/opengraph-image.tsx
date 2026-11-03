@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { BRAND } from "./lib/brand";
 
 export const runtime = "edge";
-export const alt = "1% Better — Proven engineering. Visible execution.";
+export const alt = "Chris Yoon — Senior SDET | Test Automation & Data Quality";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -63,7 +63,7 @@ export default function OGImage() {
                 textTransform: "uppercase",
               }}
             >
-              ship small. learn fast.
+              senior sdet · data quality · toronto
             </span>
           </div>
         </div>
@@ -78,12 +78,12 @@ export default function OGImage() {
               letterSpacing: "-0.02em",
             }}
           >
-            Proven engineering.
-            <span style={{ color: BRAND.muted }}> Visible execution.</span>
+            Senior SDET.
+            <span style={{ color: BRAND.muted }}> Data Quality & Automation.</span>
           </div>
           <div style={{ fontSize: "24px", color: BRAND.muted, maxWidth: "760px", lineHeight: 1.4 }}>
-            Hiring and trust surface for Chris S. Yoon: small products, public
-            proof, and recent work you can verify quickly.
+            Chris S. Yoon — 10+ years in test automation and data quality.
+            Most recently Data QA Architect at theScore. Experience and proof of work, verifiable quickly.
           </div>
         </div>
 
@@ -128,8 +128,8 @@ export default function OGImage() {
 
           <div style={{ display: "flex", gap: "32px" }}>
             {[
-              { value: "ship", label: "small ideas" },
-              { value: "learn", label: "fast loops" },
+              { value: "10+", label: "years in QA" },
+              { value: "15+", label: "ETL workflows guarded" },
             ].map((s) => (
               <div
                 key={s.label}

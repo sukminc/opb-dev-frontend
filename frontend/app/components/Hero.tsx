@@ -1,21 +1,20 @@
-import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 const signals = [
   {
-    label: "Background",
+    label: "Experience",
     value: "10+ years",
-    detail: "QA → SDET / automation → Data Engineering at theScore / ESPN Bet.",
+    detail: "QA, SDET / test automation, and data quality — Expedia, QA Consultants, theScore.",
   },
   {
-    label: "Building with",
-    value: "AI tools",
-    detail: "Claude Code, Codex, and the full AI-assisted dev loop — learning in public.",
+    label: "Most recently",
+    value: "Data QA Architect",
+    detail: "theScore (2023–2025) — Airflow QA regression framework promoted to production; SOX-facing reconciliation.",
   },
   {
-    label: "Current build",
-    value: "opb-poker",
-    detail: "A poker performance backend I built because the right tool didn't exist.",
+    label: "Based in",
+    value: "Toronto, Canada",
+    detail: "Open to Toronto/GTA and Canada-remote roles. Korean (native) · English (fluent).",
   },
 ];
 
@@ -29,41 +28,40 @@ export default function Hero() {
         <div className="inline-flex items-center gap-2 rounded-full border border-[#aacfbe] bg-[linear-gradient(180deg,#f2faf6_0%,#d8f0e4_100%)] px-4 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
           <span className="h-2 w-2 rounded-full bg-[#2d6a47]" />
           <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#1a3a2e]">
-            engineer. builder. obsessed.
+            Senior SDET · Data Quality · Toronto, Canada
           </span>
         </div>
 
         <h1 className="mt-8 text-[3.2rem] font-semibold leading-[0.92] tracking-[-0.07em] text-[#111111] sm:text-[5rem] lg:text-[6.8rem]">
-          AI builder.<br className="hidden sm:block" /> Data engineer.<br className="hidden sm:block" /> Building in public.
+          Chris Yoon.<br className="hidden sm:block" /> Senior SDET.<br className="hidden sm:block" /> Data Quality.
         </h1>
 
         <p className="mt-7 max-w-2xl text-[1.05rem] leading-8 text-[#5f5a52] sm:text-[1.15rem]">
-          <a
-            href="https://linkedin.com/in/sukminyoon"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#111111] underline decoration-[#7abba0] underline-offset-4 transition-colors hover:text-[#1a3a2e]"
-          >
-            Chris S. Yoon
-          </a>
-          . 10 years across QA, SDET / automation, and Data Engineering — now using AI tools to build products I actually want to use.
+          10+ years across QA, test automation, and data quality — most recently
+          Data QA Architect at theScore, where I designed the QA regression
+          framework (Airflow, Python, SQL) that guarded millions of daily
+          betting transactions across BigQuery and Redshift. I design and
+          operate the automation frameworks and quality controls that let teams
+          ship data they can trust.
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <a
-            href="#projects"
+            href="#experience"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-[#1a3a2e] bg-[#1a3a2e] px-5 py-3 text-sm font-medium text-[#f2faf6] transition-colors hover:bg-[#24523a]"
           >
-            See the work
+            See experience
             <ArrowRight size={16} />
           </a>
-          <Link
-            href="/about"
+          <a
+            href="https://linkedin.com/in/sukminyoon"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-[#9abfb0] bg-[linear-gradient(180deg,#f2faf6_0%,#ddf0e8_100%)] px-5 py-3 text-sm font-medium text-[#1a3a2e] transition-colors hover:border-[#5a9a78]"
           >
-            Background
+            LinkedIn
             <ArrowUpRight size={16} />
-          </Link>
+          </a>
         </div>
 
         <div className="mt-12 grid gap-3 sm:grid-cols-3">

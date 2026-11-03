@@ -89,20 +89,20 @@ const STAGE_LABELS: Record<ProjectStage, string> = {
 
 const CATEGORY_META: Record<ProjectCategory, { title: string; description: string }> = {
   featured: {
-    title: "Current Main Build",
-    description: "The project driving current technical depth and AI product focus.",
+    title: "Featured Project",
+    description: "A personal build that shows how I design data systems and quality gates end to end.",
   },
   secondary: {
-    title: "Secondary Builds",
-    description: "Smaller products that still show judgment and shipping instinct, but are no longer the main focus.",
+    title: "More Builds",
+    description: "Additional builds.",
   },
   ops: {
-    title: "Operating Layer",
-    description: "The public site and internal systems behind the surface.",
+    title: "This Site",
+    description: "The portfolio itself — designed, built, and maintained by me.",
   },
   archive: {
-    title: "Archive / Proof of Work",
-    description: "Past work and paused builds — proof of range, craft, and scope control.",
+    title: "Proof of Work",
+    description: "Earlier builds demonstrating pipeline, validation, and automation craft.",
   },
 };
 
@@ -459,7 +459,7 @@ export default function Projects() {
     : projects;
 
   const featuredProjects = displayOrder.filter((p) => p.category === "featured");
-  const archiveProjects = displayOrder.filter((p) => p.category === "archive");
+  const archiveProjects = displayOrder.filter((p) => p.category === "archive" || p.category === "ops");
 
   return (
     <section id="projects" className="px-6 py-16">
@@ -481,7 +481,7 @@ export default function Projects() {
         {archiveProjects.length > 0 && (
           <div className="mt-12 border-t border-[#c8ddd4] pt-8">
             <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#2d6a47]">
-              Past work
+              Proof of Work
             </p>
             <div className="mt-4 divide-y divide-[#d4e8dc]">
               {archiveProjects.map((project) => (

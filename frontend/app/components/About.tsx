@@ -1,40 +1,55 @@
-import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
 const timeline = [
   {
     period: "2025 — Now",
-    role: "AI Builder",
-    company: "1% Better",
+    role: "Independent Projects",
+    company: "Personal projects",
     detail:
-      "Using Claude Code, Codex, and the full AI-assisted dev loop to build products I actually want to exist. Current build: opb-poker — a backend that remembers every session and knows my patterns. I am the target user.",
+      "Building OPB Poker — a poker analytics platform with a three-layer PostgreSQL data pipeline (raw → normalized → derived), built TDD-first with Pytest regression suites and Playwright E2E — alongside a backend-first LLM project studying prompts, tool calls, and evaluation. Personal projects, kept clearly separate from my employment history.",
     active: true,
   },
   {
     period: "2023 — 2025",
-    role: "Senior Data Engineer",
-    company: "theScore / ESPN Bet",
+    role: "Data QA Architect",
+    company: "theScore",
     detail:
-      "Pipelines, observability, and reporting for high-volume betting operations. Correctness and reliability at scale, daily.",
+      "Designed and operated the QA framework guarding theScore's betting data: a QA regression DAG in Airflow that I proposed and promoted to production, source-to-target reconciliation across BigQuery and Redshift, and SOX-facing reporting controls over millions of daily transactions.",
     active: false,
   },
   {
-    period: "2016 — 2023",
-    role: "QA → SDET / Automation → Data",
-    company: "Multiple roles",
+    period: "2021 — 2023",
+    role: "Tech Lead",
+    company: "QA Consultants",
     detail:
-      "Ten years of evolution across the same core instinct: understand the system before you trust it. QA first, then automation engineering, then data. Each step built on the last.",
+      "Led a five-person data quality team delivering data-migration automation for health-claims data — scanned claims from multiple U.S. states, normalized and promoted to a validated gold layer in GCP.",
+    active: false,
+  },
+  {
+    period: "2020 — 2021",
+    role: "Data QA Team Lead",
+    company: "QA Consultants",
+    detail:
+      "Led a three-person QA team embedded in Data Engineering during an enterprise AWS-to-GCP migration across four data business units, with source-to-target SQL reconciliation and automated ETL validation at daily checkpoints.",
+    active: false,
+  },
+  {
+    period: "2014 — 2020",
+    role: "QA & Data Migration Roles",
+    company: "Avesis · Expedia Group · Wisetail",
+    detail:
+      "Data-migration automation at Avesis (scanned health data from multiple states into GCP) and software QA roles at Expedia Group and Wisetail. ISTQB CTFL certified.",
     active: false,
   },
 ];
 
 const tools = [
-  "Claude Code",
-  "Codex",
-  "Python · FastAPI",
-  "PostgreSQL",
-  "Next.js · TypeScript",
-  "Pytest · QA systems",
+  "Python · SQL",
+  "Playwright · Selenium",
+  "Apache Airflow",
+  "BigQuery · Redshift · PostgreSQL",
+  "Jenkins · Docker",
+  "FastAPI",
 ];
 
 export default function About() {
@@ -48,12 +63,14 @@ export default function About() {
             About
           </p>
           <h1 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[#111111] sm:text-5xl md:text-6xl">
-            Engineer. Builder.<br className="hidden sm:block" /> Obsessed.
+            Senior SDET.<br className="hidden sm:block" /> Data Quality.<br className="hidden sm:block" /> Test Automation.
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-[#5f5a52] sm:text-lg">
-            Ten years across QA, SDET / automation, and data engineering — now
-            using AI tools to build products I actually want to use. The
-            background informs the build. The obsession drives it.
+            I&apos;m Chris Yoon, a Toronto-based Senior SDET and Data Quality
+            engineer with 10+ years across QA, test automation, and data
+            reliability. I design and operate the automation frameworks and
+            quality controls that prove software and data are correct.
+            Korean (native) · English (fluent).
           </p>
         </div>
 
@@ -107,10 +124,10 @@ export default function About() {
           {/* Sidebar */}
           <div className="flex flex-col gap-4">
 
-            {/* Building with */}
+            {/* Core stack */}
             <div className="rounded-[1.5rem] border border-[#bdd8ca] bg-[linear-gradient(180deg,rgba(242,250,246,0.96),rgba(216,240,228,0.92))] p-5">
               <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#2d6a47]">
-                Building with
+                Core stack
               </p>
               <div className="mt-3 flex flex-col gap-2">
                 {tools.map((t) => (
@@ -133,16 +150,35 @@ export default function About() {
                 </p>
               </div>
               <p className="text-sm leading-6 text-[#111111]">
-                AI Product<br />Senior Data<br />Platform roles
+                Senior SDET<br />QA Automation<br />Data Quality &amp; Reliability<br />QA Lead / Manager
               </p>
-              <a
-                href="https://linkedin.com/in/sukminyoon"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-1.5 text-xs text-[#2d6a47] hover:text-[#1a3a2e] transition-colors"
-              >
-                LinkedIn ↗
-              </a>
+              <p className="mt-3 text-xs leading-5 text-[#5f5a52]">
+                Toronto · GTA · Canada remote
+              </p>
+              <div className="mt-4 flex flex-col gap-1.5">
+                <a
+                  href="https://linkedin.com/in/sukminyoon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#2d6a47] hover:text-[#1a3a2e] transition-colors"
+                >
+                  LinkedIn ↗
+                </a>
+                <a
+                  href="https://github.com/sukminc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#2d6a47] hover:text-[#1a3a2e] transition-colors"
+                >
+                  GitHub ↗
+                </a>
+                <a
+                  href="mailto:sukminc@gmail.com"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#2d6a47] hover:text-[#1a3a2e] transition-colors"
+                >
+                  sukminc@gmail.com
+                </a>
+              </div>
             </div>
 
           </div>
