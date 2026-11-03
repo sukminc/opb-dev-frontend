@@ -52,10 +52,10 @@ export default function Experience() {
   return (
     <section id="experience" className="section-shell py-16 px-6">
       <div className="relative mx-auto max-w-5xl">
-        <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#2d6a47]">
+        <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-[#4ade80]">
           Experience
         </p>
-        <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-[#111111] sm:text-4xl">
+        <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-[#e9f4ec] sm:text-4xl">
           Where I&apos;ve worked, what I owned.
         </h2>
 
@@ -66,11 +66,11 @@ export default function Experience() {
               className="glass-panel rounded-[1.8rem] p-6 sm:p-8"
             >
               <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                <h3 className="text-xl font-semibold tracking-tight text-[#111111]">
+                <h3 className="text-xl font-semibold tracking-tight text-[#e9f4ec]">
                   {role.title}
-                  <span className="text-[#2d6a47]"> · {role.company}</span>
+                  <span className="text-[#4ade80]"> · {role.company}</span>
                 </h3>
-                <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#2d6a47]">
+                <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#4ade80]">
                   {role.period}
                 </p>
               </div>
@@ -78,9 +78,9 @@ export default function Experience() {
                 {role.bullets.map((bullet) => (
                   <li
                     key={bullet.slice(0, 32)}
-                    className="flex gap-3 text-sm leading-7 text-[#5f5a52]"
+                    className="flex gap-3 text-sm leading-7 text-[#9db3a5]"
                   >
-                    <span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#2d6a47]" />
+                    <span className="mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#4ade80]" />
                     <span>{bullet}</span>
                   </li>
                 ))}
@@ -89,7 +89,7 @@ export default function Experience() {
           ))}
         </div>
 
-        <p className="mt-6 text-xs leading-6 text-[#8a6f50]">
+        <p className="mt-6 text-xs leading-6 text-[#7d8f84]">
           QA since 2014 · ISTQB CTFL certified · Chemical Engineering studies,
           University of Waterloo · Korean (native) · English (fluent)
         </p>

@@ -12,7 +12,7 @@ export default function OGImage() {
       <div
         style={{
           background:
-            "linear-gradient(180deg, #f7f5f1 0%, #f3efe7 100%)",
+            "linear-gradient(180deg, #0d120e 0%, #070a08 100%)",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -79,7 +79,7 @@ export default function OGImage() {
             }}
           >
             Senior SDET.
-            <span style={{ color: BRAND.muted }}> Data Quality & Automation.</span>
+            <span style={{ color: "#4ade80" }}> Data Quality & Automation.</span>
           </div>
           <div style={{ fontSize: "24px", color: BRAND.muted, maxWidth: "760px", lineHeight: 1.4 }}>
             Chris S. Yoon — 10+ years in test automation and data quality.
