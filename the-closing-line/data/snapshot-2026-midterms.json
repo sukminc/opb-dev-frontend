@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "season": 1,
+  "title": "2026 US Midterms",
+  "election_date": "2026-11-03",
+  "timezone": "America/New_York",
+  "probability_unit": "percent",
+  "status": "awaiting_results",
+  "provenance": {
+    "source": "Project-owner-supplied snapshot from both venues’ public APIs",
+    "raw_api_responses_included": false,
+    "polymarket_captured_at": "2026-11-03T18:53:00-05:00",
+    "kalshi_capture_start": "2026-11-03T18:54:00-05:00",
+    "kalshi_capture_end": "2026-11-03T19:04:00-05:00",
+    "timing_note": "Election Day pre-resolution snapshot, before later battleground poll closes. The Kalshi capture window overlaps the listed 19:00 ET closes; per-market capture times were not supplied. This is not a verified final quote at each individual poll close.",
+    "price_basis": "Implied probabilities supplied by the project owner; exact bid/ask/last/midpoint basis was not supplied."
+  },
+  "controls": [
+    {
+      "id": "senate-control",
+      "label": "Senate (D)",
+      "subject": "Democratic Senate control",
+      "matchup": null,
+      "polymarket_pct": 86.5,
+      "kalshi_pct": 87.0,
+      "poll_close_et": null,
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "house-control",
+      "label": "House (D)",
+      "subject": "Democratic House control",
+      "matchup": null,
+      "polymarket_pct": 98.1,
+      "kalshi_pct": null,
+      "poll_close_et": null,
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    }
+  ],
+  "races": [
+    {
+      "id": "texas",
+      "label": "Texas",
+      "subject": "Democrat wins",
+      "matchup": "Talarico (D) vs Paxton (R)",
+      "polymarket_pct": 83.5,
+      "kalshi_pct": 81.0,
+      "poll_close_et": "20:00",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "michigan",
+      "label": "Michigan",
+      "subject": "Democrat wins",
+      "matchup": "El-Sayed (D) vs Rogers (R)",
+      "polymarket_pct": 85.5,
+      "kalshi_pct": 84.0,
+      "poll_close_et": "20:00",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "ohio-special",
+      "label": "Ohio special",
+      "subject": "Democrat wins",
+      "matchup": "Brown (D) vs Husted (R)",
+      "polymarket_pct": 82.5,
+      "kalshi_pct": 81.0,
+      "poll_close_et": "19:30",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "maine",
+      "label": "Maine",
+      "subject": "Democrat wins",
+      "matchup": "Jackson (D) vs Collins (R)",
+      "polymarket_pct": 74.5,
+      "kalshi_pct": 73.0,
+      "poll_close_et": "20:00",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "alaska",
+      "label": "Alaska",
+      "subject": "Democrat wins",
+      "matchup": "Peltola (D) vs Sullivan (R)",
+      "polymarket_pct": 73.5,
+      "kalshi_pct": 74.0,
+      "poll_close_et": "24:00",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "kansas",
+      "label": "Kansas",
+      "subject": "Democrat wins",
+      "matchup": "Hamilton (D) vs Marshall (R)",
+      "polymarket_pct": 72.5,
+      "kalshi_pct": 74.0,
+      "poll_close_et": "20:00",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "iowa",
+      "label": "Iowa",
+      "subject": "Democrat wins",
+      "matchup": "Turek (D) vs Hinson (R)",
+      "polymarket_pct": 64.0,
+      "kalshi_pct": 62.0,
+      "poll_close_et": "21:00",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "north-carolina",
+      "label": "North Carolina",
+      "subject": "Democrat wins",
+      "matchup": "Cooper (D) vs Whatley (R)",
+      "polymarket_pct": 98.4,
+      "kalshi_pct": 98.8,
+      "poll_close_et": "19:30",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "georgia",
+      "label": "Georgia",
+      "subject": "Democrat wins",
+      "matchup": "Ossoff (D) vs Collins (R)",
+      "polymarket_pct": 98.8,
+      "kalshi_pct": 98.4,
+      "poll_close_et": "19:00",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "south-carolina",
+      "label": "South Carolina",
+      "subject": "Democrat wins",
+      "matchup": "Andrews (D) vs Graham (R)",
+      "polymarket_pct": 36.5,
+      "kalshi_pct": 39.0,
+      "poll_close_et": "19:00",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "new-hampshire",
+      "label": "New Hampshire",
+      "subject": "Democrat wins",
+      "matchup": "Pappas (D) vs Sununu (R)",
+      "polymarket_pct": 96.0,
+      "kalshi_pct": 94.6,
+      "poll_close_et": "19:00",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "minnesota",
+      "label": "Minnesota",
+      "subject": "Democrat wins",
+      "matchup": "Flanagan (D) vs Tafoya (R)",
+      "polymarket_pct": 94.5,
+      "kalshi_pct": 93.9,
+      "poll_close_et": "21:00",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "florida-special",
+      "label": "Florida special",
+      "subject": "Democrat wins",
+      "matchup": "Nixon (D) vs Moody (R)",
+      "polymarket_pct": 15.5,
+      "kalshi_pct": 5.9,
+      "poll_close_et": "20:00",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    },
+    {
+      "id": "nebraska",
+      "label": "Nebraska",
+      "subject": "Republican incumbent wins",
+      "matchup": "Ricketts (R incumbent) vs independent challenger",
+      "polymarket_pct": 63.0,
+      "kalshi_pct": 62.0,
+      "poll_close_et": "21:00",
+      "status": "awaiting_results",
+      "outcome": null,
+      "brier": {
+        "polymarket": null,
+        "kalshi": null
+      },
+      "log_loss": {
+        "polymarket": null,
+        "kalshi": null
+      }
+    }
+  ]
+}

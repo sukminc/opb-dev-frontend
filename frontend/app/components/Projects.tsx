@@ -1,17 +1,14 @@
 "use client";
 
-import { Clock, ExternalLink, GitBranch } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import {
   projects,
   type Project,
   type ProjectCategory,
-  type ProjectRepoType,
-  type ProjectStage,
   type ProjectStatus,
 } from "../data/projects";
-
-const GH_OWNER = "sukminc";
 
 const REPO_MAP: Record<string, string> = Object.fromEntries(
   projects.filter((p) => p.repoName).map((p) => [p.slug, p.repoName!])
@@ -35,42 +32,6 @@ interface CommitState {
   loading: boolean;
 }
 
-function isInternalProject(project: Project) {
-  return project.visibility === "internal";
-}
-
-function hasPublicRepo(project: Project) {
-  return Boolean(project.repoName) && project.visibility === "public";
-}
-
-function shouldShowRepoDetails(project: Project) {
-  return hasPublicRepo(project) && !isInternalProject(project);
-}
-
-const STAGE_BASELINE_PROGRESS: Record<ProjectStage, number> = {
-  prototype: 36,
-  "mvp-loop": 52,
-  "workflow-build": 42,
-  concept: 26,
-  "ops-layer": 60,
-  archive: 100,
-};
-
-const REPO_TYPE_BASELINE: Record<ProjectRepoType, number> = {
-  "mobile-app": 20,
-  "web-app": 18,
-  automation: 10,
-  platform: 28,
-  "data-pipeline": 22,
-  validation: 14,
-};
-
-const STATUS_MULTIPLIER: Record<ProjectStatus, number> = {
-  live: 1,
-  building: 0.9,
-  idea: 1.35,
-};
-
 const CATEGORY_PRIORITY: Record<ProjectCategory, number> = {
   featured: 0,
   secondary: 1,
@@ -78,44 +39,10 @@ const CATEGORY_PRIORITY: Record<ProjectCategory, number> = {
   archive: 3,
 };
 
-const STAGE_LABELS: Record<ProjectStage, string> = {
-  prototype: "Prototype",
-  "mvp-loop": "MVP Loop",
-  "workflow-build": "Workflow Build",
-  concept: "Concept",
-  "ops-layer": "Ops Layer",
-  archive: "Archive",
-};
-
-const CATEGORY_META: Record<ProjectCategory, { title: string; description: string }> = {
-  featured: {
-    title: "Featured Project",
-    description: "A personal build that shows how I design data systems and quality gates end to end.",
-  },
-  secondary: {
-    title: "More Builds",
-    description: "Additional builds.",
-  },
-  ops: {
-    title: "This Site",
-    description: "The portfolio itself — designed, built, and maintained by me.",
-  },
-  archive: {
-    title: "Proof of Work",
-    description: "Earlier builds demonstrating pipeline, validation, and automation craft.",
-  },
-};
-
 const statusConfig: Record<ProjectStatus, { label: string; color: string; dot: string }> = {
   live: { label: "Live", color: "text-[#e9f4ec]", dot: "bg-[#111111]" },
   building: { label: "Building", color: "text-[#d9ecdf]", dot: "bg-[#4ade80] animate-pulse" },
   idea: { label: "Idea", color: "text-[#4ade80]", dot: "bg-[#6aaa88]" },
-};
-
-const STATUS_BAR: Record<ProjectStatus, string> = {
-  live: "bg-[#111111]",
-  building: "bg-[#4ade80]",
-  idea: "bg-[#6aaa88]",
 };
 
 const TECH_COLORS: Record<string, string> = {
@@ -144,48 +71,6 @@ const TECH_COLORS: Record<string, string> = {
   "Android": "#7de38d",
 };
 
-function getRecommendedMvpTarget(project: Project, recent14Count: number | null): number {
-  if (project.status === "live") return 1;
-
-  const baseline = REPO_TYPE_BASELINE[project.repoType];
-  const recent = recent14Count ?? 0;
-  const activityAdjustment = Math.min(12, recent * 2);
-  const featuredAdjustment = project.category === "featured" ? 0.72 : 1;
-  const target = Math.round((baseline + activityAdjustment) * STATUS_MULTIPLIER[project.status] * featuredAdjustment);
-
-  return Math.max(6, target);
-}
-
-function getMvpProgress(project: Project, totalCount: number | null, recent14Count: number | null): number {
-  if (project.status === "live") return 100;
-  if (!project.repoName || isInternalProject(project)) {
-    return STAGE_BASELINE_PROGRESS[project.stage];
-  }
-  if (totalCount === null) return 0;
-  const target = getRecommendedMvpTarget(project, recent14Count);
-  return Math.max(0, Math.min(100, Math.round((totalCount / target) * 100)));
-}
-
-function getMvpLabel(project: Project, progress: number, loading: boolean): string {
-  if (project.stage === "archive") return "Archive";
-  if (project.status === "live") return "Live ✓";
-  if (!project.repoName || isInternalProject(project)) return `${STAGE_LABELS[project.stage]} · Ready`;
-  if (loading) return "Syncing...";
-  if (progress >= 100) return `${STAGE_LABELS[project.stage]} · Ready`;
-  return `${STAGE_LABELS[project.stage]} · ${progress}%`;
-}
-
-function getMvpHint(project: Project, recent14Count: number | null): string {
-  if (project.category === "archive") return "Proof-of-work archive";
-  if (project.category === "featured") return "Core brand product";
-  if (isInternalProject(project)) return "Internal workflow system already supporting the portfolio";
-  if (!project.repoName) return "Brand shell, naming, and product direction are already set";
-  if (project.status === "live") return "MVP reached";
-  const target = getRecommendedMvpTarget(project, recent14Count);
-  const recent = recent14Count ?? 0;
-  return `Auto target ${target} commits · 14d activity ${recent}`;
-}
-
 function TechBadge({ tag }: { tag: string }) {
   return (
     <div title={tag} className="h-7 flex items-center gap-2 rounded-full border border-[#23402e] bg-[linear-gradient(180deg,#12241a_0%,#0c1710_100%)] px-3 shadow-[inset_0_1px_0_rgba(74,222,128,0.10)]">
@@ -198,38 +83,8 @@ function TechBadge({ tag }: { tag: string }) {
   );
 }
 
-function timeAgo(iso: string): string {
-  const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
-  if (s < 60) return `${s}s ago`;
-  const m = Math.floor(s / 60);
-  if (m < 60) return `${m}m ago`;
-  const h = Math.floor(m / 60);
-  if (h < 24) return `${h}h ago`;
-  const d = Math.floor(h / 24);
-  if (d < 30) return `${d}d ago`;
-  return `${Math.floor(d / 30)}mo ago`;
-}
-
-function FeaturedProjectCard({ project, index }: { project: Project; index: number }) {
+function FeaturedProjectCard({ project }: { project: Project }) {
   const cfg = statusConfig[project.status];
-  const repoVisibility = project.visibility === "public" ? "Public repo" : "Private build";
-  const stageLabel = STAGE_LABELS[project.stage];
-  const variants = [
-    {
-      shell:
-        "border-[#111111]/15 bg-[radial-gradient(circle_at_top_left,_rgba(17,17,17,0.08),_transparent_48%),linear-gradient(135deg,#fbf7f1_0%,#f1e9df_100%)]",
-      badge: "border-[#111111]/20 bg-[#111111] text-[#f8f3ea]",
-      accent: "bg-[#111111]",
-      note: "Current main build",
-    },
-    {
-      shell:
-        "border-[#8d8574]/20 bg-[radial-gradient(circle_at_top_left,_rgba(166,145,109,0.18),_transparent_45%),linear-gradient(135deg,#fbf7f1_0%,#efe8dc_100%)]",
-      badge: "border-[#a6916d]/25 bg-[#f6ecda] text-[#7a6745]",
-      accent: "bg-[#a6916d]",
-      note: "Supporting build",
-    },
-  ][index % 2];
 
   return (
     <div className="rounded-[2rem] border border-[#223128] bg-[linear-gradient(135deg,#10160f_0%,#0b100d_100%)] px-8 py-8 sm:px-10 sm:py-10">
@@ -279,120 +134,8 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
   );
 }
 
-function RichProjectCard({ project, commitState }: { project: Project; commitState: CommitState }) {
-  const cfg = statusConfig[project.status];
-  const repoName = shouldShowRepoDetails(project) ? REPO_MAP[project.slug] : undefined;
-  const progress = getMvpProgress(project, commitState.totalCount, commitState.recent14Count);
-  const progressLabel = getMvpLabel(project, progress, commitState.loading);
-  const progressHint = getMvpHint(project, commitState.recent14Count);
-  const readinessSignals = project.readinessSignals ?? [];
-
-  return (
-    <div className={project.featured ? "md:col-span-2" : ""}>
-      <div className="glass-panel flex h-full flex-col rounded-[1.75rem] border-[#223128] p-6 transition-colors hover:border-[#4ade80] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.75),0_20px_60px_rgba(17,17,17,0.05),0_8px_28px_rgba(45,106,71,0.08)]">
-        <div className="flex items-start justify-between gap-3 mb-4">
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 mb-0.5">
-              <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${cfg.dot}`} />
-              <h3 className="text-sm font-semibold text-[#e9f4ec] truncate">{project.title}</h3>
-            </div>
-            {repoName && (
-              <div className="flex items-center gap-1.5 pl-3.5 text-[10px] text-[#4ade80]">
-                <GitBranch size={9} />
-                <span className="font-mono">{GH_OWNER}/{repoName}</span>
-              </div>
-            )}
-          </div>
-          {commitState.totalCount !== null && repoName && (
-            <div className="text-right flex-shrink-0">
-              <span className="text-base font-bold text-[#e9f4ec] leading-none">{commitState.totalCount}</span>
-              <p className="text-[9px] text-[#86b598]">commits</p>
-            </div>
-          )}
-        </div>
-
-        <div className="mb-4">
-          <div className="mb-1.5 flex justify-between text-[10px] text-[#86b598]">
-            <span className="truncate pr-2">{project.tagline}</span>
-            <span className="flex-shrink-0">{progressLabel}</span>
-          </div>
-          <div className="h-1 bg-[#ccddd4] rounded-full overflow-hidden">
-            <div
-              className={`h-full rounded-full transition-all duration-700 ${STATUS_BAR[project.status]}`}
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-          {project.mvpEta && (
-            <p className="mt-2 text-[10px] text-[#86b598]">{project.mvpEta}</p>
-          )}
-          <p className="mt-1 text-[10px] text-[#5a9a7a]">{progressHint}</p>
-        </div>
-
-        <div className="flex flex-col gap-0.5 mb-4 flex-1">
-          {readinessSignals.length > 0 && (
-            <div className="mb-2 flex flex-wrap gap-2">
-              {readinessSignals.map((signal) => (
-                <span
-                  key={signal}
-                  className="rounded-full border border-[#a8ccb8] bg-[linear-gradient(180deg,#12241a_0%,#0c1710_100%)] px-3 py-1 text-[10px] uppercase tracking-[0.14em] text-[#d9ecdf]"
-                >
-                  {signal}
-                </span>
-              ))}
-            </div>
-          )}
-          {commitState.loading && repoName && (
-            <div className="space-y-2 py-1">
-              {[0, 1, 2].map((i) => (
-                <div key={i} className="flex gap-2.5 animate-pulse">
-                  <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#b8d4c8] flex-shrink-0" />
-                  <div className="flex-1 space-y-1.5">
-                    <div className="h-2.5 bg-[#e0f0e8] rounded w-3/4" />
-                    <div className="h-2 bg-[#e0f0e8] rounded w-1/3" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-          {!commitState.loading && repoName && commitState.commits.slice(0, 1).map((c, i) => (
-            <a
-              key={c.sha}
-              href={c.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group -mx-1.5 flex items-start gap-2.5 rounded-lg px-1.5 py-1.5 transition-colors hover:bg-[#e8f4ee]"
-            >
-              <div className={`mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full ${i === 0 ? "bg-[#4ade80]" : "bg-[#7abba0]"}`} />
-              <div className="flex-1 min-w-0">
-                <p className={`text-xs truncate leading-snug ${i === 0 ? "text-[#e9f4ec]" : "text-[#9db3a5]"} group-hover:text-[#e9f4ec] transition-colors`}>
-                  {c.message.split("\n")[0]}
-                </p>
-                <div className="flex items-center gap-1.5 mt-0.5">
-                  <code className="text-[9px] text-[#86b598] font-mono">{c.sha.slice(0, 7)}</code>
-                  <span className="text-[9px] text-[#9abfb0]">·</span>
-                  <span className="flex items-center gap-1 text-[9px] text-[#86b598]">
-                    <Clock size={8} />
-                    {timeAgo(c.date)}
-                  </span>
-                </div>
-              </div>
-              <ExternalLink size={10} className="mt-1 flex-shrink-0 text-[#4ade80] opacity-0 transition-opacity group-hover:opacity-100" />
-            </a>
-          ))}
-        </div>
-
-        <div className="flex flex-wrap gap-1.5">
-          {project.tags.map((tag) => (
-            <TechBadge key={tag} tag={tag} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Projects() {
-  const [commitMap, setCommitMap] = useState<Record<string, CommitState>>(() =>
+  const [, setCommitMap] = useState<Record<string, CommitState>>(() =>
     Object.fromEntries(
       projects.map((p) => [
         p.slug,
@@ -459,6 +202,7 @@ export default function Projects() {
     : projects;
 
   const featuredProjects = displayOrder.filter((p) => p.category === "featured");
+  const secondaryProjects = displayOrder.filter((p) => p.category === "secondary");
   const archiveProjects = displayOrder.filter((p) => p.category === "archive" || p.category === "ops");
 
   return (
@@ -472,10 +216,23 @@ export default function Projects() {
 
         {/* Featured — poker card, full width */}
         <div className="mt-6">
-          {featuredProjects.map((project, index) => (
-            <FeaturedProjectCard key={project.slug} project={project} index={index} />
+          {featuredProjects.map((project) => (
+            <FeaturedProjectCard key={project.slug} project={project} />
           ))}
         </div>
+
+        {secondaryProjects.length > 0 && (
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {secondaryProjects.map((project) => (
+              <Link key={project.slug} href={project.url ?? "#projects"} className="rounded-2xl border border-[#223128] bg-[#101511] p-6 transition-colors hover:border-[#4ade80] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4ade80]">
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#4ade80]">A OnePercentBetter project</p>
+                <h3 className="mt-3 text-xl font-semibold text-[#e9f4ec]">{project.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#9db3a5]">{project.tagline}</p>
+                <span className="mt-5 inline-block text-xs text-[#4ade80]">Explore project →</span>
+              </Link>
+            ))}
+          </div>
+        )}
 
         {/* Archive — simple text list */}
         {archiveProjects.length > 0 && (
