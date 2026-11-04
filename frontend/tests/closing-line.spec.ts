@@ -16,25 +16,34 @@ test("intro leads to the frozen season report and back to scoring", async ({ pag
   expect(errors).toEqual([]);
 });
 
-test("frozen board preserves missing data, priced subjects, and pending results", async ({ page }) => {
+test("frozen board preserves missing data, priced subjects, and scored results", async ({ page }) => {
   const response = await page.goto("/closing-line/midterms-2026");
   expect(response?.status()).toBe(200);
   const table = page.getByRole("table");
+  // Only Alaska is still pending: its row keeps all three "Awaiting results" cells.
   const markets = table.getByRole("row").filter({ has: page.getByRole("cell", { name: "Awaiting results", exact: true }) });
-  await expect(markets).toHaveCount(16);
+  await expect(markets).toHaveCount(1);
   for (const row of await markets.all()) {
-    // A price never becomes an inferred election result or a fabricated score.
     await expect(row.getByRole("cell", { name: "Awaiting results", exact: true })).toHaveCount(3);
   }
+  await expect(table.getByRole("row", { name: /Alaska/ })).toContainText("Awaiting results");
+  await expect(page.getByText(/Kalshi takes the night/)).toBeVisible();
   const florida = table.getByRole("row", { name: /Florida special/ });
   await expect(florida).toContainText("15.5%");
   await expect(florida).toContainText("5.9%");
   await expect(florida).toContainText("9.6 pts");
-  await expect(table.getByRole("row", { name: /House \(D\)/ }).getByRole("cell", { name: "n/a", exact: true })).toHaveCount(2);
+  await expect(florida).toContainText("Republican won");
+  await expect(florida).toContainText("0.0240 / 0.0035");
+  const house = table.getByRole("row", { name: /House \(D\)/ });
+  await expect(house).toContainText("Democrat won");
+  await expect(house).toContainText("0.0004 / n/a");
+  await expect(house).toContainText("0.019 / n/a");
   const nebraska = table.getByRole("row", { name: /Nebraska/ });
   await expect(nebraska).toContainText("Ricketts (R incumbent) vs independent challenger");
   await expect(nebraska).toContainText("63.0%");
   await expect(nebraska).toContainText("62.0%");
+  await expect(nebraska).toContainText("Ricketts (R) won");
+  await expect(nebraska).toContainText("0.1369 / 0.1444");
   await expect(page.getByText(/The Kalshi window overlaps/)).toBeVisible();
 });
 

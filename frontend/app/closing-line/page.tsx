@@ -72,7 +72,7 @@ export default function ClosingLinePage() {
         <Link href="/closing-line/midterms-2026" className="group glass-panel mt-7 block rounded-2xl p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:p-9">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <span className="font-mono text-xs text-accent">SEASON 01 / POLITICS</span>
-            <span className="rounded-full border border-border-hover px-3 py-1 font-mono text-xs text-secondary">Awaiting results</span>
+            <span className="rounded-full border border-border-hover px-3 py-1 font-mono text-xs text-secondary">Provisional · Kalshi on points</span>
           </div>
           <h3 className="mt-7 text-3xl font-semibold tracking-tight">Season 1 · 2026 Midterms</h3>
           <p className="mt-3 max-w-xl leading-relaxed text-secondary">Polymarket vs Kalshi. Fourteen Senate races, one control test, and the probabilities frozen before the verdict.</p>
