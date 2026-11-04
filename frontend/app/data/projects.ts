@@ -25,6 +25,19 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "closing-line",
+    title: "The Closing Line",
+    tagline: "Grading the closing lines of the world's prediction markets.",
+    description: "A spectator's scoreboard comparing Polymarket and Kalshi, season by season. Season 1 freezes 2026 midterms probabilities for Brier score, log loss, and calibration after verified results.",
+    status: "building",
+    repoType: "web-app",
+    category: "secondary",
+    stage: "prototype",
+    tags: ["Next.js", "TypeScript", "JSON"],
+    url: "/closing-line",
+    visibility: "public",
+  },
+  {
     slug: "private-ai-poker-backend",
     title: "OPB Poker",
     tagline: "Personal project: a poker performance backend with a three-layer data pipeline (raw → normalized → derived) over an entity-centric PostgreSQL schema. TDD-first build with deterministic output contracts, Pytest regression suites, and operator QA gates.",
