@@ -5,7 +5,7 @@
   "election_date": "2026-11-03",
   "timezone": "America/New_York",
   "probability_unit": "percent",
-  "status": "awaiting_results",
+  "status": "provisional_results",
   "provenance": {
     "source": "Project-owner-supplied snapshot from both venues’ public APIs",
     "raw_api_responses_included": false,
@@ -13,7 +13,8 @@
     "kalshi_capture_start": "2026-11-03T18:54:00-05:00",
     "kalshi_capture_end": "2026-11-03T19:04:00-05:00",
     "timing_note": "Election Day pre-resolution snapshot, before later battleground poll closes. The Kalshi capture window overlaps the listed 19:00 ET closes; per-market capture times were not supplied. This is not a verified final quote at each individual poll close.",
-    "price_basis": "Implied probabilities supplied by the project owner; exact bid/ask/last/midpoint basis was not supplied."
+    "price_basis": "Implied probabilities supplied by the project owner; exact bid/ask/last/midpoint basis was not supplied.",
+    "florida_kalshi_note": "Kalshi's Florida quote came from a final gap-fill fetch at ~19:03 ET — after Florida's eastern-county polls closed at 19:00 ET, before the state's full close at 20:00 ET. All other Kalshi quotes are stamped 18:54–18:56 ET; all Polymarket quotes 18:53 ET."
   },
   "controls": [
     {
@@ -24,15 +25,15 @@
       "polymarket_pct": 86.5,
       "kalshi_pct": 87.0,
       "poll_close_et": null,
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.0182,
+        "kalshi": 0.0169
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.145,
+        "kalshi": 0.1393
       }
     },
     {
@@ -43,14 +44,14 @@
       "polymarket_pct": 98.1,
       "kalshi_pct": null,
       "poll_close_et": null,
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
+        "polymarket": 0.0004,
         "kalshi": null
       },
       "log_loss": {
-        "polymarket": null,
+        "polymarket": 0.0192,
         "kalshi": null
       }
     }
@@ -64,15 +65,15 @@
       "polymarket_pct": 83.5,
       "kalshi_pct": 81.0,
       "poll_close_et": "20:00",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.0272,
+        "kalshi": 0.0361
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.1803,
+        "kalshi": 0.2107
       }
     },
     {
@@ -83,15 +84,15 @@
       "polymarket_pct": 85.5,
       "kalshi_pct": 84.0,
       "poll_close_et": "20:00",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.021,
+        "kalshi": 0.0256
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.1567,
+        "kalshi": 0.1744
       }
     },
     {
@@ -102,15 +103,15 @@
       "polymarket_pct": 82.5,
       "kalshi_pct": 81.0,
       "poll_close_et": "19:30",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.0306,
+        "kalshi": 0.0361
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.1924,
+        "kalshi": 0.2107
       }
     },
     {
@@ -121,15 +122,15 @@
       "polymarket_pct": 74.5,
       "kalshi_pct": 73.0,
       "poll_close_et": "20:00",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.065,
+        "kalshi": 0.0729
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.2944,
+        "kalshi": 0.3147
       }
     },
     {
@@ -159,15 +160,15 @@
       "polymarket_pct": 72.5,
       "kalshi_pct": 74.0,
       "poll_close_et": "20:00",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.0756,
+        "kalshi": 0.0676
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.3216,
+        "kalshi": 0.3011
       }
     },
     {
@@ -178,15 +179,15 @@
       "polymarket_pct": 64.0,
       "kalshi_pct": 62.0,
       "poll_close_et": "21:00",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.1296,
+        "kalshi": 0.1444
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.4463,
+        "kalshi": 0.478
       }
     },
     {
@@ -197,15 +198,15 @@
       "polymarket_pct": 98.4,
       "kalshi_pct": 98.8,
       "poll_close_et": "19:30",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.0003,
+        "kalshi": 0.0001
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.0161,
+        "kalshi": 0.0121
       }
     },
     {
@@ -216,15 +217,15 @@
       "polymarket_pct": 98.8,
       "kalshi_pct": 98.4,
       "poll_close_et": "19:00",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.0001,
+        "kalshi": 0.0003
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.0121,
+        "kalshi": 0.0161
       }
     },
     {
@@ -235,15 +236,15 @@
       "polymarket_pct": 36.5,
       "kalshi_pct": 39.0,
       "poll_close_et": "19:00",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.4032,
+        "kalshi": 0.3721
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 1.0079,
+        "kalshi": 0.9416
       }
     },
     {
@@ -254,15 +255,15 @@
       "polymarket_pct": 96.0,
       "kalshi_pct": 94.6,
       "poll_close_et": "19:00",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.0016,
+        "kalshi": 0.0029
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.0408,
+        "kalshi": 0.0555
       }
     },
     {
@@ -273,15 +274,15 @@
       "polymarket_pct": 94.5,
       "kalshi_pct": 93.9,
       "poll_close_et": "21:00",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "democrat",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.003,
+        "kalshi": 0.0037
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.0566,
+        "kalshi": 0.0629
       }
     },
     {
@@ -292,15 +293,15 @@
       "polymarket_pct": 15.5,
       "kalshi_pct": 5.9,
       "poll_close_et": "20:00",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "republican",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.024,
+        "kalshi": 0.0035
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.1684,
+        "kalshi": 0.0608
       }
     },
     {
@@ -311,16 +312,46 @@
       "polymarket_pct": 63.0,
       "kalshi_pct": 62.0,
       "poll_close_et": "21:00",
-      "status": "awaiting_results",
-      "outcome": null,
+      "status": "called",
+      "outcome": "republican_incumbent",
       "brier": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.1369,
+        "kalshi": 0.1444
       },
       "log_loss": {
-        "polymarket": null,
-        "kalshi": null
+        "polymarket": 0.462,
+        "kalshi": 0.478
       }
     }
-  ]
+  ],
+  "results": {
+    "as_of": "2026-11-04T07:45:00-05:00",
+    "source": "Associated Press race calls",
+    "called": 15,
+    "total": 16,
+    "pending": [
+      "alaska"
+    ]
+  },
+  "verdict": {
+    "status": "provisional",
+    "headline": "Kalshi takes the night — on points",
+    "primary_metric": "mean_brier",
+    "paired_markets_scored": 14,
+    "paired_markets_total": 15,
+    "head_to_head_wins": {
+      "polymarket": 9,
+      "kalshi": 5
+    },
+    "mean_brier": {
+      "polymarket": 0.0669,
+      "kalshi": 0.0662
+    },
+    "mean_log_loss": {
+      "polymarket": 0.25,
+      "kalshi": 0.2469
+    },
+    "detail": "Polymarket won more head-to-heads (9–5 across the 14 paired markets scored), but Kalshi's average scores are better on the metric declared before a single result came in — mean Brier, with log loss agreeing. The paired set is the 13 called state races plus Senate control; the House market, priced only by Polymarket, is scored separately. Only Alaska remains.",
+    "alaska_note": "Alaska is still out: Sullivan (R) leads Peltola (D) by roughly 1,700 votes with about 72% counted, and a ranked-choice tabulation is scheduled for November 18 if no one clears 50%. Kalshi finishes ahead on mean Brier under either outcome (0.0663 vs 0.0671 if Peltola wins; 0.0983 vs 0.0984 — effectively tied — if Sullivan wins, because both venues priced Peltola near 74% and would each take a ~0.54 Brier hit)."
+  }
 }
